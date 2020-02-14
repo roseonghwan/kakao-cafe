@@ -105,19 +105,19 @@ $ make run
 
 ### Git 프로젝트 디렉토리 생성
 
-```shell
-$ mkdir *YOUR_DIRECTORY_NAME*
-$ cd *YOUR_DIRECTORY_NAME*
+<pre>
+$ mkdir <b><i>YOUR_DIRECTORY_NAME</i></b>
+$ cd <b><i>YOUR_DIRECTORY_NAME</i></b>
 $ git init
-$ git remote add origin *YOUR_GIT_REPOSITORY_ADDRESS*
+$ git remote add origin <b><i>YOUR_GIT_REPOSITORY_ADDRESS</i></b>
 $ git pull origin master
-```
+</pre>
 
 ### Git branch 생성
 
-```shell
-$ git branch *YOUR_BRANCH_NAME*
-```
+<pre>
+$ git branch <b><i>YOUR_BRANCH_NAME</i></b>
+</pre>
 
 ### 현재 Git 레포지토리 상태 확인
 
@@ -133,8 +133,8 @@ $ git status
 
 ### Git에 커밋하기
 
-```shell
+<pre>
 $ git add .
-$ git commit -m *"COMMIT_MESSAGE"*
-$ git push origin *YOUR_BRANCH_NAME*
-```
+$ git commit -m <b><i>"COMMIT_MESSAGE"</i></b>
+$ git push origin <b><i>YOUR_BRANCH_NAME</i></b>
+</pre>
