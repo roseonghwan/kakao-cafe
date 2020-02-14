@@ -46,16 +46,28 @@ Test Library: unittest
 
 아래는 추상 클래스 CafeMenu에 대한 구현 명세이다.
 
-- 생성자: private int형 멤버 변수 price, private bool형 멤버 변수 iced를 자료형 default value로 초기화한다.
-  별도의 소멸자는 구현하지 않는다.
+- 생성자: public string형 멤버 변수 name, private int형 멤버 변수 price, private bool형 멤버 변수 iced 의 값을 type default value로 초기화한다.
+
+  CafeMenu와 CafeMenu를 상속받은 클래스에서 별도의 소멸자는 구현하지 않는다.
+
+- name에 대한 setter: 인자로 받은 name을 멤버 변수 name에 저장한다.
+
+- name에 대한 getter: 자신의 멤버 변수 name의 값을 반환한다.
 
 - price에 대한 setter와 getter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
   함수 원형은 다음과 같다.
 
 ```python
+from abc import ABC, abstractmethod
+
+# ...
+
+@abstractmethod
 def setPrice(self, price: int) -> None:
   raise NotImplementedError()
 
+@abstractmethod
 def getPrice(self) -> int:
   raise NotImplementedError()
 ```
@@ -64,9 +76,11 @@ def getPrice(self) -> int:
   함수 원형은 다음과 같다.
 
 ```python
+@abstractmethod
 def setIced(self) -> None:
   raise NotImplementedError()
 
+@abstractmethod
 def isIced(self) -> bool:
   raise NotImplementedError()
 ```
@@ -75,7 +89,10 @@ def isIced(self) -> bool:
 
 아래는 추상 클래스 CafeMenu를 구현하는 concrete 클래스인 Espresso에 대한 구현 명세이다.
 
-- 생성자: 부모 클래스의 생성자를 호출하며 private float형 멤버 변수 shot, private string형 멤버 변수 size를 각각 1.0과 'Tall'로 초기화한다.
+- 생성자: 부모 클래스의 생성자를 호출하며 private float형 멤버 변수 shot, private string형 멤버 변수 size의 값을 각각 1.0과 'Tall'로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
   멤버 변수 price의 값을 2500으로 초기화한다.
 
 - shot에 대한 setter와 getter
@@ -83,13 +100,15 @@ def isIced(self) -> bool:
 - shot을 추가할 수 있는 addShot: setter와 getter를 이용해 멤버 변수 shot의 값에 인자로 받은 amount만큼 더하고 price를 amount당 500씩 더한다.
 
 - shot을 뺄 수 있는 subShot: setter와 getter를 이용해 멤버 변수 shot의 값에 인자로 받은 amount만큼 뺀다.
+
   가격 변동은 없으며 기존 shot보다 amount가 클 경우 ArithmeticError를 발생시킨다.
 
   이 때, 더 이상 shot을 뺄 수 없다는 내용의 메세지를 출력한다.
 
 * size에 대한 setter와 getter
 
-* size를 한 단계 높일 수 있는 sizeUp: setter와 getter를 이용하여 Tall이면 Grande로, Grande면 Venti로 size를 올리고 price를 500 올린다.
+* size를 한 단계 높일 수 있는 sizeUp: setter와 getter를 이용하여 Tall이면 Grande로, Grande면 Venti로 size를 올리고 price를 500 더한다.
+
   size가 Venti일 경우 ValueError를 발생시킨다.
 
   이 때, 더 이상 size를 올릴 수 없다는 내용의 메세지를 출력한다.
@@ -106,8 +125,11 @@ def isIced(self) -> bool:
 
 아래는 Espresso를 상속받은 클래스 Americano에 대한 구현 명세이다.
 
-- 생성자: 부모 클래스의 생성자를 호출하며 protected int형 변수 water를 350으로 초기화한다.
-  멤버 변수 price를 3000으로 초기화한다.
+- 생성자: 부모 클래스의 생성자를 호출하며 protected int형 변수 water의 값을 350으로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3000으로 초기화한다.
 
 - water에 대한 setter와 getter
 
@@ -119,8 +141,13 @@ def isIced(self) -> bool:
 
 아래는 Espresso를 상속받은 클래스 Latte에 대한 구현 명세이다.
 
-- 생성자: 부모 클래스의 생성자를 호출하며 private int형 변수 milkfmf 300으로 초기화한다.
-  멤버 변수 price를 3500으로 초기화한다.
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 변수 milk의 값을 300으로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4000으로 초기화한다.
+
+  멤버 변수 shot의 값을 2로 초기화한다.
 
 - milk에 대한 setter, getter
 
@@ -129,6 +156,66 @@ def isIced(self) -> bool:
 ---
 
 아래는 Latte를 상속받은 클래스 VanillaLatte에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 vanillaSyrup의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4000으로 초기화한다.
+
+- vanillaSyrup에 대한 getter와 setter
+
+- 바닐라 시럽을 추가할 수 있는 addVanillaSyrup: vanillaSyrup의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 200씩 더한다.
+
+---
+
+아래는 Latte를 상속받은 클래스 CaramelMacchiato에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 caramelSyrup의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4000으로 초기화한다.
+
+- caramelSyrup에 대한 getter와 setter
+
+- 카라멜 시럽을 추가할 수 있는 addCaramelSyrup: caramelSyrup의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 200씩 더한다.
+
+---
+
+아래는 Latte를 상속받은 클래스 Cappuccino에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 cinnamon의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4500으로 초기화한다.
+
+  멤버 변수 milk의 값을 250으로 초기화한다.
+
+- cinnamon에 대한 getter와 setter
+
+- 계피향을 추가할 수 있는 addCinnamon: cinnamon의 값을 인자로 받은 amount만큼 더한다. 가격 변동은 없다.
+
+- 계피향을 뺄 수 있는 subCinnamon: cinnamon의 값을 0으로 초기화한다. 가격 변동은 없다.
+
+---
+
+아래는 Latte를 상속받은 클래스 CafeMocha에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mocha의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4000으로 초기화한다.
+
+- mocha에 대한 getter와 setter
+
+- 초콜렛 시럽을 추가할 수 있는 addMocha: Mocha의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 300씩 더한다.
+
+---
+
+아래는 추상 클래스 Smoothie에 대한 구현 명세이다.
 
 - 생성자:
 
