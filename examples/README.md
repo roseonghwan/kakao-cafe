@@ -20,9 +20,11 @@
 
 POS기가 아직 미구비 상태인 관계로 모든 주문 및 결제, 영수증 발행은 표준 입출력을 사용하며 Makefile의 커맨드를 이용하여 컴파일한다. ([README](https://github.com/joshua-dev/warmingup/blob/master/README.md) 참고)
 
----
+#
 
 ### (주의) 개발 표준은 다음과 같다.
+
+OS: Ubuntu 18.04 LTS
 
 Runtime: Python>=3.6.9
 
@@ -32,9 +34,9 @@ Python Formatter: yapf 0.29.0
 
 Test Library: unittest
 
-**Object-Oriented-Programming 방식을 이용할 것을 권장합니다.**
+**Object-Oriented-Programming 방식을 이용할 것을 권장한다.**
 
----
+#
 
 아래는 카페 메뉴에 대한 구현 명세이다.
 
@@ -42,7 +44,7 @@ Test Library: unittest
 
 메뉴의 종류가 많으므로 각 모듈마다 단위 테스트 코드가 작성된 테스트 파일을 추가하고 **반드시 단위 테스트가 통과된 것을 확인한 후에 다음 모듈을 구현할 것을 권장한다.**
 
----
+#
 
 아래는 추상 클래스 CafeMenu에 대한 구현 명세이다.
 
@@ -85,7 +87,7 @@ def isIced(self) -> bool:
   raise NotImplementedError()
 ```
 
----
+#
 
 아래는 추상 클래스 CafeMenu를 구현하는 concrete 클래스인 Espresso에 대한 구현 명세이다.
 
@@ -121,7 +123,7 @@ def isIced(self) -> bool:
 
 * isIced: False를 반환한다.
 
----
+#
 
 아래는 Espresso를 상속받은 클래스 Americano에 대한 구현 명세이다.
 
@@ -137,7 +139,7 @@ def isIced(self) -> bool:
 
 - isIced: iced 필드의 값을 반환한다.
 
----
+#
 
 아래는 Espresso를 상속받은 클래스 Latte에 대한 구현 명세이다.
 
@@ -153,7 +155,7 @@ def isIced(self) -> bool:
 
 - setIced와 isIced
 
----
+#
 
 아래는 Latte를 상속받은 클래스 VanillaLatte에 대한 구현 명세이다.
 
@@ -167,7 +169,7 @@ def isIced(self) -> bool:
 
 - 바닐라 시럽을 추가할 수 있는 addVanillaSyrup: vanillaSyrup의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 200씩 더한다.
 
----
+#
 
 아래는 Latte를 상속받은 클래스 CaramelMacchiato에 대한 구현 명세이다.
 
@@ -181,7 +183,7 @@ def isIced(self) -> bool:
 
 - 카라멜 시럽을 추가할 수 있는 addCaramelSyrup: caramelSyrup의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 200씩 더한다.
 
----
+#
 
 아래는 Latte를 상속받은 클래스 Cappuccino에 대한 구현 명세이다.
 
@@ -199,7 +201,7 @@ def isIced(self) -> bool:
 
 - 계피향을 뺄 수 있는 subCinnamon: cinnamon의 값을 0으로 초기화한다. 가격 변동은 없다.
 
----
+#
 
 아래는 Latte를 상속받은 클래스 CafeMocha에 대한 구현 명세이다.
 
@@ -213,13 +215,13 @@ def isIced(self) -> bool:
 
 - 초콜렛 시럽을 추가할 수 있는 addMocha: Mocha의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 300씩 더한다.
 
----
+#
 
 아래는 추상 클래스 Smoothie에 대한 구현 명세이다.
 
 - 생성자:
 
----
+#
 
 **구현 도중 막히거나 모르는 부분이 있다면 구글링을 통해 어떻게든 알아내시길 바랍니다. ^^**
 
