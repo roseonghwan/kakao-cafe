@@ -1,4 +1,4 @@
-# Warming-Up examples.
+# Warming-Up examples
 
 ### Python virtualenv, virtualenvwrapper 설치
 
@@ -57,6 +57,7 @@ $ make run
 
 - [ ] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
 
+
 - [ ] Espresso 클래스 구현 및 테스트 코드 작성
 - [ ] Americano 클래스 구현 및 테스트 코드 작성
 - [ ] Latte 클래스 구현 및 테스트 코드 작성
@@ -65,10 +66,12 @@ $ make run
 - [ ] Cappucino 클래스 구현 및 테스트 코드 작성
 - [ ] CafeMocha 클래스 구현 및 테스트 코드 작성
 
+
 - [ ] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
 - [ ] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
+
 
 - [ ] 추상 클래스 Tea 구현 및 테스트 코드 작성
 - [ ] IceTea 클래스 구현 및 테스트 코드 작성
@@ -82,9 +85,12 @@ $ make run
 - [ ] RoyalMilkTea 클래스 구현 및 테스트 코드 작성
 - [ ] MatchaMilkTea 클래스 구현 및 테스트 코드 작성
 
+
 - [ ] 추상 클래스 Ade 구현 및 테스트 코드 작성
 - [ ] StrawberryAde 클래스 구현 및 테스트 코드 작성
 - [ ] LemonAde 클래스 구현 및 테스트 코드 작성
 - [ ] OrangeAde 클래스 구현 및 테스트 코드 작성
 
+
 - [ ] 테스트 코드 추상화
+
