@@ -34,7 +34,7 @@ $ pip freeze > requirements.txt
 $ pip install -r requirements.txt
 ```
 
----
+#
 
 ## Makefile을 이용한 구동 및 테스트 단순화
 
@@ -51,12 +51,14 @@ $ make clean
 $ make run
 ```
 
----
+#
 
 ### TODO
 
 - [ ] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
+
 #
+
 - [ ] Espresso 클래스 구현 및 테스트 코드 작성
 - [ ] Americano 클래스 구현 및 테스트 코드 작성
 - [ ] Latte 클래스 구현 및 테스트 코드 작성
@@ -64,12 +66,16 @@ $ make run
 - [ ] CaramelMacchiato 클래스 구현 및 테스트 코드 작성
 - [ ] Cappucino 클래스 구현 및 테스트 코드 작성
 - [ ] CafeMocha 클래스 구현 및 테스트 코드 작성
+
 #
+
 - [ ] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
 - [ ] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
+
 #
+
 - [ ] 추상 클래스 Tea 구현 및 테스트 코드 작성
 - [ ] IceTea 클래스 구현 및 테스트 코드 작성
 - [ ] GreenTea 클래스 구현 및 테스트 코드 작성
@@ -81,10 +87,54 @@ $ make run
 - [ ] 추상 클래스 MilkTea 구현 및 테스트 코드 작성
 - [ ] RoyalMilkTea 클래스 구현 및 테스트 코드 작성
 - [ ] MatchaMilkTea 클래스 구현 및 테스트 코드 작성
+
 #
+
 - [ ] 추상 클래스 Ade 구현 및 테스트 코드 작성
 - [ ] StrawberryAde 클래스 구현 및 테스트 코드 작성
 - [ ] LemonAde 클래스 구현 및 테스트 코드 작성
 - [ ] OrangeAde 클래스 구현 및 테스트 코드 작성
+
 #
+
 - [ ] 테스트 코드 추상화
+
+#
+
+## Git
+
+### Git 프로젝트 디렉토리 생성
+
+```shell
+$ mkdir *YOUR_DIRECTORY_NAME*
+$ cd *YOUR_DIRECTORY_NAME*
+$ git init
+$ git remote add origin *YOUR_GIT_REPOSITORY_ADDRESS*
+$ git pull origin master
+```
+
+### Git branch 생성
+
+```shell
+$ git branch *YOUR_BRANCH_NAME*
+```
+
+### 현재 Git 레포지토리 상태 확인
+
+```shell
+$ git fetch
+```
+
+### 현재 Git 디렉토리 상태 확인
+
+```shell
+$ git status
+```
+
+### Git에 커밋하기
+
+```shell
+$ git add .
+$ git commit -m *"COMMIT_MESSAGE"*
+$ git push origin *YOUR_BRANCH_NAME*
+```
