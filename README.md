@@ -4,6 +4,8 @@
 
 ![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
 
+## Tips
+
 ### Python virtualenv, virtualenvwrapper 설치
 
 ```shell
@@ -53,7 +55,9 @@ $ make clean
 $ make run
 ```
 
-### TODO
+#
+
+## TODO
 
 #### 카페 메뉴 클래스
 
@@ -123,7 +127,7 @@ $ make run
 
 #
 
-### Git
+## Git
 
 #### Git 프로젝트 디렉토리 생성
 
