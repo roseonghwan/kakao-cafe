@@ -1,4 +1,8 @@
-# Warming-Up examples
+# 카카오 신입 개발자가 된 존나팸!
+
+# OT가 끝난 직후 한통의 메일을 받게 되는데...
+
+[![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)]
 
 ### Python virtualenv, virtualenvwrapper 설치
 
@@ -34,24 +38,20 @@ $ pip freeze > requirements.txt
 $ pip install -r requirements.txt
 ```
 
-#
+### Makefile을 이용한 구동 및 테스트 단순화
 
-## Makefile을 이용한 구동 및 테스트 단순화
-
-### Python 단위 테스트
+#### Python 단위 테스트
 
 ```shell
 $ make test
 $ make clean
 ```
 
-### Python 구동
+#### Python 구동
 
 ```shell
 $ make run
 ```
-
-#
 
 ### TODO
 
@@ -109,11 +109,17 @@ $ make run
 - [ ] 예외 처리
 - [ ] 테스트 코드 추상화
 
+#### 추가 기능
+
+- [ ] 결제 정보 저장
+- [ ] 매출 통계
+- [ ] GUI
+
 #
 
-## Git
+### Git
 
-### Git 프로젝트 디렉토리 생성
+#### Git 프로젝트 디렉토리 생성
 
 <pre>
 $ mkdir <b><i>YOUR_DIRECTORY_NAME</i></b>
@@ -123,25 +129,25 @@ $ git remote add origin <b><i>YOUR_GIT_REPOSITORY_ADDRESS</i></b>
 $ git pull origin master
 </pre>
 
-### Git branch 생성
+#### Git branch 생성
 
 <pre>
 $ git branch <b><i>YOUR_BRANCH_NAME</i></b>
 </pre>
 
-### 현재 Git 레포지토리 상태 확인
+#### 현재 Git 레포지토리 상태 확인
 
 ```shell
 $ git fetch
 ```
 
-### 현재 Git 디렉토리 상태 확인
+#### 현재 Git 디렉토리 상태 확인
 
 ```shell
 $ git status
 ```
 
-### Git에 커밋하기
+#### Git에 커밋하기
 
 <pre>
 $ git add .
