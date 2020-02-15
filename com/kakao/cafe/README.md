@@ -50,6 +50,10 @@ Test Library: unittest
 
 #
 
+### 카페 메뉴 구현 명세
+
+#
+
 아래는 카페 메뉴에 대한 구현 명세이다.
 
 카카오 카페의 메뉴는 에스프레소 메뉴, 스무디, 차, 에이드의 4가지로 나뉘며 이들은 모두 최상위 메뉴 클래스 CafeMenu를 상속한다.
@@ -69,13 +73,15 @@ Test Library: unittest
   함수 원형은 다음과 같다.
 
 ```python
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 # ...
 
+__metaclass__ = ABCMeta
+
 @abstractmethod
 def getName(self) -> str:
-  raise NotImplementedError()
+  raise NotImplementedError
 
 @abstractmethod
 def setName(self, name: str) -> None:
@@ -89,11 +95,11 @@ def setName(self, name: str) -> None:
 ```python
 @abstractmethod
 def getPrice(self) -> int:
-  raise NotImplementedError()
+  raise NotImplementedError
 
 @abstractmethod
 def setPrice(self, price: int) -> None:
-  raise NotImplementedError()
+  raise NotImplementedError
 ```
 
 - iced에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
@@ -102,11 +108,11 @@ def setPrice(self, price: int) -> None:
 ```python
 @abstractmethod
 def isIced(self) -> bool:
-  raise NotImplementedError()
+  raise NotImplementedError
 
 @abstractmethod
 def setIced(self) -> None:
-  raise NotImplementedError()
+  raise NotImplementedError
 ```
 
 #
@@ -616,6 +622,44 @@ def setIced(self) -> None:
 - 말차 분말을 추가할 수 있는 addMatcha: matcha의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 400씩 더한다.
 
 - 연유를 추가할 수 있는 addCondensedMilk: condensedMilk의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+### 결제 모듈 구현 명세
+
+#
+
+아래는 결제 시 필요한 기능(클래스)들의 목록이다.  
+이들은 모두 '카페에서 어떤 일을 한다'는 공통점이 있으므로 공통 부분을 추상화할 수 있다.  
+따라서 이들은 모두 인터페이스 CafeWorker를 상속받아 구현하는 클래서이며, 메인 모듈이 존재하는 cafe.py에서 인스턴스화되어 서로 상호작용하며 결제 기능을 완성한다.
+
+1. 메뉴 목록을 출력하는 MenuPrinter
+2. 주문 안내 메세지를 출력하고 주문을 받는 OrderTaker
+3. 주문 목록을 출력하고 사용자가 입력한 내용과 맞는지 확인하는 OrderPrinter
+4. 결제 방식 목록을 출력하고 결제를 진행하는 PaymentManager
+5. 영수중 출력 여부를 묻고 영수증을 출력하는 ReceiptPrinter
+
+#
+
+아래는 인터페이스 CafeWorker에 대한 구현 명세이다.
+
+- 생성자 및 소멸자: CafeWorker는 인터페이스이므로 필드가 없다. 따라서 구현하지 않는다.
+
+- Print: CafeWorker 인터페이스를 구현하는 모든 서브 클래스의 객체들은 무언가를 출력한다는 공통점이 있다.
+
+  이는 추상 메소드로 NotImplementedError를 발생시킨다. 함수 원형은 다음과 같다.
+
+```python
+from abc import ABCMeta, abstractmethod
+
+# ...
+
+__metaclass__ = ABCMeta
+
+@abstractmethod
+def Print(self) -> None:
+  raise NotImplementedError
+```
 
 #
 
