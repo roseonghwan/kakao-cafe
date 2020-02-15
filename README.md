@@ -169,4 +169,4 @@ $ git push origin <b><i>YOUR_BRANCH_NAME</i></b>
 
 ---
 
-### [LICENSE](https://github.com/joshua-dev/warmingup/blob/master/LICENSE)
+### :copyright: [LICENSE](https://github.com/joshua-dev/warmingup/blob/master/LICENSE)
