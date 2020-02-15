@@ -631,7 +631,7 @@ def setIced(self) -> None:
 
 아래는 결제 시 필요한 기능(클래스)들의 목록이다.  
 이들은 모두 '카페에서 어떤 일을 한다'는 공통점이 있으므로 공통 부분을 추상화할 수 있다.  
-따라서 이들은 모두 인터페이스 CafeWorker를 상속받아 구현하는 클래서이며, 메인 모듈이 존재하는 cafe.py에서 인스턴스화되어 서로 상호작용하며 결제 기능을 완성한다.
+따라서 이들은 모두 인터페이스 CafeWorker를 구현하는 클래스이며, 메인 모듈이 존재하는 cafe.py에서 인스턴스화되어 서로 상호작용하며 결제 기능을 완성한다.
 
 1. 메뉴 목록을 출력하는 MenuPrinter
 2. 주문 안내 메세지를 출력하고 주문을 받는 OrderTaker
@@ -660,6 +660,10 @@ __metaclass__ = ABCMeta
 def Print(self) -> None:
   raise NotImplementedError
 ```
+
+#
+
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 MenuPrinter에 대한 구현 명세이다.
 
 #
 
