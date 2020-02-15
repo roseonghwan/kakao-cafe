@@ -4,7 +4,9 @@
 
 ![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
 
-## Tips
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/warmingup/blob/master/LICENSE)
+
+## :pushpin: Tips
 
 ### Python virtualenv, virtualenvwrapper 설치
 
@@ -57,7 +59,7 @@ $ make run
 
 #
 
-## TODO
+## :white_check_mark: TODO
 
 #### 카페 메뉴 클래스
 
@@ -127,7 +129,7 @@ $ make run
 
 #
 
-## Git
+## :octocat: Git
 
 #### Git 프로젝트 디렉토리 생성
 
@@ -164,3 +166,7 @@ $ git add .
 $ git commit -m <b><i>"COMMIT_MESSAGE"</i></b>
 $ git push origin <b><i>YOUR_BRANCH_NAME</i></b>
 </pre>
+
+---
+
+### [LICENSE](https://github.com/joshua-dev/warmingup/blob/master/LICENSE)
