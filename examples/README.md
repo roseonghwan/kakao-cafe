@@ -34,7 +34,7 @@
 
 #
 
-### :heavy_exclamation_mark: (주의) 표준 개발 환경은 다음과 같다.
+### :heavy_exclamation_mark:(주의) 표준 개발 환경은 다음과 같다.
 
 OS: Ubuntu 18.04 LTS
 
@@ -623,7 +623,11 @@ def setIced(self) -> None:
 
 감사합니다.
 
+#
+
 귀염둥이 라이언 드림
+
+#
 
 Ryan
 
