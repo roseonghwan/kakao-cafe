@@ -14,15 +14,27 @@
 
 ---
 
-카카오 카페는 카페 메뉴 정보와 결제 및 영수중 발행까지의 기능을 갖춘 결제 시스템이다.
+## 카카오 카페 결제 모듈 구현 명세
+
+카카오 카페는 카페 메뉴 정보와 결제 및 영수중 발행까지의 기능을 갖춘 결제 모듈이다.
 
 고객은 메뉴를 주문하고 결제를 한 뒤, 영수증을 발행받을 수 있다.
 
-POS기가 아직 미구비 상태인 관계로 모든 주문 및 결제, 영수증 발행은 표준 입출력을 사용하며 Makefile의 커맨드를 이용하여 컴파일한다. ([README](https://github.com/joshua-dev/warmingup/blob/master/README.md) 참고)
+모든 주문 및 결제, 영수증 발행은 표준 입출력을 사용하며 make command를 이용하여 컴파일한다. ([README](https://github.com/joshua-dev/warmingup/blob/master/README.md) 참고)
+
+프로그램 구동 시 발생하는 시나리오는 다음과 같다.
+
+1. 메뉴판 정보가 출력된다.
+2. 주문 안내 메세지가 출력된다.
+3. 주문을 받는다. (메뉴 선택, 샷 추가 등의 옵션도 이 때 모두 선택한다.)
+4. 주문 내역을 출력하고 사용자가 입력한 내용과 맞는지 Yes or No를 입력 받아 확인한다.
+5. 결제 방식을 선택하고 결제를 진행한다.
+6. 영수증을 출력할지 Yes or No를 입력 받아 선택하고 Yes가 입력되면 영수증을 출력한다.
+7. 다음 손님을 받는다. (다시 1번으로)
 
 #
 
-### (주의) 개발 표준은 다음과 같다.
+### (주의) 표준 개발 환경은 다음과 같다.
 
 OS: Ubuntu 18.04 LTS
 
@@ -40,7 +52,7 @@ Test Library: unittest
 
 아래는 카페 메뉴에 대한 구현 명세이다.
 
-카카오 카페의 카페 메뉴는 에스프레소 메뉴, 스무디, 차, 에이드의 4가지로 나뉘며 이들은 모두 최상위 메뉴 클래스 CafeMenu를 상속한다.
+카카오 카페의 메뉴는 에스프레소 메뉴, 스무디, 차, 에이드의 4가지로 나뉘며 이들은 모두 최상위 메뉴 클래스 CafeMenu를 상속한다.
 
 메뉴의 종류가 많으므로 각 모듈마다 단위 테스트 코드가 작성된 테스트 파일을 추가하고 **반드시 단위 테스트가 통과된 것을 확인한 후에 다음 모듈을 구현할 것을 권장한다.**
 
@@ -50,13 +62,9 @@ Test Library: unittest
 
 - 생성자: public string형 멤버 변수 name, private int형 멤버 변수 price, private bool형 멤버 변수 iced 의 값을 type default value로 초기화한다.
 
-  CafeMenu와 CafeMenu를 상속받은 클래스에서 별도의 소멸자는 구현하지 않는다.
+  CafeMenu와 CafeMenu를 상속받는 모든 클래스에서 별도의 소멸자는 구현하지 않는다.
 
-- name에 대한 setter: 인자로 받은 name을 멤버 변수 name에 저장한다.
-
-- name에 대한 getter: 자신의 멤버 변수 name의 값을 반환한다.
-
-- price에 대한 setter와 getter: 추상 메소드로 NotImplementedError를 발생시킨다.
+- name에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
 
   함수 원형은 다음과 같다.
 
@@ -66,24 +74,38 @@ from abc import ABC, abstractmethod
 # ...
 
 @abstractmethod
-def setPrice(self, price: int) -> None:
+def getName(self) -> str:
   raise NotImplementedError()
 
 @abstractmethod
-def getPrice(self) -> int:
-  raise NotImplementedError()
+def setName(self, name: str) -> None:
+  raise NotImplementedError
 ```
 
-- iced에 대한 setter와 getter: 추상 메소드로 NotImplementedError를 발생시킨다.
+- price에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
   함수 원형은 다음과 같다.
 
 ```python
 @abstractmethod
-def setIced(self) -> None:
+def getPrice(self) -> int:
   raise NotImplementedError()
 
 @abstractmethod
+def setPrice(self, price: int) -> None:
+  raise NotImplementedError()
+```
+
+- iced에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+  함수 원형은 다음과 같다.
+
+```python
+@abstractmethod
 def isIced(self) -> bool:
+  raise NotImplementedError()
+
+@abstractmethod
+def setIced(self) -> None:
   raise NotImplementedError()
 ```
 
@@ -97,27 +119,31 @@ def isIced(self) -> bool:
 
   멤버 변수 price의 값을 2500으로 초기화한다.
 
-- shot에 대한 setter와 getter
+- shot에 대한 getter와 setter
 
-- shot을 추가할 수 있는 addShot: setter와 getter를 이용해 멤버 변수 shot의 값에 인자로 받은 amount만큼 더하고 price를 amount당 500씩 더한다.
+- shot을 추가할 수 있는 addShot: getter와 setter를 이용해 멤버 변수 shot의 값에 인자로 받은 amount만큼 더하고 price를 amount당 500씩 더한다.
 
-- shot을 뺄 수 있는 subShot: setter와 getter를 이용해 멤버 변수 shot의 값에 인자로 받은 amount만큼 뺀다.
+- shot을 뺄 수 있는 subShot: getter와 setter를 이용해 멤버 변수 shot의 값에 인자로 받은 amount만큼 뺀다.
 
   가격 변동은 없으며 기존 shot보다 amount가 클 경우 ArithmeticError를 발생시킨다.
 
   이 때, 더 이상 shot을 뺄 수 없다는 내용의 메세지를 출력한다.
 
-* size에 대한 setter와 getter
+* size에 대한 getter와 setter
 
-* size를 한 단계 높일 수 있는 sizeUp: setter와 getter를 이용하여 Tall이면 Grande로, Grande면 Venti로 size를 올리고 price를 500 더한다.
+* size를 한 단계 높일 수 있는 sizeUp: getter와 setter를 이용하여 Tall이면 Grande로, Grande면 Venti로 size를 올리고 price를 500 더한다.
 
   size가 Venti일 경우 ValueError를 발생시킨다.
 
   이 때, 더 이상 size를 올릴 수 없다는 내용의 메세지를 출력한다.
 
-* price에 대한 setter: 인자로 받은 int형 매개변수 price로 멤버 변수 price를 초기화하고 return한다.
+- name에 대한 getter: 멤버 변수 name의 값을 반환한다.
+
+- name에 대한 setter: 인자로 받은 string형 매개변수 name으로 멤버 변수 name을 초기화하고 return한다.
 
 * price에 대한 getter: 멤버 변수 price의 값을 반환한다.
+
+* price에 대한 setter: 인자로 받은 int형 매개변수 price로 멤버 변수 price를 초기화하고 return한다.
 
 * setIced: 에스프레소는 차갑게 먹을 수 없으므로 AttributeError를 발생시킨다.
 
@@ -133,11 +159,11 @@ def isIced(self) -> bool:
 
   멤버 변수 price의 값을 3000으로 초기화한다.
 
-- water에 대한 setter와 getter
-
-- setIced: 아메리카노는 차갑게 먹을 수 있으므로 iced를 True로 초기화한다. 가격 변동은 없다.
+- water에 대한 getter와 setter
 
 - isIced: iced 필드의 값을 반환한다.
+
+- setIced: 아메리카노는 차갑게 먹을 수 있으므로 iced를 True로 초기화한다. 가격 변동은 없다.
 
 #
 
@@ -151,9 +177,9 @@ def isIced(self) -> bool:
 
   멤버 변수 shot의 값을 2로 초기화한다.
 
-- milk에 대한 setter, getter
+- milk에 대한 getter와 setter
 
-- setIced와 isIced
+- isIced와 setIced
 
 #
 
@@ -217,9 +243,155 @@ def isIced(self) -> bool:
 
 #
 
-아래는 추상 클래스 Smoothie에 대한 구현 명세이다.
+아래는 Latte를 상속받은 클래스 GreenTeaLatte에 대한 구현 명세이다.
 
-- 생성자:
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 greenTea, private int형 멤버 변수 condensedMilk의 값을 모두 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4000으로 초기화한다.
+
+- greenTea에 대한 getter와 setter
+
+- condensedMilk에 대한 getter와 setter
+
+- 녹차 분말을 추가할 수 있는 addGreenTea: greenTea의 값을 인자로 받은 amount만큼 더한다. 가격 변동은 없다.
+
+- 연유를 추가할 수 있는 addCondensedMilk: condensedMilk의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 300씩 더한다.
+
+#
+
+아래는 CafeMenu를 상속받은 추상 클래스 Smoothie에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 groundIce의 값을 type default value로 초기화한다.
+
+- groundIce에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+- isIced: 스무디는 뜨겁게 먹을 수 없으므로 True를 반환한다.
+
+- setIced: 스무디는 이미 차가우므로 pass한다.
+
+#
+
+아래는 추상 클래스 Smoothie를 상속받은 concrete 클래스 BerryBerrySmoothie에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mixedBerry의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5000으로 초기화한다.
+
+  멤버 변수 groundIce의 값을 400으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- groundIce에 대한 getter와 setter
+
+- mixedBerry에 대한 getter와 setter
+
+- mixedBerry를 추가할 수 있는 addBerry: mixedBerry의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Smoothie를 상속받은 concrete 클래스 PineappleSmoothie에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 pineapple의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5000으로 초기화한다.
+
+  멤버 변수 groundIce의 값을 400으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- groundIce에 대한 getter와 setter
+
+- pineapple에 대한 getter와 setter
+
+- pineapple를 추가할 수 있는 addPineapple: pineapple의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Smoothie를 상속받은 concrete 클래스 YogurtSmoothie에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 yogurt의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5000으로 초기화한다.
+
+  멤버 변수 groundIce의 값을 400으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- groundIce에 대한 getter와 setter
+
+- yogurt에 대한 getter와 setter
+
+- yogurt를 추가할 수 있는 addYogurt: yogurt의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 CafeMenu를 상속받은 추상 클래스 Tea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 water의 값을 type default value로 초기화한다.
+
+- water에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 concrete 클래스 IceTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 peachPowder의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3000으로 초기화한다.
+
+  멤버 변수 water의 값을 300으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- water에 대한 getter와 setter
+
+- isIced: 아이스티는 뜨겁게 먹을 수 없으므로 True를 반환한다.
+
+- setIced: 아이스티는 이미 차가우므로 pass한다.
+
+- peacePowder에 대한 getter와 setter
+
+- 복숭아 분말을 추가할 수 있는 addPeachPowder: peachPowder의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 400씩 더한다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 concrete 클래스 GreenTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 greenTea의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3000으로 초기화한다.
+
+  멤버 변수 water의 값을 200으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- water에 대한 getter와 setter
+
+- greenTea에 대한 getter와 setter
+
+- 녹차 티백을 추가할 수 있는 addGreenTea: greenTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
 
 #
 
