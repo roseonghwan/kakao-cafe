@@ -1,8 +1,8 @@
 # 카카오 신입 개발자가 된 존나팸!
 
-# OT가 끝난 직후 한통의 메일을 받게 되는데...
+# OT가 끝난 직후 한통의 [메일](https://github.com/joshua-dev/warmingup/blob/master/examples/README.md)을 받게 되는데...
 
-[![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)]
+![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
 
 ### Python virtualenv, virtualenvwrapper 설치
 
@@ -66,8 +66,9 @@ $ make run
 - [ ] Latte 클래스 구현 및 테스트 코드 작성
 - [ ] VanillaLatte 클래스 구현 및 테스트 코드 작성
 - [ ] CaramelMacchiato 클래스 구현 및 테스트 코드 작성
-- [ ] Cappucino 클래스 구현 및 테스트 코드 작성
+- [ ] Cappuccino 클래스 구현 및 테스트 코드 작성
 - [ ] CafeMocha 클래스 구현 및 테스트 코드 작성
+- [ ] GreenTeaLatte 클래스 구현 및 테스트 코드 작성
 
 #
 
@@ -97,6 +98,10 @@ $ make run
 - [ ] LemonAde 클래스 구현 및 테스트 코드 작성
 - [ ] OrangeAde 클래스 구현 및 테스트 코드 작성
 
+#
+
+- [ ] Commit 내용 통합 및 Comflict 해결
+
 #### 입출력 처리 클래스
 
 - [ ] 메뉴판 출력 클래스 구현 및 테스트 코드 작성
@@ -114,6 +119,7 @@ $ make run
 - [ ] 결제 정보 저장
 - [ ] 매출 통계
 - [ ] GUI
+- [ ] 시즌 한정 메뉴
 
 #
 

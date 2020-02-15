@@ -60,7 +60,7 @@ Test Library: unittest
 
 아래는 추상 클래스 CafeMenu에 대한 구현 명세이다.
 
-- 생성자: public string형 멤버 변수 name, private int형 멤버 변수 price, private bool형 멤버 변수 iced 의 값을 type default value로 초기화한다.
+- 생성자: public string형 멤버 변수 name, private int형 멤버 변수 price, protected bool형 멤버 변수 iced 의 값을 type default value로 초기화한다.
 
   CafeMenu와 CafeMenu를 상속받는 모든 클래스에서 별도의 소멸자는 구현하지 않는다.
 
@@ -119,6 +119,8 @@ def setIced(self) -> None:
 
   멤버 변수 price의 값을 2500으로 초기화한다.
 
+  멤버 변수 isIced의 값을 False로 초기화한다.
+
 - shot에 대한 getter와 setter
 
 - shot을 추가할 수 있는 addShot: getter와 setter를 이용해 멤버 변수 shot의 값에 인자로 받은 amount만큼 더하고 price를 amount당 500씩 더한다.
@@ -147,7 +149,7 @@ def setIced(self) -> None:
 
 * setIced: 에스프레소는 차갑게 먹을 수 없으므로 AttributeError를 발생시킨다.
 
-* isIced: False를 반환한다.
+* isIced: 멤버 변수 iced가 False인지 체크하고 False라면 값을 리턴하고 True라면 AttributeError를 발생시킨다.
 
 #
 
@@ -265,11 +267,9 @@ def setIced(self) -> None:
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 groundIce의 값을 type default value로 초기화한다.
 
+  멤버 변수 iced의 값을 True로 초기화한다.
+
 - groundIce에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
-
-- isIced: 스무디는 뜨겁게 먹을 수 없으므로 True를 반환한다.
-
-- setIced: 스무디는 이미 차가우므로 pass한다.
 
 #
 
@@ -288,6 +288,10 @@ def setIced(self) -> None:
 - price에 대한 getter와 setter
 
 - groundIce에 대한 getter와 setter
+
+- isIced: 스무디는 뜨겁게 먹을 수 없으므로 True를 반환한다.
+
+- setIced: 스무디는 이미 차가우므로 pass한다.
 
 - mixedBerry에 대한 getter와 setter
 
@@ -308,6 +312,10 @@ def setIced(self) -> None:
 - name에 대한 getter와 setter
 
 - price에 대한 getter와 setter
+
+- isIced: 스무디는 뜨겁게 먹을 수 없으므로 True를 반환한다.
+
+- setIced: 스무디는 이미 차가우므로 pass한다.
 
 - groundIce에 대한 getter와 setter
 
@@ -330,6 +338,10 @@ def setIced(self) -> None:
 - name에 대한 getter와 setter
 
 - price에 대한 getter와 setter
+
+- isIced: 스무디는 뜨겁게 먹을 수 없으므로 True를 반환한다.
+
+- setIced: 스무디는 이미 차가우므로 pass한다.
 
 - groundIce에 대한 getter와 setter
 
@@ -387,11 +399,223 @@ def setIced(self) -> None:
 
 - price에 대한 getter와 setter
 
+- isIced와 setIced
+
 - water에 대한 getter와 setter
 
 - greenTea에 대한 getter와 setter
 
 - 녹차 티백을 추가할 수 있는 addGreenTea: greenTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 concrete 클래스 ChamomileTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 chamomileTea의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3500으로 초기화한다.
+
+  멤버 변수 water의 값을 400으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced와 setIced
+
+- water에 대한 getter와 setter
+
+- chamomileTea에 대한 getter와 setter
+
+- 카모마일 티백을 추가할 수 있는 addChamomileTea: chamomileTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 concrete 클래스 PeppermintTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 peppermintTea의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3500으로 초기화한다.
+
+  멤버 변수 water의 값을 350으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced와 setIced
+
+- water에 대한 getter와 setter
+
+- peppermintTea에 대한 getter와 setter
+
+- 페퍼민트 티백을 추가할 수 있는 addPeppermintTea: peppermintTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 concrete 클래스 LavenderTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 lavenderTea의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3500으로 초기화한다.
+
+  멤버 변수 water의 값을 300으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced와 setIced
+
+- water에 대한 getter와 setter
+
+- lavenderTea에 대한 getter와 setter
+
+- 라벤더 티백을 추가할 수 있는 addLavenderTea: lavenderTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 concrete 클래스 RooibosTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 rooibosTea의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4000으로 초기화한다.
+
+  멤버 변수 water의 값을 300으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced와 setIced
+
+- water에 대한 getter와 setter
+
+- rooibosTea에 대한 getter와 setter
+
+- 루이보스 티백을 추가할 수 있는 addRooibosTea: rooibosTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 700씩 더한다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 concrete 클래스 HibiscusTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 hibiscusTea의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3000으로 초기화한다.
+
+  멤버 변수 water의 값을 200으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced와 setIced
+
+- water에 대한 getter와 setter
+
+- hibiscusTea에 대한 getter와 setter
+
+- 히비스커스 티백을 추가할 수 있는 addHibiscusTea: hibiscusTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Tea를 상속받은 추상 클래스 MilkTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 milk와 private int형 멤버 변수 blackTea의 값을 모두 type default value로 초기화한다.
+
+- milk에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+- blackTea에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+#
+
+아래는 추상 클래스 MilkTea를 상속받은 concrete 클래스 RoyalMilkTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하여 private int형 멤버 변수 royalHoney의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5000으로 초기화한다.
+
+  멤버 변수 milk의 값을 350으로 초기화한다.
+
+  멤버 변수 blackTea의 값을 2로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced와 setIced
+
+- water에 대한 getter와 setter: 밀크티에만 물이 들어가지 않으므로 pass한다.
+
+- milk에 대한 getter와 setter
+
+- blackTea에 대한 getter와 setter
+
+- royalHoney에 대한 getter와 setter
+
+- 홍차 티백을 추가할 수 있는 addBlackTea: blackTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+- 홍차 티백을 뺄 수 있는 subBlackTea: blackTea의 값을 인자로 받은 amount만큼 뺀다.
+
+  가격 변동은 없으며 amount의 값이 blackTea의 값보다 큰 경우 ValueError을 발생시킨다.
+
+  이 때, 더 이상 홍차 티백을 뺄 수 없다는 에러 메세지를 출력한다.
+
+- 꿀을 추가할 수 있는 addRoyalHoney: royalHoney의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 1000씩 더한다.
+
+#
+
+아래는 추상 클래스 MilkTea를 상속받은 concrete 클래스 MatchaMilkTea에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하여 private int형 멤버 변수 matcha와 private int형 멤버 변수 condensedMilk의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 4500으로 초기화한다.
+
+  멤버 변수 milk의 값을 400으로 초기화한다.
+
+  멤버 변수 blackTea의 값을 2로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced와 setIced
+
+- water에 대한 getter와 setter: 밀크티에만 물이 들어가지 않으므로 pass한다.
+
+- milk에 대한 getter와 setter
+
+- blackTea에 대한 getter와 setter
+
+- matcha에 대한 getter와 setter
+
+- condensedMilk에 대한 getter와 setter
+
+- 홍차 티백을 추가할 수 있는 addBlackTea: blackTea의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+- 홍차 티백을 뺄 수 있는 subBlackTea: blackTea의 값을 인자로 받은 amount만큼 뺀다.
+
+  가격 변동은 없으며 amount의 값이 blackTea의 값보다 큰 경우 ValueError을 발생시킨다.
+
+  이 때, 더 이상 홍차 티백을 뺄 수 없다는 에러 메세지를 출력한다.
+
+- 말차 분말을 추가할 수 있는 addMatcha: matcha의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 400씩 더한다.
+
+- 연유를 추가할 수 있는 addCondensedMilk: condensedMilk의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
 
 #
 
