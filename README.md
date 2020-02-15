@@ -4,7 +4,11 @@
 
 ![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
 
+#
+
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/warmingup/blob/master/LICENSE)
+
+#
 
 ## :pushpin: Tips
 
