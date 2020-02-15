@@ -1,12 +1,12 @@
 # 카카오 신입 개발자가 된 존나팸!
 
-# OT가 끝난 직후 한통의 [메일](https://github.com/joshua-dev/warmingup/blob/master/examples/README.md)을 받게 되는데...
+# OT가 끝난 직후 한통의 [메일](https://github.com/joshua-dev/kakao-cafe/blob/master/com/kakao/cafe/README.md)을 받게 되는데...
 
 ![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
 
 #
 
-[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/warmingup/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
 
 #
 
@@ -179,4 +179,4 @@ $ git push origin <b><i>YOUR_BRANCH_NAME</i></b>
 
 ---
 
-### :copyright: [LICENSE](https://github.com/joshua-dev/warmingup/blob/master/LICENSE)
+### [LICENSE](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
