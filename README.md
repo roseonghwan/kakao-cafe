@@ -27,10 +27,16 @@ $ virtualenv venv --python=python3
 
 ### 가상환경 활성화/비활성화
 
-```shell
-$ source venv/bin/activate
-$ deactivate
-```
+- #### 활성화
+
+  ```shell
+  $ source venv/bin/activate
+  ```
+
+- #### 비활성화
+  ```
+  $ deactivate
+  ```
 
 ### 의존성 패키지 관리
 
