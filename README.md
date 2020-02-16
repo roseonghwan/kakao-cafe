@@ -1,8 +1,8 @@
-# 카카오 신입 개발자가 된 존나팸!
+# 카카오의 신입 개발자가 된 존나팸!
 
 # OT가 끝난 직후 한통의 [메일](https://github.com/joshua-dev/kakao-cafe/blob/master/com/kakao/cafe/README.md)을 받게 되는데...
 
-![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
+![Thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
 
 #
 
@@ -123,7 +123,7 @@ $ make run
 - [ ] 인터페이스 CafeWorker 구현 및 테스트 코드작성
 - [ ] MenuPrinter 클래스 구현 및 테스트 코드 작성
 - [ ] OrderTaker 클래스 구현 및 테스트 코드 작성
-- [ ] OrderPrinter 클래스 구현 및 테스트 코드 작성
+- [ ] OrderChecker 클래스 구현 및 테스트 코드 작성
 - [ ] PaymentManager 클래스 구현 및 테스트 코드 작성
 - [ ] ReceiptPrinter 클래스 구현 및 테스트 코드 작성
 - [ ] 메인 모듈 구현
@@ -132,7 +132,10 @@ $ make run
 
 - [ ] 예외 처리
 - [ ] 테스트 코드 추상화
-- [ ] Code Refactoring
+- [ ] 디자인 패턴과 Code Refactoring
+  - Factory pattern
+  - Iterator pattern
+  - Composite pattern
 - [ ] 함수형 프로그래밍과 고계 함수
 
 #### 추가 기능
@@ -141,12 +144,13 @@ $ make run
 - [ ] 매출 통계
 - [ ] GUI
 - [ ] 시즌 한정 메뉴
+- [ ] 영업 시간
 
 #
 
 ## :octocat: Git
 
-#### Git 프로젝트 디렉토리 생성
+#### Git 프로젝트 디렉토리 생성 및 원격 저장소 연결
 
 <pre>
 $ mkdir <b><i>YOUR_DIRECTORY_NAME</i></b>
@@ -160,6 +164,12 @@ $ git pull origin master
 
 <pre>
 $ git branch <b><i>YOUR_BRANCH_NAME</i></b>
+</pre>
+
+#### Git branch 변경
+
+<pre>
+$ git checkout <b><i>YOUR_BRANCH_NAME</i></b>
 </pre>
 
 #### 현재 Git 레포지토리 상태 확인

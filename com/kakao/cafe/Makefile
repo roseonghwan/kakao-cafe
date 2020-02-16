@@ -1,5 +1,5 @@
 PYTHON = python3
-SOURCE = main.py
+SOURCE = cafe.py
 RM = rm -rf
 
 all: $(SOURCE)

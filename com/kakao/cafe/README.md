@@ -16,21 +16,23 @@
 
 ## 카카오 카페 결제 모듈 구현 명세
 
-카카오 카페는 카페 메뉴 정보와 결제 및 영수중 발행까지의 기능을 갖춘 결제 모듈이다.
+카카오 카페는 카페 메뉴 정보 제공과 결제 및 영수중 발행까지의 기능을 갖춘 결제 모듈이다.
 
 고객은 메뉴를 주문하고 결제를 한 뒤, 영수증을 발행받을 수 있다.
 
-모든 주문 및 결제, 영수증 발행은 표준 입출력을 사용하며 make command를 이용하여 컴파일한다. ([README](https://github.com/joshua-dev/kakao-cafe/blob/master/README.md) 참고)
+모든 주문 및 결제, 영수증 발행은 표준 입출력을 사용하며 사전 정의된 make 명령을 이용하여 컴파일한다. ([README](https://github.com/joshua-dev/kakao-cafe/blob/master/README.md) 참고)
 
 프로그램 구동 시 발생하는 시나리오는 다음과 같다.
 
-1. 메뉴판 정보가 출력된다.
+1. 메뉴 정보가 출력된다.
 2. 주문 안내 메세지가 출력된다.
 3. 주문을 받는다. (메뉴 선택, 샷 추가 등의 옵션도 이 때 모두 선택한다.)
 4. 주문 내역을 출력하고 사용자가 입력한 내용과 맞는지 Yes or No를 입력 받아 확인한다.
 5. 결제 방식을 선택하고 결제를 진행한다.
 6. 영수증을 출력할지 Yes or No를 입력 받아 선택하고 Yes가 입력되면 영수증을 출력한다.
 7. 다음 손님을 받는다. (다시 1번으로)
+
+(시나리오에 포함되지 않은 예외적인 상황은 아래 명세의 예외처리를 구현하거나 개발자가 추가하여 처리한다.)
 
 #
 
@@ -635,7 +637,7 @@ def setIced(self) -> None:
 
 1. 메뉴 목록을 출력하는 MenuPrinter
 2. 주문 안내 메세지를 출력하고 주문을 받는 OrderTaker
-3. 주문 목록을 출력하고 사용자가 입력한 내용과 맞는지 확인하는 OrderPrinter
+3. 주문 목록을 출력하고 사용자가 입력한 내용과 맞는지 확인하는 OrderChecker
 4. 결제 방식 목록을 출력하고 결제를 진행하는 PaymentManager
 5. 영수중 출력 여부를 묻고 영수증을 출력하는 ReceiptPrinter
 
@@ -664,6 +666,50 @@ def Print(self) -> None:
 #
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 MenuPrinter에 대한 구현 명세이다.
+
+- 생성자: private data structure 멤버 변수 cafeMenu에 카카오 카페의 모든 메뉴 정보를 **가장 적합한 자료구조**에 담아 초기화한다.
+
+- Print: 멤버 변수 cafeMenu에 담긴 값들을 읽고 메뉴들을 종류 별로 나누어 이름과 가격을 출력한다.
+
+#
+
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderTaker에 대한 구현 명세이다.
+
+- 생성자:
+
+- Print:
+
+#
+
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderChecker에 대한 구현 명세이다.
+
+- 생성자:
+
+- Print:
+
+#
+
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 PaymentManager에 대한 구현 명세이다.
+
+- 생성자:
+
+- Print:
+
+#
+
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 ReceiptPrinter에 대한 구현 명세이다.
+
+- 생성자:
+
+- Print:
+
+#
+
+### 메인 모듈
+
+메인 모듈은 cafe.py에 main함수를 정의함으로써 구현된다.
+
+main은 CafeWorker를 구현하는 5가지 concrete 클래스들의 객체를 인스턴스화하여 시나리오가 정상 작동하도록 한다.
 
 #
 
