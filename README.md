@@ -154,7 +154,7 @@ $ make run
 
 <pre>
 $ git config --global user.name <b><i>"Your Name"</i></b>
-$ git config --global user.email <b><i>"you@your-domain.com"</i><b>
+$ git config --global user.email <b><i>"you@your-domain.com"</i></b>
 $ git config --global core.precomposeunicode true
 $ git config --global core.quotepath false
 </pre>
