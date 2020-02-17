@@ -150,7 +150,7 @@ $ make run
 
 ## :octocat: Git
 
-#### Git config seeting
+#### Git config settings
 
 <pre>
 $ git config --global user.name <b><i>"Your Name"</i><b>
