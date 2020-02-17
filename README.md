@@ -150,6 +150,15 @@ $ make run
 
 ## :octocat: Git
 
+#### Git config seeting
+
+<pre>
+$ git config --global user.name <b><i>"Your Name"</i><b>
+$ git config --global user.email <b><i>"you@your-domain.com"</i><b>
+$ git config --global core.precomposeunicode true
+$ git config --global core.quotepath false
+</pre>
+
 #### Git 프로젝트 디렉토리 생성 및 원격 저장소 연결
 
 <pre>
