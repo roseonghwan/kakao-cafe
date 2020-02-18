@@ -655,6 +655,7 @@ def setIced(self) -> None:
 ```python
 from abc import *
 
+
 class CafeWorker(metaclass=ABCMeta):
 
 # ...
