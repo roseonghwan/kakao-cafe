@@ -75,19 +75,20 @@ Test Library: unittest
   함수 원형은 다음과 같다.
 
 ```python
-from abc import ABCMeta, abstractmethod
+from abc import *
 
-# ...
 
-__metaclass__ = ABCMeta
+class CafeMenu(metaclass=ABCMeta):
 
-@abstractmethod
-def getName(self) -> str:
-  raise NotImplementedError
+  # ...
 
-@abstractmethod
-def setName(self, name: str) -> None:
-  raise NotImplementedError
+  @abstractmethod
+  def getName(self) -> str:
+    raise NotImplementedError
+
+  @abstractmethod
+  def setName(self, name: str) -> None:
+    raise NotImplementedError
 ```
 
 - price에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
@@ -652,15 +653,15 @@ def setIced(self) -> None:
   이는 추상 메소드로 NotImplementedError를 발생시킨다. 함수 원형은 다음과 같다.
 
 ```python
-from abc import ABCMeta, abstractmethod
+from abc import *
+
+class CafeWorker(metaclass=ABCMeta):
 
 # ...
 
-__metaclass__ = ABCMeta
-
-@abstractmethod
-def Print(self) -> None:
-  raise NotImplementedError
+  @abstractmethod
+  def Print(self) -> None:
+    raise NotImplementedError
 ```
 
 #
