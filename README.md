@@ -14,14 +14,14 @@
 
 ### Python virtualenv, virtualenvwrapper 설치
 
-```shell
+```bash
 $ pip3 install --upgrade pip
 $ pip install virtualenv virtualenvwrapper
 ```
 
 ### 가상환경 생성
 
-```shell
+```bash
 $ virtualenv venv --python=python3
 ```
 
@@ -29,12 +29,12 @@ $ virtualenv venv --python=python3
 
 - #### 활성화
 
-  ```shell
+  ```bash
   $ source venv/bin/activate
   ```
 
 - #### 비활성화
-  ```
+  ```bash
   $ deactivate
   ```
 
@@ -42,13 +42,13 @@ $ virtualenv venv --python=python3
 
 #### 현재 설치된 패키지들을 저장
 
-```shell
+```bash
 $ pip freeze > requirements.txt
 ```
 
 #### requirements.txt에 저장된 패키지 설치
 
-```shell
+```bash
 $ pip install -r requirements.txt
 ```
 
@@ -56,14 +56,14 @@ $ pip install -r requirements.txt
 
 #### Python 단위 테스트
 
-```shell
+```bash
 $ make test
 $ make clean
 ```
 
 #### Python 구동
 
-```shell
+```bash
 $ make run
 ```
 
@@ -183,13 +183,13 @@ $ git checkout <b><i>YOUR_BRANCH_NAME</i></b>
 
 #### 현재 Git 레포지토리 상태 확인
 
-```shell
+```bash
 $ git fetch
 ```
 
 #### 현재 Git 디렉토리 상태 확인
 
-```shell
+```bash
 $ git status
 ```
 
