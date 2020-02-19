@@ -628,6 +628,92 @@ def setIced(self) -> None:
 
 #
 
+아래는 추상 클래스 CafeMenu를 상속받은 추상 클래스 Ade에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 soda의 값을 type default value로 초기화한다.
+
+- soda에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+#
+
+아래는 추상 클래스 Ade를 상속받은 concrete 클래스 StrawberryAde에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 strawberry의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3500으로 초기화한다.
+
+  멤버 변수 soda의 값을 300으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced: 에이드는 차갑게만 마시므로 True를 반환한다.
+
+- setIced: 에이드는 이미 차가우므로 pass한다.
+
+- soda에 대한 getter와 setter
+
+- strawberry에 대한 getter와 setter
+
+- 딸기를 추가할 수 있는 addStrawberry: strawberry의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Ade를 상속받은 concrete 클래스 LemonAde에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 lemon의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3500으로 초기화한다.
+
+  멤버 변수 soda의 값을 300으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced: 에이드는 차갑게만 마시므로 True를 반환한다.
+
+- setIced: 에이드는 이미 차가우므로 pass한다.
+
+- soda에 대한 getter와 setter
+
+- lemon에 대한 getter와 setter
+
+- 레몬을 추가할 수 있는 addStrawberry: lemon의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Ade를 상속받은 concrete 클래스 OrangeAde에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 orange의 값을 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 3500으로 초기화한다.
+
+  멤버 변수 soda의 값을 300으로 초기화한다.
+
+- name에 대한 getter와 setter
+
+- price에 대한 getter와 setter
+
+- isIced: 에이드는 차갑게만 마시므로 True를 반환한다.
+
+- setIced: 에이드는 이미 차가우므로 pass한다.
+
+- soda에 대한 getter와 setter
+
+- orange에 대한 getter와 setter
+
+- 오렌지를 추가할 수 있는 addOrange: orange의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
 ### 결제 모듈 구현 명세
 
 #
