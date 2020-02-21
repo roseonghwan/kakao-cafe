@@ -61,3 +61,23 @@ class Espresso(CafeMenu):
     def setName(self, name: str) -> None:
         self.name = name
         return
+
+    def getPrice(self) -> int:
+        return self.__price
+
+    def setPrice(self, price: int) -> None:
+        self.__price = price
+        return
+
+    def setIced(self, iced) -> None:
+        raise AttributeError
+
+    def isIced(self) -> bool:
+        try:
+            if self._iced == False:
+                return self._iced
+            else:
+                raise AttributeError
+
+        except AttributeError:
+            print("죄송하지만, 에스프레소는 차갑게 드실 수 없습니다.")
