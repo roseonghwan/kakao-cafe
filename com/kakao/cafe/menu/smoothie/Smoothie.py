@@ -1,4 +1,4 @@
-from com.kakao.cafe.menu.cafeMenu import CafeMenu
+from menu.cafeMenu import CafeMenu
 
 
 class Smoothie(CafeMenu):

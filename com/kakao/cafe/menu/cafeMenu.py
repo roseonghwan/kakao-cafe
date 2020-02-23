@@ -9,24 +9,25 @@ class CafeMenu(metaclass=ABCMeta):
 
     @abstractmethod
     def getName(self) -> str:
-        raise NotImplementedError
+        raise NotImplementedError('Method getName is not implemented.')
 
     @abstractmethod
     def setName(self, name: str) -> None:
-        raise NotImplementedError
+        raise NotImplementedError('Method setName is not implemented.')
 
     @abstractmethod
     def getPrice(self) -> int:
-        raise NotImplementedError
+        raise NotImplementedError('Method getPrice is not implemented.')
 
     @abstractmethod
     def setPrice(self, price: int) -> None:
-        raise NotImplementedError
+        raise NotImplementedError('Method setPrice is not implemented.')
 
     @abstractmethod
     def isIced(self) -> bool:
-        raise NotImplementedError
+        raise NotImplementedError('Method isIced is not implemented.')
 
     @abstractmethod
     def setIced(self) -> None:
-        raise NotImplementedError
+        raise NotImplementedError('Method setIced is not implemented.')
+    

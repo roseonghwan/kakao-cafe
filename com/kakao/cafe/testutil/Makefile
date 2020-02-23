@@ -3,7 +3,13 @@ TEST_MODULE = unittest
 RM = rm -rf
 CACHE = __pycache__/
 
-all:
+all: test
+
+test:
+	$(PYTHON) -m $(TEST_MODULE) ./...
+
+test cafemenu:
+	$(PYTHON) -m $(TEST_MODULE) testCafeMenu.py
 
 clean: $(CACHE)
 	$(RM) $(CACHE)
