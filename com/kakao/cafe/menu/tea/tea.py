@@ -1,4 +1,4 @@
-from com.kakao.menu.cafeMenu import CafeMenu
+from com.kakao.cafe.menu.cafeMenu import CafeMenu
 
 
 class Tea(CafeMenu):
@@ -7,9 +7,9 @@ class Tea(CafeMenu):
         self.__water = 0
 
     @abstractmethod
-    def getWater(self):
+    def getWater(self) -> int:
         raise NotImplementedError
 
     @abstractmethod
-    def setWater(self, water):
+    def setWater(self, water: int) -> None:
         raise NotImplementedError
