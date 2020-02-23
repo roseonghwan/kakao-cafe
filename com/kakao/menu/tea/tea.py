@@ -7,7 +7,7 @@ class Tea(CafeMenu):
         self.__water = 0
 
     @abstractmethod
-    def getWater(self, water):
+    def getWater(self):
         raise NotImplementedError
 
     @abstractmethod
