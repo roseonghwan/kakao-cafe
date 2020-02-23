@@ -11,5 +11,8 @@ test:
 test cafemenu:
 	$(PYTHON) -m $(TEST_MODULE) testCafeMenu.py
 
+test smoothie:
+	$(PYTHON) -m $(TEST_MODULE) testSmoothie.py
+
 clean: $(CACHE)
 	$(RM) $(CACHE)
