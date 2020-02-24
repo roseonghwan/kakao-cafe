@@ -60,6 +60,62 @@ Test Library: unittest
 
 카카오 카페의 메뉴는 에스프레소 메뉴, 스무디, 차, 에이드의 4가지로 나뉘며 이들은 모두 최상위 메뉴 클래스 CafeMenu를 상속한다.
 
+최종 디렉토리 구조는 다음과 같다.
+
+```bash
+
+cafe
+├── Makefile
+├── README.md
+├── cafe.py
+├── menu
+│   ├── __init__.py
+│   ├── ade
+│   │   ├── __init__.py
+│   │   ├── ade.py
+│   │   ├── lemonAde.py
+│   │   ├── orangeAde.py
+│   │   └── strawberryAde.py
+│   ├── cafeMenu.py
+│   ├── espresso
+│   │   ├── __init__.py
+│   │   ├── americano.py
+│   │   ├── cafeMocha.py
+│   │   ├── cappuccino.py
+│   │   ├── caramelMacchiato.py
+│   │   ├── espresso.py
+│   │   ├── greenTeaLatte.py
+│   │   ├── latte.py
+│   │   └── vanillaLatte.py
+│   ├── smoothie
+│   │   ├── __init__.py
+│   │   ├── berryBerrySmoothie.py
+│   │   ├── pineappleSmoothie.py
+│   │   ├── smoothie.py
+│   │   └── yogurtSmoothie.py
+│   └── tea
+│       ├── __init__.py
+│       ├── chamomileTea.py
+│       ├── greenTea.py
+│       ├── hibiscusTea.py
+│       ├── iceTea.py
+│       ├── lavenderTea.py
+│       ├── matchaMilkTea.py
+│       ├── milkTea.py
+│       ├── peppermintTea.py
+│       ├── rooibosTea.py
+│       ├── royalMilkTea.py
+│       └── tea.py
+└── module
+    ├── __init__.py
+    ├── cafeWorker.py
+    ├── menuPrinter.py
+    ├── orderChecker.py
+    ├── orderTaker.py
+    ├── paymentManager.py
+    └── receiptPrinter.py
+```
+
 메뉴의 종류가 많으므로 각 모듈마다 단위 테스트 코드가 작성된 테스트 파일을 추가하고 **반드시 단위 테스트가 통과된 것을 확인한 후에 다음 모듈을 구현할 것을 권장한다.**
 
 #
