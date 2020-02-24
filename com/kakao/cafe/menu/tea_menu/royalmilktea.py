@@ -1,3 +1,6 @@
+from com.kakao.cafe.menu.tea_menu.milktea import MilkTea
+
+
 class RoyalMilkTea(MilkTea):
     def __init__(self):
         super().__init__()

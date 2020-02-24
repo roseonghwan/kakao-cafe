@@ -1,3 +1,6 @@
+from com.kakao.cafe.menu.tea_menu.tea import Tea
+
+
 class PeppermintTea(Tea):
     def __init__(self):
         super().__init__()

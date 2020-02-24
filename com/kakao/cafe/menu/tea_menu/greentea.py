@@ -1,9 +1,11 @@
-class HibiscusTea(Tea):
+from com.kakao.cafe.menu.tea_menu.tea import Tea
+
+
+class GreenTea(Tea):
     def __init__(self):
         super().__init__()
-
-        self.__hibiscusTea = 1
-        self.name = "HibiscusTea"
+        self.__greenTea = 1
+        self.name = "GreenTea"
         self.__price = 3000
         self.__water = 200
 
@@ -16,13 +18,13 @@ class HibiscusTea(Tea):
     def getPrice(self) -> int:
         return self.__price
 
-    def setPrice(self, price: int) -> None:
+    def setPrice(self, price: int):
         self.__price = price
 
-    def isIced(self) -> bool:
+    def isIced(self):
         return self._iced
 
-    def setIced(self, iced: bool) -> None:
+    def setIced(self, iced):
         self._iced = iced
 
     def getWater(self) -> int:
@@ -31,12 +33,12 @@ class HibiscusTea(Tea):
     def setWater(self, water: int) -> None:
         self.__water = water
 
-    def gethibiscusTea(self) -> int:
-        return self.__hibiscusTea
+    def getgreenTea(self) -> int:
+        return self.__greenTea
 
-    def sethibiscusTea(self, hibiscusTea: int) -> None:
-        self.__hibiscusTea = hibiscusTea
+    def setgreenTea(self, greenTea: int) -> None:
+        self.__greenTea = greenTea
 
-    def addHibiscusTea(self, amount: int) -> None:
-        self.sethibiscusTea(self.gethibiscusTea() + amount)
+    def addGreenTea(self, amount: int) -> None:
+        self.setgreenTea(self.getgreenTea() + amount)
         self.setPrice(self.getPrice() + amount * 500)
