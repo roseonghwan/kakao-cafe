@@ -73,7 +73,7 @@ $ make run
 
 #### 카페 메뉴 클래스
 
-- [ ] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
+- [x] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
 
 #
 
@@ -88,8 +88,8 @@ $ make run
 
 #
 
-- [ ] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
-- [ ] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
+- [x] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
 

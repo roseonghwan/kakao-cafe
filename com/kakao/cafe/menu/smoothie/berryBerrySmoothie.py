@@ -1,5 +1,4 @@
-from menu.smoothie.smoothie import Smoothie
-
+from com.kakao.cafe.menu.smoothie.smoothie import Smoothie
 
 class BerryBerrySmoothie(Smoothie):
     def __init__(self):

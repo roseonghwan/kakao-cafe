@@ -1,4 +1,4 @@
-from menu.cafeMenu import CafeMenu
+from com.kakao.cafe.menu.cafeMenu import CafeMenu
 import unittest
 
 

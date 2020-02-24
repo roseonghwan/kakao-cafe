@@ -1,5 +1,5 @@
-from menu.smoothie.smoothie import Smoothie
-from menu.smoothie.berryBerrySmoothie import BerryBerrySmoothie
+from com.kakao.cafe.menu.smoothie.smoothie import Smoothie
+from com.kakao.cafe.menu.smoothie.berryBerrySmoothie import BerryBerrySmoothie
 import unittest
 
 
