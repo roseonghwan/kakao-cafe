@@ -4,10 +4,10 @@ from com.kakao.cafe.menu.smoothie.smoothie import Smoothie
 class BerryberrySmoothie(Smoothie):
     def __init__(self):
         super().__init__()
-        self.mixedBerry = 1
+        self.__mixedBerry = 1
         self.name = "BerryberrySmoothie"
-        self.price = 5000
-        self.groundIce = 400
+        self.__price = 5000
+        self.__groundIce = 400
 
     def getName(self) -> str:
         return self.name
@@ -16,31 +16,30 @@ class BerryberrySmoothie(Smoothie):
         self.name = name
 
     def getPrice(self) -> int:
-        return self.price
+        return self.__price
 
     def setPrice(self, price: int) -> None:
-        self.price = price
+        self.__price = price
 
     def getGroundIce(self) -> None:
-        return self.groundIce
+        return self.__groundIce
 
     def setGroundIce(self, groundIce: int) -> None:
-        self.groundIce = groundIce
+        self.__groundIce = groundIce
 
     def isIced(self) -> bool:
-        self.Iced = True
-        return self.Iced
+        self._Iced = True
+        return self._Iced
 
     def setIced(self) -> None:
         pass
 
     def getMixedBerry(self) -> int:
-        return self.mixedBerry
+        return self.__mixedBerry
 
     def setMixedBerry(self, mixedBerry: int) -> None:
-        self.mixedBerry = mixedBerry
+        self.__mixedBerry = mixedBerry
 
-    def addBerry(self, mixedBerry: int) -> None:
-        self.mixedBerry += mixedBerry
-        self.price += mixedBerry * 500
-
+    def addBerry(self, amount: int) -> None:
+        self.setMixedBerry(self.getMixedBerry() + amount)
+        self.setPrice(self.getPrice() + amount * 500)
