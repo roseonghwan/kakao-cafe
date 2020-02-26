@@ -770,6 +770,154 @@ def setIced(self) -> None:
 
 #
 
+아래는 추상 클래스 CafeMenu를 상속받은 추상 클래스 Dessert에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 protected bool형 멤버 변수 melted의 값을 type default value로 초기화한다.
+
+- 디저트를 녹일 수 있는 melt: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+# 
+
+아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 NewYorkCheeseCake에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 newYorkCheese의 값을 3으로 초기화한다.
+  
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5000으로 초기화한다.
+
+  멤버 변수 iced의 값을 True로 초기화한다.
+
+- name에 대한 getter와 setter
+  
+- price에 대한 getter와 setter
+
+- isIced: 케이크는 냉동 보관하므로 True를 반환한다.
+
+- setIced: 케이크는 이미 차가우므로 pass한다.
+
+- newYorkCheese에 대한 getter와 setter
+
+- melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
+
+# 
+
+아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 TiramisuCake에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 chocolatePowder의 값을 각각 2와 1로 초기화한다.
+  
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5500으로 초기화한다.
+
+  멤버 변수 iced의 값을 True로 초기화한다.
+
+- name에 대한 getter와 setter
+  
+- price에 대한 getter와 setter
+
+- isIced: 케이크는 냉동 보관하므로 True를 반환한다.
+
+- setIced: 케이크는 이미 차가우므로 pass한다.
+
+- mascapone에 대한 getter와 setter
+
+- chocolatePowder에 대한 getter와 setter
+
+- melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
+
+- 초코렛 파우더를 추가할 수 있는 addChocolatePowder: chocolatePowder의 값을 인자로 받은 amount만큼 더한다. 가격 변동은 없다.
+
+#
+
+아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RedVelvetCheeseCake에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 redVelvetPowder의 값을 모두 2로 초기화한다.
+  
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 6000으로 초기화한다.
+
+  멤버 변수 iced의 값을 True로 초기화한다.
+
+- name에 대한 getter와 setter
+  
+- price에 대한 getter와 setter
+
+- isIced: 케이크는 냉동 보관하므로 True를 반환한다.
+
+- setIced: 케이크는 이미 차가우므로 pass한다.
+
+- mascapone에 대한 getter와 setter
+
+- redVelvetPowder에 대한 getter와 setter
+
+- melt: 레드 벨벳 케이크는 녹이면 무너져서 비주얼이 좋지 않다. 따라서 pass한다.
+
+- 레드 벨벳 파우더를 추가할 수 있는 addRedVelvetPowder: redVelvetPowder의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RainbowCheeseCake에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone의 값을 2로 초기화한다.
+  
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5500으로 초기화한다.
+
+  멤버 변수 iced의 값을 True로 초기화한다.
+
+- name에 대한 getter와 setter
+  
+- price에 대한 getter와 setter
+
+- isIced: 케이크는 냉동 보관하므로 True를 반환한다.
+
+- setIced: 케이크는 이미 차가우므로 pass한다.
+
+- mascapone에 대한 getter와 setter
+
+- melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
+
+#
+
+아래는 추살 클래스 Dessert를 상속받은 추상 클래스 Waffle에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 numWaffles의 값을 2로 초기화한다.
+
+- isIced: 와플은 냉동 보관하므로 True를 반환한다.
+
+- setIced: 와플은 이미 차가우므로 pass한다.
+
+- melt: 와플을 살짝 녹여 melted의 값을 True로 바꾼다.
+
+- numWaffles에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+- 와플을 추가할 수 있는 addWaffle: 추상 메소드로 NotImplementedError를 발생시킨다.
+
+#
+
+아래는 추상 클래스 Waffle을 상속받은 concrete 클래스 BelgianWaffle에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mapleSyrup의 값을 1로 초기화한다.
+  
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 5000으로 초기화한다.
+
+  멤버 변수 iced의 값을 True로 초기화한다.
+
+- name에 대한 getter와 setter
+  
+- price에 대한 getter와 setter
+
+- isIced: 와플은 냉동 보관하므로 True를 반환한다.
+
+- setIced: 와플은 이미 차가우므로 pass한다.
+
+#
+
 ### 결제 모듈 구현 명세
 
 #
