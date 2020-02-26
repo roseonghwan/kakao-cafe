@@ -1,6 +1,5 @@
 PYTHON = python3
 SOURCE = cafe.py
-RM = rm -rf
 
 all: $(SOURCE)
 	@echo "$$RYAN_ASCII"
@@ -12,8 +11,6 @@ run:	$(SOURCE)
 ascii:
 	@echo "$$RYAN_ASCII"
 
-clean:
-	$(RM) __pycache__/
 
 define RYAN_ASCII
 

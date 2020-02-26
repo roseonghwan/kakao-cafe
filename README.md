@@ -73,7 +73,7 @@ $ make run
 
 #### 카페 메뉴 클래스
 
-- [ ] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
+- [x] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
 
 #
 
@@ -88,8 +88,8 @@ $ make run
 
 #
 
-- [ ] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
-- [ ] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
+- [x] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
 
@@ -116,7 +116,19 @@ $ make run
 
 #
 
-- [ ] Commit 내용 통합 및 Comflict 해결
+- [ ] 추상 클래스 Dessert 구현 및 테스트 코드 작성
+- [ ] NewYorkCheeseCake 클래스 구현 및 테스트 코드 작성
+- [ ] TiramisuCake 클래스 구현 및 테스트 코드 작성
+- [ ] RedVelvetCheeseCake 클래스 구현 및 테스트 코드 작성
+- [ ] RainbowCheeseCake 클래스 구현 및 테스트 코드 작성
+- [ ] 추상 클래스 Waffle 구현 및 테스트 코드 작성
+- [ ] BelgianWaffle 클래스 구현 및 테스트 코드 작성
+- [ ] IceWaffle 클래스 구현 및 테스트 코드 작성
+- [ ] FruitsWaffle 클래스 구현 및 테스트 코드 작성
+
+#
+
+- [ ] Branch 간 Merge 및 Comflict 해결
 
 #### 결제 모듈 클래스
 
