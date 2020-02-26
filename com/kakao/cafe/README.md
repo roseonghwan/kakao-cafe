@@ -63,57 +63,85 @@ Test Library: unittest
 최종 디렉토리 구조는 다음과 같다.
 
 ```bash
-
-cafe
-├── Makefile
+kakao-cafe
+├── LICENSE
 ├── README.md
-├── cafe.py
-├── menu
+├── com
 │   ├── __init__.py
-│   ├── ade
-│   │   ├── __init__.py
-│   │   ├── ade.py
-│   │   ├── lemonAde.py
-│   │   ├── orangeAde.py
-│   │   └── strawberryAde.py
-│   ├── cafeMenu.py
-│   ├── espresso
-│   │   ├── __init__.py
-│   │   ├── americano.py
-│   │   ├── cafeMocha.py
-│   │   ├── cappuccino.py
-│   │   ├── caramelMacchiato.py
-│   │   ├── espresso.py
-│   │   ├── greenTeaLatte.py
-│   │   ├── latte.py
-│   │   └── vanillaLatte.py
-│   ├── smoothie
-│   │   ├── __init__.py
-│   │   ├── berryBerrySmoothie.py
-│   │   ├── pineappleSmoothie.py
-│   │   ├── smoothie.py
-│   │   └── yogurtSmoothie.py
-│   └── tea
+│   └── kakao
 │       ├── __init__.py
-│       ├── chamomileTea.py
-│       ├── greenTea.py
-│       ├── hibiscusTea.py
-│       ├── iceTea.py
-│       ├── lavenderTea.py
-│       ├── matchaMilkTea.py
-│       ├── milkTea.py
-│       ├── peppermintTea.py
-│       ├── rooibosTea.py
-│       ├── royalMilkTea.py
-│       └── tea.py
-└── module
-    ├── __init__.py
-    ├── cafeWorker.py
-    ├── menuPrinter.py
-    ├── orderChecker.py
-    ├── orderTaker.py
-    ├── paymentManager.py
-    └── receiptPrinter.py
+│       └── cafe
+│           ├── Makefile
+│           ├── README.md
+│           ├── __init__.py
+│           ├── cafe.py
+│           ├── menu
+│           │   ├── __init__.py
+│           │   ├── ade
+│           │   │   ├── __init__.py
+│           │   │   ├── ade.py
+│           │   │   ├── lemonAde.py
+│           │   │   ├── orangeAde.py
+│           │   │   └── strawberryAde.py
+│           │   ├── cafeMenu.py
+│           │   ├── dessert
+│           │   │   ├── __init__.py
+│           │   │   ├── belgianWaffle.py
+│           │   │   ├── dessert.py
+│           │   │   ├── fruitsWaffle.py
+│           │   │   ├── iceWaffle.py
+│           │   │   ├── newYorkCheeseCake.py
+│           │   │   ├── rainbowCheeseCake.py
+│           │   │   ├── redVelvetCheeseCake.py
+│           │   │   ├── tiramisuCake.py
+│           │   │   └── waffle.py
+│           │   ├── espresso
+│           │   │   ├── __init__.py
+│           │   │   ├── americano.py
+│           │   │   ├── cafeMocha.py
+│           │   │   ├── cappuccino.py
+│           │   │   ├── caramelMacchiato.py
+│           │   │   ├── espresso.py
+│           │   │   ├── greenTeaLatte.py
+│           │   │   ├── latte.py
+│           │   │   └── vanillaLatte.py
+│           │   ├── smoothie
+│           │   │   ├── __init__.py
+│           │   │   ├── berryBerrySmoothie.py
+│           │   │   ├── pineappleSmoothie.py
+│           │   │   ├── smoothie.py
+│           │   │   └── yogurtSmoothie.py
+│           │   └── tea
+│           │       ├── __init__.py
+│           │       ├── chamomileTea.py
+│           │       ├── greenTea.py
+│           │       ├── hibiscusTea.py
+│           │       ├── iceTea.py
+│           │       ├── lavenderTea.py
+│           │       ├── matchaMilkTea.py
+│           │       ├── milkTea.py
+│           │       ├── peppermintTea.py
+│           │       ├── rooibosTea.py
+│           │       ├── royalMilkTea.py
+│           │       └── tea.py
+│           └── module
+│               ├── __init__.py
+│               ├── cafeWorker.py
+│               ├── menuPrinter.py
+│               ├── orderChecker.py
+│               ├── orderTaker.py
+│               ├── paymentManager.py
+│               └── receiptPrinter.py
+├── requirements.txt
+├── testutil
+│   ├── Makefile
+│   ├── testAde.py
+│   ├── testCafeMenu.py
+│   ├── testDessert.py
+│   ├── testEspresso.py
+│   ├── testSmoothie.py
+│   └── testTea.py
+└── venv
 ```
 
 메뉴의 종류가 많으므로 각 모듈마다 단위 테스트 코드가 작성된 테스트 파일을 추가하고 **반드시 단위 테스트가 통과된 것을 확인한 후에 다음 모듈을 구현할 것을 권장한다.**
@@ -774,6 +802,8 @@ def setIced(self) -> None:
 
 - 생성자: 부모 클래스의 생성자를 호출하며 protected bool형 멤버 변수 melted의 값을 type default value로 초기화한다.
 
+- isMelted: 추상 메소드로 NotImplementedError를 발생시킨다.
+
 - 디저트를 녹일 수 있는 melt: 추상 메소드로 NotImplementedError를 발생시킨다.
 
 # 
@@ -797,6 +827,8 @@ def setIced(self) -> None:
 - setIced: 케이크는 이미 차가우므로 pass한다.
 
 - newYorkCheese에 대한 getter와 setter
+
+- isMelted: melted의 값을 반환한다.
 
 - melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
 
@@ -823,6 +855,8 @@ def setIced(self) -> None:
 - mascapone에 대한 getter와 setter
 
 - chocolatePowder에 대한 getter와 setter
+
+- isMelted: melted의 값을 반환한다.
 
 - melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
 
@@ -852,6 +886,8 @@ def setIced(self) -> None:
 
 - redVelvetPowder에 대한 getter와 setter
 
+- isMelted: melted의 값을 반환한다.
+
 - melt: 레드 벨벳 케이크는 녹이면 무너져서 비주얼이 좋지 않다. 따라서 pass한다.
 
 - 레드 벨벳 파우더를 추가할 수 있는 addRedVelvetPowder: redVelvetPowder의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
@@ -878,6 +914,8 @@ def setIced(self) -> None:
 
 - mascapone에 대한 getter와 setter
 
+- isMelted: melted의 값을 반환한다.
+
 - melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
 
 #
@@ -889,8 +927,6 @@ def setIced(self) -> None:
 - isIced: 와플은 냉동 보관하므로 True를 반환한다.
 
 - setIced: 와플은 이미 차가우므로 pass한다.
-
-- melt: 와플을 살짝 녹여 melted의 값을 True로 바꾼다.
 
 - numWaffles에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
 
@@ -912,9 +948,81 @@ def setIced(self) -> None:
   
 - price에 대한 getter와 setter
 
+- isMelted: melted의 값을 반환한다.
+
+- melt: 와플을 살짝 구워 melted의 값을 True로 바꾼다.
+
+- numWaffles에 대한 getter와 setter
+
+- addWaffle: numWaffles의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 1000씩 더한다.
+
+#
+
+아래는 추상 클래스 Waffle을 상속받은 concrete 클래스 IceWaffle에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하여 public int형 멤버 변수 iceCream의 값을 2로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 6000으로 초기화한다.
+
+  멤버 변수 iced의 값을 True로 초기화한다.
+
+- name에 대한 getter와 setter
+  
+- price에 대한 getter와 setter
+
 - isIced: 와플은 냉동 보관하므로 True를 반환한다.
 
 - setIced: 와플은 이미 차가우므로 pass한다.
+
+- isMelted: melted의 값을 반환한다.
+
+- melt: 와플을 살짝 구워 melted의 값을 True로 바꾼다.
+
+- iceCream에 대한 getter와 setter
+
+- numWaffles에 대한 getter와 setter
+
+- addWaffle: numWaffles의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 1000씩 더한다.
+
+- 아이스크림을 추가할 수 있는 addIceCream: iceCream의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 500씩 더한다.
+
+#
+
+아래는 추상 클래스 Waffle을 상속받은 concrete 클래스 FruitsWaffle에 대한 구현 명세이다.
+
+- 생성자: 부모 클래스의 생성자를 호출하여 3가지 protected int형 멤버 변수 mango, strawberry, blueberry의 값을 모두 1로 초기화한다.
+
+  멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
+
+  멤버 변수 price의 값을 6000으로 초기화한다.
+
+  멤버 변수 iced의 값을 True로 초기화한다.
+
+- name에 대한 getter와 setter
+  
+- price에 대한 getter와 setter
+
+- isIced: 와플은 냉동 보관하므로 True를 반환한다.
+
+- setIced: 와플은 이미 차가우므로 pass한다.
+
+- isMelted: melted의 값을 반환한다.
+
+- melt: 와플을 살짝 구워 melted의 값을 True로 바꾼다.
+
+- mango에 대한 getter와 setter
+
+- strawberry에 대한 getter와 setter
+
+- blueberry에 대한 getter와 setter
+
+- numWaffles에 대한 getter와 setter
+
+- addWaffle: numWaffles의 값을 인자로 받은 amount만큼 더하고 가격을 amount당 1000씩 더한다.
+
+- 과일들을 추가할 수 있는 addFruits: mango, strawberry, blueberry의 값을 각각 인자로 받은 amount만큼 더하고 가격을 amount당 1000씩 더한다.
 
 #
 
