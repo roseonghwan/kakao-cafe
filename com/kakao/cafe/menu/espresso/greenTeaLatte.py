@@ -22,7 +22,7 @@ class GreenTeaLatte(Latte):
         self.__greenTea = greenTea
 
     def addGreenTea(self, amount: int) -> None:
-        self.setGreenTea(getGreenTea() + amount)
+        self.setGreenTea(self.getGreenTea() + amount)
 
     def getCondensedMilk(self) -> int:
         return self.__condensedMilk
