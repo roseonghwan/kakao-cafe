@@ -38,34 +38,85 @@ $ virtualenv venv --python=python3
   $ deactivate
   ```
 
+---
+
 ### 의존성 패키지 관리
 
-#### 현재 설치된 패키지들을 저장
+- #### 현재 설치된 패키지들을 저장
 
-```bash
-$ pip freeze > requirements.txt
-```
+  ```bash
+  $ pip freeze > requirements.txt
+  ```
 
-#### requirements.txt에 저장된 패키지 설치
+- #### requirements.txt에 저장된 패키지 설치
 
-```bash
-$ pip install -r requirements.txt
-```
+  ```bash
+  $ pip install -r requirements.txt
+  ```
 
-### Makefile을 이용한 구동 및 테스트 단순화
+---
 
-#### Python 단위 테스트
+### make를 이용한 구동 및 테스트 단순화
 
-```bash
-$ make test
-$ make clean
-```
+- #### Python 구동
 
-#### Python 구동
+  ```bash
+  $ make run
+  ```
 
-```bash
-$ make run
-```
+- #### Python 단위 테스트
+
+  - 모든 테스트 실행
+    
+    ```bash
+    $ make
+    ```
+
+    ```bash
+    $ make test
+    ```
+
+  - CafeMenu 테스트
+
+    ```bash
+    $ make test cafemenu
+    ```
+
+  - Espresso 및 하위 클래스 테스트
+
+    ```bash
+    $ make test espresso
+    ```
+
+  - Smoothie 및 하위 클래스 테스트
+  
+    ```bash
+    $ make test smoothie
+    ```
+
+  - Tea 및 하위 클래스 테스트
+
+    ```bash
+    $ make test tea
+    ```
+
+  - Ade 및 하위 클래스 테스트
+  
+    ```bash
+    $ make test ade
+    ```
+
+  - Dessert 테스트
+
+    ```bash
+    $ make test dessert
+    ```
+
+  - Module 테스트
+
+    ```bash
+    $ make test module
+    ```
 
 #
 
@@ -77,14 +128,14 @@ $ make run
 
 #
 
-- [ ] Espresso 클래스 구현 및 테스트 코드 작성
-- [ ] Americano 클래스 구현 및 테스트 코드 작성
-- [ ] Latte 클래스 구현 및 테스트 코드 작성
-- [ ] VanillaLatte 클래스 구현 및 테스트 코드 작성
-- [ ] CaramelMacchiato 클래스 구현 및 테스트 코드 작성
-- [ ] Cappuccino 클래스 구현 및 테스트 코드 작성
-- [ ] CafeMocha 클래스 구현 및 테스트 코드 작성
-- [ ] GreenTeaLatte 클래스 구현 및 테스트 코드 작성
+- [x] Espresso 클래스 구현 및 테스트 코드 작성
+- [x] Americano 클래스 구현 및 테스트 코드 작성
+- [x] Latte 클래스 구현 및 테스트 코드 작성
+- [x] VanillaLatte 클래스 구현 및 테스트 코드 작성
+- [x] CaramelMacchiato 클래스 구현 및 테스트 코드 작성
+- [x] Cappuccino 클래스 구현 및 테스트 코드 작성
+- [x] CafeMocha 클래스 구현 및 테스트 코드 작성
+- [x] GreenTeaLatte 클래스 구현 및 테스트 코드 작성
 
 #
 
