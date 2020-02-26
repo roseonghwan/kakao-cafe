@@ -65,13 +65,13 @@ Test Library: unittest
 ```bash
 kakao-cafe
 ├── LICENSE
+├── Makefile
 ├── README.md
 ├── com
 │   ├── __init__.py
 │   └── kakao
 │       ├── __init__.py
 │       └── cafe
-│           ├── Makefile
 │           ├── README.md
 │           ├── __init__.py
 │           ├── cafe.py
@@ -128,23 +128,25 @@ kakao-cafe
 │               ├── __init__.py
 │               ├── cafeWorker.py
 │               ├── menuPrinter.py
+│               ├── module.py
 │               ├── orderChecker.py
 │               ├── orderTaker.py
 │               ├── paymentManager.py
 │               └── receiptPrinter.py
 ├── requirements.txt
 ├── testutil
-│   ├── Makefile
 │   ├── testAde.py
 │   ├── testCafeMenu.py
 │   ├── testDessert.py
 │   ├── testEspresso.py
+│   ├── testModule.py
 │   ├── testSmoothie.py
 │   └── testTea.py
 └── venv
 ```
 
-메뉴의 종류가 많으므로 각 모듈마다 단위 테스트 코드가 작성된 테스트 파일을 추가하고 **반드시 단위 테스트가 통과된 것을 확인한 후에 다음 모듈을 구현할 것을 권장한다.**
+메뉴의 종류가 많으므로 각 모듈마다 단위 테스트 코드가 작성된 테스트 파일을 추가하고  
+**반드시 단위 테스트가 통과된 것을 확인한 후에 다음 모듈을 구현할 것을 권장한다.**
 
 #
 
@@ -159,7 +161,7 @@ kakao-cafe
   함수 원형은 다음과 같다.
 
 ```python
-from abc import *
+from abc import ABCMeta, abstractmethod
 
 
 class CafeMenu(metaclass=ABCMeta):
@@ -168,11 +170,11 @@ class CafeMenu(metaclass=ABCMeta):
 
   @abstractmethod
   def getName(self) -> str:
-    raise NotImplementedError
+    raise NotImplementedError('Method getName not implemented')
 
   @abstractmethod
   def setName(self, name: str) -> None:
-    raise NotImplementedError
+    raise NotImplementedError('Method setName not implemented)
 ```
 
 - price에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
@@ -182,11 +184,11 @@ class CafeMenu(metaclass=ABCMeta):
 ```python
 @abstractmethod
 def getPrice(self) -> int:
-  raise NotImplementedError
+  raise NotImplementedError('Method getPrice not implemented')
 
 @abstractmethod
 def setPrice(self, price: int) -> None:
-  raise NotImplementedError
+  raise NotImplementedError('Method setPrice not implemented')
 ```
 
 - iced에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
@@ -195,11 +197,11 @@ def setPrice(self, price: int) -> None:
 ```python
 @abstractmethod
 def isIced(self) -> bool:
-  raise NotImplementedError
+  raise NotImplementedError('Method isIced not implemented')
 
 @abstractmethod
 def setIced(self) -> None:
-  raise NotImplementedError
+  raise NotImplementedError('Method setIced not implemented')
 ```
 
 #
@@ -1051,7 +1053,7 @@ def setIced(self) -> None:
   이는 추상 메소드로 NotImplementedError를 발생시킨다. 함수 원형은 다음과 같다.
 
 ```python
-from abc import *
+from abc import ABCMeta, abstractmethod
 
 
 class CafeWorker(metaclass=ABCMeta):
@@ -1060,7 +1062,7 @@ class CafeWorker(metaclass=ABCMeta):
 
   @abstractmethod
   def Print(self) -> None:
-    raise NotImplementedError
+    raise NotImplementedError('Method Print not implemented')
 ```
 
 #
@@ -1075,9 +1077,11 @@ class CafeWorker(metaclass=ABCMeta):
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderTaker에 대한 구현 명세이다.
 
-- 생성자:
+- 생성자: 
 
-- Print:
+- Print: 주문 안내 메세지를 출력한다.
+
+- takeOrder: 
 
 #
 
@@ -1085,7 +1089,13 @@ class CafeWorker(metaclass=ABCMeta):
 
 - 생성자:
 
-- Print:
+- Print: 사용자가 주문한 목록을 출력한다.
+
+- checkOrder: 주문한 내역이 맞는지 확인하고 사용자 입력을 기다린다.
+  
+  Y나 y, Yes나 yes, 혹은 빈 문자열이 입력되면 주문 내역이 올바른 것으로 간주하고 다음 단계로 넘어간다.
+  
+  그 외의 경우엔 잘못된 주문이 입력된 것으로 간주하고 첫 결제 화면으로 돌아간다.
 
 #
 
@@ -1093,7 +1103,9 @@ class CafeWorker(metaclass=ABCMeta):
 
 - 생성자:
 
-- Print:
+- Print: 결제 가능한 수단들의 목록을 출력한다.
+
+- 
 
 #
 
@@ -1102,6 +1114,8 @@ class CafeWorker(metaclass=ABCMeta):
 - 생성자:
 
 - Print:
+
+- printReceipt: 영수증을 출력한다.
 
 #
 
