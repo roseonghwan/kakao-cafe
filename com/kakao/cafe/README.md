@@ -128,7 +128,6 @@ kakao-cafe
 │               ├── __init__.py
 │               ├── cafeWorker.py
 │               ├── menuPrinter.py
-│               ├── module.py
 │               ├── orderChecker.py
 │               ├── orderTaker.py
 │               ├── paymentManager.py

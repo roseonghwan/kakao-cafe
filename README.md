@@ -7,6 +7,8 @@
 #
 
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
+[![Slack](https://img.shields.io/badge/chat%20on-Slack-blueviolet)](https://jonnafamily.slack.com/)
+[![Notion](https://img.shields.io/badge/doc-Notion-lightgrey)](https://www.notion.so/jonnafamily/OOP-Practice-024aa342c3174aff9f35415f8a79b72d)
 
 #
 
