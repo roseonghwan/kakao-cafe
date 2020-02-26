@@ -6,13 +6,13 @@ class CafeMocha(Latte):
         super().__init__()
         self.__mocha = 1
         self.name = "CafeMocha"
-        self.price = 4000
+        self.__price = 4000
 
     def getPrice(self) -> int:
-        return self.price
+        return self.__price
 
     def setPrice(self, price: int) -> None:
-        self.price = price
+        self.__price = price
 
     def getMocha(self) -> int:
         return self.__mocha
@@ -21,5 +21,5 @@ class CafeMocha(Latte):
         self.__mocha = mocha
 
     def addMocha(self, amount) -> None:
-        setMocha(getMocha() + amount)
-        setPrice(getPrice() + amount * 300)
+        self.setMocha(self.getMocha() + amount)
+        self.setPrice(self.getPrice() + amount * 300)

@@ -1,12 +1,18 @@
-from com.kakao.cafe.menu.espresso import espresso
+from com.kakao.cafe.menu.espresso.espresso import Espresso
 
 
-class Americano(espresso):
+class Americano(Espresso):
     def __init__(self):
         super().__init__()
         self._water = 350
         self.name = "Americano"
-        self.price = 3000
+        self.__price = 3000
+
+    def getPrice(self) -> int:
+        return self.__price
+
+    def setPrice(self, price: int) -> None:
+        self.__price = price
 
     def getWater(self) -> int:
         return self._water

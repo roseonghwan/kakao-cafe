@@ -7,13 +7,13 @@ class GreenTeaLatte(Latte):
         self.__greenTea = 1
         self.__condensedMilk = 1
         self.name = "GreenTeaLatte"
-        self.price = 4000
+        self.__price = 4000
 
     def getPrice(self) -> int:
-        return self.price
+        return self.__price
 
     def setPrice(self, price: int) -> None:
-        self.price = price
+        self.__price = price
 
     def getGreenTea(self) -> int:
         return self.__greenTea
@@ -22,7 +22,7 @@ class GreenTeaLatte(Latte):
         self.__greenTea = greenTea
 
     def addGreenTea(self, amount: int) -> None:
-        setGreenTea(getGreenTea() + amount)
+        self.setGreenTea(getGreenTea() + amount)
 
     def getCondensedMilk(self) -> int:
         return self.__condensedMilk
@@ -31,5 +31,5 @@ class GreenTeaLatte(Latte):
         self.__condensedMilk = condensedMilk
 
     def addCondensedMilk(self, amount) -> None:
-        setCondensedMilk(getCondensedMilk() + amount)
-        setPrice(getPrice() + amount * 300)
+        self.setCondensedMilk(self.getCondensedMilk() + amount)
+        self.setPrice(self.getPrice() + amount * 300)

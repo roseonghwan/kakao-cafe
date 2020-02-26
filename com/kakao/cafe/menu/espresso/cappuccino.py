@@ -6,8 +6,20 @@ class Cappuccino(Latte):
         super().__init__()
         self.__cinnamon = 1
         self.name = "Cappuccino"
-        self.price = 4500
-        self._Latte__milk = 250
+        self.__price = 4500
+        self.__milk = 250
+
+    def getMilk(self) -> int:
+        return self.__milk
+
+    def setMilk(self, milk: int) -> None:
+        self.__milk = milk
+
+    def getPrice(self) -> int:
+        return self.__price
+
+    def setPrice(self, price: int) -> None:
+        self.__price = price
 
     def getCinnamon(self) -> int:
         return self.__cinnamon
@@ -16,7 +28,7 @@ class Cappuccino(Latte):
         self.__cinnamon = cinnamon
 
     def addCinnamon(self, amount: int) -> None:
-        setCinnamon(getCinnamon() + amount)
+        self.setCinnamon(self.getCinnamon() + amount)
 
     def subCinnamon(self) -> None:
-        setCinnamon(0)
+        self.setCinnamon(0)

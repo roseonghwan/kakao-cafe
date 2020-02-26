@@ -6,7 +6,7 @@ class CaramelMacchiato(Latte):
         super().__init__()
         self.__caramelSyrup = 1
         self.name = "CaramelMacchiato"
-        self.price = 4000
+        self.__price = 4000
 
     def getCaramelSyrup(self) -> int:
         return self.__caramelSyrup
@@ -15,11 +15,11 @@ class CaramelMacchiato(Latte):
         self.__caramelSyrup = caramelSyrup
 
     def setPrice(self, price: int) -> None:
-        self.price = price
+        self.__price = price
 
     def getPrice(self) -> int:
-        return self.price
+        return self.__price
 
     def addCaramelSyrup(self, amount: int) -> None:
-        setCaramelSyrup(getCaramelSyrup() + amount)
-        setPrice(getPrice() + amount * 200)
+        self.setCaramelSyrup(self.getCaramelSyrup() + amount)
+        self.setPrice(self.getPrice() + amount * 200)

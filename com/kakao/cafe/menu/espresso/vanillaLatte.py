@@ -6,13 +6,13 @@ class VanillaLatte(Latte):
         super().__init__()
         self.__vanillaSyrup = 1
         self.name = "VanillaLatte"
-        self.price = 4000
+        self.__price = 4000
 
     def getPrice(self) -> int:
-        return self.price
+        return self.__price
 
     def setPrice(self, price: int) -> None:
-        self.price = price
+        self.__price = price
 
     def getVanillaSyrup(self) -> int:
         return self.__vanillaSyrup
