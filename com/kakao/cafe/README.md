@@ -161,7 +161,7 @@ kakao-cafe
   함수 원형은 다음과 같다.
 
 ```python
-from abc import *
+from abc import ABCMeta, abstractmethod
 
 
 class CafeMenu(metaclass=ABCMeta):
@@ -170,11 +170,11 @@ class CafeMenu(metaclass=ABCMeta):
 
   @abstractmethod
   def getName(self) -> str:
-    raise NotImplementedError
+    raise NotImplementedError('Method getName not implemented')
 
   @abstractmethod
   def setName(self, name: str) -> None:
-    raise NotImplementedError
+    raise NotImplementedError('Method setName not implemented)
 ```
 
 - price에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
@@ -184,11 +184,11 @@ class CafeMenu(metaclass=ABCMeta):
 ```python
 @abstractmethod
 def getPrice(self) -> int:
-  raise NotImplementedError
+  raise NotImplementedError('Method getPrice not implemented')
 
 @abstractmethod
 def setPrice(self, price: int) -> None:
-  raise NotImplementedError
+  raise NotImplementedError('Method setPrice not implemented')
 ```
 
 - iced에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
@@ -197,11 +197,11 @@ def setPrice(self, price: int) -> None:
 ```python
 @abstractmethod
 def isIced(self) -> bool:
-  raise NotImplementedError
+  raise NotImplementedError('Method isIced not implemented')
 
 @abstractmethod
 def setIced(self) -> None:
-  raise NotImplementedError
+  raise NotImplementedError('Method setIced not implemented')
 ```
 
 #
@@ -1053,7 +1053,7 @@ def setIced(self) -> None:
   이는 추상 메소드로 NotImplementedError를 발생시킨다. 함수 원형은 다음과 같다.
 
 ```python
-from abc import *
+from abc import ABCMeta, abstractmethod
 
 
 class CafeWorker(metaclass=ABCMeta):
@@ -1062,7 +1062,7 @@ class CafeWorker(metaclass=ABCMeta):
 
   @abstractmethod
   def Print(self) -> None:
-    raise NotImplementedError
+    raise NotImplementedError('Method Print not implemented')
 ```
 
 #
