@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 
 class CafeMenu(metaclass=ABCMeta):
     def __init__(self):
-        self.name = ""
+        self.name = ''
         self.__price = 0
         self._iced = False
 
@@ -30,3 +30,4 @@ class CafeMenu(metaclass=ABCMeta):
     @abstractmethod
     def setIced(self, iced: bool) -> None:
         raise NotImplementedError('Method setIced not implemented')
+        
