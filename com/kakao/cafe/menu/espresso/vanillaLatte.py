@@ -21,5 +21,5 @@ class VanillaLatte(Latte):
         self.__vanillaSyrup = vanillaSyrup
 
     def addVanillaSyrup(self, amount: int) -> None:
-        setVanillaSyrup(getVanillaSyrup() + amount)
-        setPrice(getPrice() + amount * 200)
+        self.setVanillaSyrup(self.getVanillaSyrup() + amount)
+        self.setPrice(self.getPrice() + amount * 200)
