@@ -7,8 +7,8 @@
 #
 
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
-[![Slack](https://img.shields.io/badge/chat%20on-Slack-blueviolet)](https://jonnafamily.slack.com/)
-[![Notion](https://img.shields.io/badge/doc-Notion-lightgrey)](https://www.notion.so/jonnafamily/OOP-Practice-024aa342c3174aff9f35415f8a79b72d)
+[![Slack](https://img.shields.io/badge/chat%20on-Slack-53185A)](https://jonnafamily.slack.com/)
+[![Notion](https://img.shields.io/badge/spec-Notion-51525A)](https://www.notion.so/jonnafamily/OOP-Practice-024aa342c3174aff9f35415f8a79b72d)
 
 #
 
@@ -37,7 +37,7 @@ $ virtualenv venv --python=python3
 
 - #### 비활성화
   ```bash
-  $ deactivate
+  (venv) $ deactivate
   ```
 
 ---
@@ -47,13 +47,13 @@ $ virtualenv venv --python=python3
 - #### 현재 설치된 패키지들을 저장
 
   ```bash
-  $ pip freeze > requirements.txt
+  (venv) $ pip freeze > requirements.txt
   ```
 
 - #### requirements.txt에 저장된 패키지 설치
 
   ```bash
-  $ pip install -r requirements.txt
+  (venv) $ pip install -r requirements.txt
   ```
 
 ---
@@ -63,7 +63,7 @@ $ virtualenv venv --python=python3
 - #### Python 구동
 
   ```bash
-  $ make run
+  (venv) $ make run
   ```
 
 - #### Python 단위 테스트
@@ -71,53 +71,53 @@ $ virtualenv venv --python=python3
   - 모든 테스트 실행
     
     ```bash
-    $ make
+    (venv) $ make
     ```
 
     ```bash
-    $ make test
+    (venv) $ make test
     ```
 
   - CafeMenu 테스트
 
     ```bash
-    $ make test cafemenu
+    (venv) $ make test cafemenu
     ```
 
   - Espresso 및 하위 클래스 테스트
 
     ```bash
-    $ make test espresso
+    (venv) $ make test espresso
     ```
 
   - Smoothie 및 하위 클래스 테스트
   
     ```bash
-    $ make test smoothie
+    (venv) $ make test smoothie
     ```
 
   - Tea 및 하위 클래스 테스트
 
     ```bash
-    $ make test tea
+    (venv) $ make test tea
     ```
 
   - Ade 및 하위 클래스 테스트
   
     ```bash
-    $ make test ade
+    (venv) $ make test ade
     ```
 
-  - Dessert 테스트
+  - Dessert 및 하위 클래스 테스트
 
     ```bash
-    $ make test dessert
+    (venv) $ make test dessert
     ```
 
-  - Module 테스트
+  - Module 및 구현 클래스 테스트
 
     ```bash
-    $ make test module
+    (venv) $ make test module
     ```
 
 #
