@@ -1,6 +1,8 @@
 from com.kakao.cafe.cafeMenu import CafeMenu
+from abc import ABCMeta, abstractmethod
 
-class Ade(CafeMenu):
+
+class Ade(CafeMenu, metaclass=ABCMeta):
     def __init__(self):
         super().__init__()
         self.__soda = 0

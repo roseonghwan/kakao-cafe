@@ -5,8 +5,8 @@ class CafeMenu(metaclass=ABCMeta):
 
     def __init__(self):
         self.name = ''
-        self.price = 0
-        self.iced = False
+        self.__price = 0
+        self._iced = False
 
     @abstractmethod
     def getName(self) -> str:
