@@ -1,4 +1,4 @@
-from com.kakao.cafe.menu.CafeMenu import CafeMenu
+from com.kakao.cafe.menu.cafeMenu import CafeMenu
 from abc import ABCMeta, abstractmethod
 
 
@@ -10,8 +10,8 @@ class Smoothie(CafeMenu, metaclass=ABCMeta):
 
     @abstractmethod
     def getGroundIce(self) -> None:
-        raise NotImplementedError
+        raise NotImplementedError("Method getGroundIce not implemented")
 
     @abstractmethod
     def setGroundIce(self, groundIce: int) -> int:
-        raise NotImplementedError
+        raise NotImplementedError("Method setGroundIce not implemented")

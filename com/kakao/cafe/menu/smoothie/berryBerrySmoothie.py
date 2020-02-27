@@ -1,11 +1,11 @@
 from com.kakao.cafe.menu.smoothie.smoothie import Smoothie
 
 
-class BerryberrySmoothie(Smoothie):
+class BerryBerrySmoothie(Smoothie):
     def __init__(self):
         super().__init__()
         self.__mixedBerry = 1
-        self.name = "BerryberrySmoothie"
+        self.name = "BerryBerrySmoothie"
         self.__price = 5000
         self.__groundIce = 400
 

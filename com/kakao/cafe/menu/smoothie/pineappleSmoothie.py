@@ -41,5 +41,5 @@ class PineappleSmoothie(Smoothie):
         self.__pineapple = pineApple
 
     def addPineapple(self, amount: int) -> None:
-        self.setPineApple(self.getPineApple + amount)
-        self.setPrice(self.getPrice + amount * 500)
+        self.setPineApple(self.getPineApple() + amount)
+        self.setPrice(self.getPrice() + amount * 500)

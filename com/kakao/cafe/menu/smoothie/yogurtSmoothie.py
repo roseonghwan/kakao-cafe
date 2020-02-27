@@ -41,5 +41,5 @@ class YogurtSmoothie(Smoothie):
         self.__yogurt = yogurt
 
     def addYogurt(self, amount: int) -> None:
-        self.setYogurt(self.getYogurt + amount)
-        self.setPrice(self.getPrice + amount * 500)
+        self.setYogurt(self.getYogurt() + amount)
+        self.setPrice(self.getPrice() + amount * 500)
