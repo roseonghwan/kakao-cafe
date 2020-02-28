@@ -1,5 +1,6 @@
 from com.kakao.cafe.menu.smoothie.smoothie import Smoothie
 
+
 class BerryBerrySmoothie(Smoothie):
     def __init__(self):
         super().__init__()
@@ -20,27 +21,25 @@ class BerryBerrySmoothie(Smoothie):
 
     def setPrice(self, price: int) -> None:
         self.__price = price
-        return
-
-    def isIced(self) -> bool:
-        return True
-
-    def setIced(self) -> None:
-        return
 
     def getGroundIce(self) -> int:
         return self.__groundIce
 
     def setGroundIce(self, groundIce: int) -> None:
         self.__groundIce = groundIce
-        return
+
+    def isIced(self) -> bool:
+        self._Iced = True
+        return self._Iced
+
+    def setIced(self) -> None:
+        pass
 
     def getMixedBerry(self) -> int:
         return self.__mixedBerry
 
     def setMixedBerry(self, mixedBerry: int) -> None:
         self.__mixedBerry = mixedBerry
-        return
 
     def addBerry(self, amount: int) -> None:
         self.setMixedBerry(self.getMixedBerry() + amount)

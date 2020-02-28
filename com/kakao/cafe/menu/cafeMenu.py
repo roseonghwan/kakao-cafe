@@ -30,3 +30,4 @@ class CafeMenu(metaclass=ABCMeta):
     @abstractmethod
     def setIced(self, iced: bool) -> None:
         raise NotImplementedError('Method setIced not implemented')
+        
