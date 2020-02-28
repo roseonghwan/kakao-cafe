@@ -162,10 +162,10 @@ $ virtualenv venv --python=python3
 
 #
 
-- [ ] 추상 클래스 Ade 구현 및 테스트 코드 작성
-- [ ] StrawberryAde 클래스 구현 및 테스트 코드 작성
-- [ ] LemonAde 클래스 구현 및 테스트 코드 작성
-- [ ] OrangeAde 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Ade 구현 및 테스트 코드 작성
+- [x] StrawberryAde 클래스 구현 및 테스트 코드 작성
+- [x] LemonAde 클래스 구현 및 테스트 코드 작성
+- [x] OrangeAde 클래스 구현 및 테스트 코드 작성
 
 #
 
