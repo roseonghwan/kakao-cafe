@@ -1,7 +1,8 @@
-from com.kakao.cafe.menu.tea_menu.tea import Tea
+from com.kakao.cafe.menu.tea.tea import Tea
+from abc import ABCMeta, abstractmethod
 
 
-class MilkTea(Tea):
+class MilkTea(Tea, metaclass=ABCMeta):
     def __init__(self):
         super().__init__()
 

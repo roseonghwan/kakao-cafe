@@ -1,4 +1,4 @@
-from com.kakao.cafe.menu.tea_menu.tea import Tea
+from com.kakao.cafe.menu.tea.tea import Tea
 
 
 class GreenTea(Tea):
@@ -33,12 +33,12 @@ class GreenTea(Tea):
     def setWater(self, water: int) -> None:
         self.__water = water
 
-    def getgreenTea(self) -> int:
+    def getGreenTea(self) -> int:
         return self.__greenTea
 
-    def setgreenTea(self, greenTea: int) -> None:
+    def setGreenTea(self, greenTea: int) -> None:
         self.__greenTea = greenTea
 
     def addGreenTea(self, amount: int) -> None:
-        self.setgreenTea(self.getgreenTea() + amount)
+        self.setGreenTea(self.getGreenTea() + amount)
         self.setPrice(self.getPrice() + amount * 500)

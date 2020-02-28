@@ -1,4 +1,4 @@
-from abc import *
+from abc import ABCMeta, abstractmethod
 
 
 class CafeMenu(metaclass=ABCMeta):
@@ -9,24 +9,24 @@ class CafeMenu(metaclass=ABCMeta):
 
     @abstractmethod
     def getName(self) -> str:
-        raise NotImplementedError
+        raise NotImplementedError('Method getName not implemented')
 
     @abstractmethod
     def setName(self, name: str) -> None:
-        raise NotImplementedError
+        raise NotImplementedError('Method setName not implemented')
 
-    @abstractclassmethod
-    def getPrice(cls, self) -> int:
-        raise NotImplementedError
+    @abstractmethod
+    def getPrice(self) -> int:
+        raise NotImplementedError('Method getPrice not implemented')
 
-    @abstractclassmethod
-    def setPrice(cls, self, price: int) -> None:
-        raise NotImplementedError
+    @abstractmethod
+    def setPrice(self, price: int) -> None:
+        raise NotImplementedError('Method setPrice not implemented')
 
-    @abstractclassmethod
-    def isIced(cls, self) -> bool:
-        raise NotImplementedError
+    @abstractmethod
+    def isIced(self) -> bool:
+        raise NotImplementedError('Method isIced not implemented')
 
-    @abstractclassmethod
-    def setIced(cls, self, iced: bool) -> None:
-        raise NotImplementedError
+    @abstractmethod
+    def setIced(self, iced: bool) -> None:
+        raise NotImplementedError('Method setIced not implemented')

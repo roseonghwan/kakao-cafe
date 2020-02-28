@@ -1,13 +1,14 @@
-from com.kakao.cafe.menu.tea_menu.tea import Tea
+from com.kakao.cafe.menu.tea.tea import Tea
 
 
-class ChamomileTea(Tea):
+class RooibosTea(Tea):
     def __init__(self):
         super().__init__()
-        self.__chamomileTea = 1
-        self.name = ChamomileTea
-        self.__price = 3500
-        self.__water = 400
+
+        self.__roobibosTea = 1
+        self.name = "RooibosTea"
+        self.__price = 4000
+        self.__water = 300
 
     def getName(self) -> str:
         return self.name
@@ -33,12 +34,12 @@ class ChamomileTea(Tea):
     def setWater(self, water: int) -> None:
         self.__water = water
 
-    def getchamomileTea(self) -> int:
-        return self.__chamomileTea
+    def getRooibosTea(self) -> int:
+        return self.__roobibosTea
 
-    def setchamomileTea(self, chamomileTea: int) -> None:
-        self.__chamomileTea = chamomileTea
+    def setRooibosTea(self, roobibosTea: int) -> None:
+        self.__roobibosTea = roobibosTea
 
-    def addChamomileTea(self, amount: int) -> None:
-        self.setchamomileTea(self.getchamomileTea() + amount)
-        self.setPrice(self.getPrice() + amount * 500)
+    def addRooibosTea(self, amount: int) -> None:
+        self.setRooibosTea(self.getRooibosTea() + amount)
+        self.setPrice(self.getPrice() + amount * 700)

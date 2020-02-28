@@ -1,4 +1,4 @@
-from com.kakao.cafe.menu.tea_menu.milktea import MilkTea
+from com.kakao.cafe.menu.tea.milkTea import MilkTea
 
 
 class MatchaMilkTea(MilkTea):
@@ -61,7 +61,7 @@ class MatchaMilkTea(MilkTea):
         self.__condensedMilk = condensedMilk
 
     def addBlackTea(self, amount: int) -> None:
-        self.setBlackTea(self.getBlackTea(+amount))
+        self.setBlackTea(self.getBlackTea() + amount)
         self.setPrice(self.getPrice() + amount * 500)
 
     def subBlackTea(self, amount: int) -> None:

@@ -1,4 +1,4 @@
-from com.kakao.cafe.menu.tea_menu.milktea import MilkTea
+from com.kakao.cafe.menu.tea.milkTea import MilkTea
 
 
 class RoyalMilkTea(MilkTea):
@@ -41,20 +41,20 @@ class RoyalMilkTea(MilkTea):
     def setMilk(self, milk: int) -> None:
         self.__milk = milk
 
-    def getblackTea(self) -> int:
+    def getBlackTea(self) -> int:
         return self.__blackTea
 
-    def setblackTea(self, blackTea: int) -> None:
+    def setBlackTea(self, blackTea: int) -> None:
         self.__blackTea = blackTea
 
-    def getroyalHoney(self) -> int:
+    def getRoyalHoney(self) -> int:
         return self.__royalHoney
 
-    def setroyalHoney(self, royalHoney: int) -> None:
+    def setRoyalHoney(self, royalHoney: int) -> None:
         self.__royalHoney = royalHoney
 
     def addBlackTea(self, amount: int) -> None:
-        self.setblackTea(self.getblackTea() + amount)
+        self.setBlackTea(self.getBlackTea() + amount)
         self.setPrice(self.getPrice() + amount * 500)
 
     def subBlackTea(self, amount: int) -> None:
@@ -62,8 +62,8 @@ class RoyalMilkTea(MilkTea):
             raise ValueError
             print("You can't subtract more blacktea.")
         else:
-            self.setblackTea(self.getblackTea() - amount)
+            self.setBlackTea(self.getBlackTea() - amount)
 
     def addRoyalHoney(self, amount: int) -> None:
-        self.setroyalHoney(self.getroyalHoney() + amount)
+        self.setRoyalHoney(self.getRoyalHoney() + amount)
         self.setPrice(self.getPrice() + amount * 1000)
