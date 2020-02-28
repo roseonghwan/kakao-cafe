@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 
 class CafeMenu(metaclass=ABCMeta):
     def __init__(self):
-        self.name = ""
+        self.name = ''
         self.__price = 0
         self._iced = False
 
