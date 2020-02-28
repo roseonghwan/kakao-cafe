@@ -5,7 +5,7 @@ class BerryBerrySmoothie(Smoothie):
     def __init__(self):
         super().__init__()
         self.__mixedBerry = 1
-        self.name = "BerryBerrySmoothie"
+        self.name = 'BerryBerrySmoothie'
         self.__price = 5000
         self.__groundIce = 400
 
@@ -14,6 +14,7 @@ class BerryBerrySmoothie(Smoothie):
 
     def setName(self, name: str) -> None:
         self.name = name
+        return
 
     def getPrice(self) -> int:
         return self.__price
@@ -21,7 +22,7 @@ class BerryBerrySmoothie(Smoothie):
     def setPrice(self, price: int) -> None:
         self.__price = price
 
-    def getGroundIce(self) -> None:
+    def getGroundIce(self) -> int:
         return self.__groundIce
 
     def setGroundIce(self, groundIce: int) -> None:
@@ -43,3 +44,4 @@ class BerryBerrySmoothie(Smoothie):
     def addBerry(self, amount: int) -> None:
         self.setMixedBerry(self.getMixedBerry() + amount)
         self.setPrice(self.getPrice() + amount * 500)
+        return

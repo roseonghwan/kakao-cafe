@@ -9,9 +9,9 @@ class Smoothie(CafeMenu, metaclass=ABCMeta):
         self._iced = True
 
     @abstractmethod
-    def getGroundIce(self) -> None:
-        raise NotImplementedError("Method getGroundIce not implemented")
+    def getGroundIce(self) -> int:
+        raise NotImplementedError('Method getGroundIce is not implemented.')
 
     @abstractmethod
-    def setGroundIce(self, groundIce: int) -> int:
-        raise NotImplementedError("Method setGroundIce not implemented")
+    def setGroundIce(self, groundIce) -> None:
+        raise NotImplementedError('Method setGroundIce is not implemented.')

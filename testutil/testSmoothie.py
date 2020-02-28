@@ -8,7 +8,6 @@ import unittest
 
 class TestSmoothie(unittest.TestCase):
     def setUp(self):
-
         self.berryBerrySmoothie = BerryBerrySmoothie()
         self.berryBerrySmoothie.addBerry(5)
 
@@ -31,7 +30,6 @@ class TestSmoothie(unittest.TestCase):
         )
 
     def testBerryBerrySmoothie(self):
-
         self.assertEqual(self.berryBerrySmoothie.getName(),
                          "BerryBerrySmoothie")
         self.assertEqual(self.berryBerrySmoothie.getPrice(), 7500)
