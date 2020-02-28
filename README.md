@@ -8,7 +8,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
 [![Slack](https://img.shields.io/badge/chat%20on-Slack-53185A)](https://jonnafamily.slack.com/)
-[![Notion](https://img.shields.io/badge/spec-Notion-51525A)](https://www.notion.so/jonnafamily/OOP-Practice-024aa342c3174aff9f35415f8a79b72d)
+[![Notion](https://img.shields.io/badge/spec-Notion-35363A)](https://www.notion.so/jonnafamily/OOP-Practice-024aa342c3174aff9f35415f8a79b72d)
 
 #
 
@@ -143,29 +143,29 @@ $ virtualenv venv --python=python3
 
 - [x] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
 - [x] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
-- [ ] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
-- [ ] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
+- [x] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
+- [x] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
 
 #
 
-- [ ] 추상 클래스 Tea 구현 및 테스트 코드 작성
-- [ ] IceTea 클래스 구현 및 테스트 코드 작성
-- [ ] GreenTea 클래스 구현 및 테스트 코드 작성
-- [ ] ChamomileTea 클래스 구현 및 테스트 코드 작성
-- [ ] PeppermintTea 클래스 구현 및 테스트 코드 작성
-- [ ] LavenderTea 클래스 구현 및 테스트 코드 작성
-- [ ] RooibosTea 클래스 구현 및 테스트 코드 작성
-- [ ] HibiscusTea 클래스 구현 및 테스트 코드 작성
-- [ ] 추상 클래스 MilkTea 구현 및 테스트 코드 작성
-- [ ] RoyalMilkTea 클래스 구현 및 테스트 코드 작성
-- [ ] MatchaMilkTea 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Tea 구현 및 테스트 코드 작성
+- [x] IceTea 클래스 구현 및 테스트 코드 작성
+- [x] GreenTea 클래스 구현 및 테스트 코드 작성
+- [x] ChamomileTea 클래스 구현 및 테스트 코드 작성
+- [x] PeppermintTea 클래스 구현 및 테스트 코드 작성
+- [x] LavenderTea 클래스 구현 및 테스트 코드 작성
+- [x] RooibosTea 클래스 구현 및 테스트 코드 작성
+- [x] HibiscusTea 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 MilkTea 구현 및 테스트 코드 작성
+- [x] RoyalMilkTea 클래스 구현 및 테스트 코드 작성
+- [x] MatchaMilkTea 클래스 구현 및 테스트 코드 작성
 
 #
 
-- [ ] 추상 클래스 Ade 구현 및 테스트 코드 작성
-- [ ] StrawberryAde 클래스 구현 및 테스트 코드 작성
-- [ ] LemonAde 클래스 구현 및 테스트 코드 작성
-- [ ] OrangeAde 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Ade 구현 및 테스트 코드 작성
+- [x] StrawberryAde 클래스 구현 및 테스트 코드 작성
+- [x] LemonAde 클래스 구현 및 테스트 코드 작성
+- [x] OrangeAde 클래스 구현 및 테스트 코드 작성
 
 #
 
@@ -181,7 +181,7 @@ $ virtualenv venv --python=python3
 
 #
 
-- [ ] Branch 간 Merge 및 Comflict 해결
+- [x] Branch 간 Merge 및 Comflict 해결
 
 #### 결제 모듈 클래스
 
