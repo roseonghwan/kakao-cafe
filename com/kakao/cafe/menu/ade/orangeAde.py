@@ -9,6 +9,7 @@ class OrangeAde(Ade, metaclass=ABCMeta):
         self.name = 'OrangeAde'
         self.__price = 3500
         self.__soda = 300
+        self._iced = True
 
     def getName(self) -> str:
         return self.name
@@ -23,8 +24,14 @@ class OrangeAde(Ade, metaclass=ABCMeta):
         self.__price = price
 
     def isIced(self) -> bool:
-        self._iced = True
-        return self._iced
+        try:
+            if self._iced == True:
+                return self._iced
+            else:
+                raise AttributeError
+
+        except AttributeError:
+            print("에이드는 뜨겁게 드실 수 없습니다.")
 
     def setIced(self, iced: bool) -> None:
         pass
