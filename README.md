@@ -169,15 +169,15 @@ $ virtualenv venv --python=python3
 
 #
 
-- [ ] 추상 클래스 Dessert 구현 및 테스트 코드 작성
-- [ ] NewYorkCheeseCake 클래스 구현 및 테스트 코드 작성
-- [ ] TiramisuCake 클래스 구현 및 테스트 코드 작성
-- [ ] RedVelvetCheeseCake 클래스 구현 및 테스트 코드 작성
-- [ ] RainbowCheeseCake 클래스 구현 및 테스트 코드 작성
-- [ ] 추상 클래스 Waffle 구현 및 테스트 코드 작성
-- [ ] BelgianWaffle 클래스 구현 및 테스트 코드 작성
-- [ ] IceWaffle 클래스 구현 및 테스트 코드 작성
-- [ ] FruitsWaffle 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Dessert 구현 및 테스트 코드 작성
+- [x] NewYorkCheeseCake 클래스 구현 및 테스트 코드 작성
+- [x] TiramisuCake 클래스 구현 및 테스트 코드 작성
+- [x] RedVelvetCheeseCake 클래스 구현 및 테스트 코드 작성
+- [x] RainbowCheeseCake 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Waffle 구현 및 테스트 코드 작성
+- [x] BelgianWaffle 클래스 구현 및 테스트 코드 작성
+- [x] IceWaffle 클래스 구현 및 테스트 코드 작성
+- [x] FruitsWaffle 클래스 구현 및 테스트 코드 작성
 
 #
 
