@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-from com.kakao.cafe.cafeMenu import CafeMenu
+from com.kakao.cafe.menu.cafeMenu import CafeMenu
 from abc import ABCMeta, abstractmethod
 
 
@@ -14,7 +13,4 @@ class Ade(CafeMenu, metaclass=ABCMeta):
 
         @abstractmethod
         def setSoda(self, __soda: int) -> None:
-            raise NotImplementedError
-=======
-
->>>>>>> b0a0d530eb431d5399871a676b9253c996654ee0
+            raise
