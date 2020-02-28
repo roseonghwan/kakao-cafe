@@ -7,6 +7,8 @@
 #
 
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
+[![Slack](https://img.shields.io/badge/chat%20on-Slack-53185A)](https://jonnafamily.slack.com/)
+[![Notion](https://img.shields.io/badge/spec-Notion-51525A)](https://www.notion.so/jonnafamily/OOP-Practice-024aa342c3174aff9f35415f8a79b72d)
 
 #
 
@@ -35,37 +37,88 @@ $ virtualenv venv --python=python3
 
 - #### 비활성화
   ```bash
-  $ deactivate
+  (venv) $ deactivate
   ```
+
+---
 
 ### 의존성 패키지 관리
 
-#### 현재 설치된 패키지들을 저장
+- #### 현재 설치된 패키지들을 저장
 
-```bash
-$ pip freeze > requirements.txt
-```
+  ```bash
+  (venv) $ pip freeze > requirements.txt
+  ```
 
-#### requirements.txt에 저장된 패키지 설치
+- #### requirements.txt에 저장된 패키지 설치
 
-```bash
-$ pip install -r requirements.txt
-```
+  ```bash
+  (venv) $ pip install -r requirements.txt
+  ```
 
-### Makefile을 이용한 구동 및 테스트 단순화
+---
 
-#### Python 단위 테스트
+### make를 이용한 구동 및 테스트 단순화
 
-```bash
-$ make test
-$ make clean
-```
+- #### Python 구동
 
-#### Python 구동
+  ```bash
+  (venv) $ make run
+  ```
 
-```bash
-$ make run
-```
+- #### Python 단위 테스트
+
+  - 모든 테스트 실행
+    
+    ```bash
+    (venv) $ make
+    ```
+
+    ```bash
+    (venv) $ make test
+    ```
+
+  - CafeMenu 테스트
+
+    ```bash
+    (venv) $ make test cafemenu
+    ```
+
+  - Espresso 및 하위 클래스 테스트
+
+    ```bash
+    (venv) $ make test espresso
+    ```
+
+  - Smoothie 및 하위 클래스 테스트
+  
+    ```bash
+    (venv) $ make test smoothie
+    ```
+
+  - Tea 및 하위 클래스 테스트
+
+    ```bash
+    (venv) $ make test tea
+    ```
+
+  - Ade 및 하위 클래스 테스트
+  
+    ```bash
+    (venv) $ make test ade
+    ```
+
+  - Dessert 및 하위 클래스 테스트
+
+    ```bash
+    (venv) $ make test dessert
+    ```
+
+  - Module 및 구현 클래스 테스트
+
+    ```bash
+    (venv) $ make test module
+    ```
 
 #
 
@@ -73,23 +126,23 @@ $ make run
 
 #### 카페 메뉴 클래스
 
-- [ ] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
+- [x] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
 
 #
 
-- [ ] Espresso 클래스 구현 및 테스트 코드 작성
-- [ ] Americano 클래스 구현 및 테스트 코드 작성
-- [ ] Latte 클래스 구현 및 테스트 코드 작성
-- [ ] VanillaLatte 클래스 구현 및 테스트 코드 작성
-- [ ] CaramelMacchiato 클래스 구현 및 테스트 코드 작성
-- [ ] Cappuccino 클래스 구현 및 테스트 코드 작성
-- [ ] CafeMocha 클래스 구현 및 테스트 코드 작성
-- [ ] GreenTeaLatte 클래스 구현 및 테스트 코드 작성
+- [x] Espresso 클래스 구현 및 테스트 코드 작성
+- [x] Americano 클래스 구현 및 테스트 코드 작성
+- [x] Latte 클래스 구현 및 테스트 코드 작성
+- [x] VanillaLatte 클래스 구현 및 테스트 코드 작성
+- [x] CaramelMacchiato 클래스 구현 및 테스트 코드 작성
+- [x] Cappuccino 클래스 구현 및 테스트 코드 작성
+- [x] CafeMocha 클래스 구현 및 테스트 코드 작성
+- [x] GreenTeaLatte 클래스 구현 및 테스트 코드 작성
 
 #
 
-- [ ] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
-- [ ] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
+- [x] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
+- [x] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
 - [ ] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
 
@@ -116,7 +169,19 @@ $ make run
 
 #
 
-- [ ] Commit 내용 통합 및 Comflict 해결
+- [ ] 추상 클래스 Dessert 구현 및 테스트 코드 작성
+- [ ] NewYorkCheeseCake 클래스 구현 및 테스트 코드 작성
+- [ ] TiramisuCake 클래스 구현 및 테스트 코드 작성
+- [ ] RedVelvetCheeseCake 클래스 구현 및 테스트 코드 작성
+- [ ] RainbowCheeseCake 클래스 구현 및 테스트 코드 작성
+- [ ] 추상 클래스 Waffle 구현 및 테스트 코드 작성
+- [ ] BelgianWaffle 클래스 구현 및 테스트 코드 작성
+- [ ] IceWaffle 클래스 구현 및 테스트 코드 작성
+- [ ] FruitsWaffle 클래스 구현 및 테스트 코드 작성
+
+#
+
+- [ ] Branch 간 Merge 및 Comflict 해결
 
 #### 결제 모듈 클래스
 
