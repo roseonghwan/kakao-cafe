@@ -23,23 +23,31 @@ from com.kakao.cafe.menu.tea.royalMilkTea import RoyalMilkTea
 from com.kakao.cafe.menu.tea.matchaMilkTea import MatchaMilkTea
 from com.kakao.cafe.menu.tea.peppermintTea import PeppermintTea
 from com.kakao.cafe.menu.tea.rooibosTea import RooibosTea
+from com.kakao.cafe.menu.dessert.belgianWaffle import BelgianWaffle
+from com.kakao.cafe.menu.dessert.fruitsWaffle import FruitsWaffle
+from com.kakao.cafe.menu.dessert.iceWaffle import IceWaffle
+from com.kakao.cafe.menu.dessert.newYorkCheeseCake import NewYorkCheeseCake
+from com.kakao.cafe.menu.dessert.rainbowCheeseCake import RainbowCheeseCake
+from com.kakao.cafe.menu.dessert.redVelvetCheeseCake import RedVelvetCheeseCake
+from com.kakao.cafe.menu.dessert.tiramisuCake import TiramisuCake
 
 
 class MenuPrinter(CafeWorker):
     def __init__(self):
         self.__menuList = dict()
-        self.__menuList['Coffee'] = list()
+        self.__menuList['Espresso'] = list()
         self.__menuList['Ade'] = list()
         self.__menuList['Smoothie'] = list()
         self.__menuList['Tea'] = list()
-        self.__menuList['Coffee'].append(Espresso())
-        self.__menuList['Coffee'].append(Americano())
-        self.__menuList['Coffee'].append(Latte())
-        self.__menuList['Coffee'].append(GreenTeaLatte())
-        self.__menuList['Coffee'].append(VanillaLatte())
-        self.__menuList['Coffee'].append(CafeMocha())
-        self.__menuList['Coffee'].append(Cappuccino())
-        self.__menuList['Coffee'].append(CaramelMacchiato())
+        self.__menuList['Dessert'] = list()
+        self.__menuList['Espresso'].append(Espresso())
+        self.__menuList['Espresso'].append(Americano())
+        self.__menuList['Espresso'].append(Latte())
+        self.__menuList['Espresso'].append(GreenTeaLatte())
+        self.__menuList['Espresso'].append(VanillaLatte())
+        self.__menuList['Espresso'].append(CafeMocha())
+        self.__menuList['Espresso'].append(Cappuccino())
+        self.__menuList['Espresso'].append(CaramelMacchiato())
         self.__menuList['Ade'].append(LemonAde())
         self.__menuList['Ade'].append(OrangeAde())
         self.__menuList['Ade'].append(StrawberryAde())
@@ -51,27 +59,44 @@ class MenuPrinter(CafeWorker):
         self.__menuList['Tea'].append(HibiscusTea())
         self.__menuList['Tea'].append(IceTea())
         self.__menuList['Tea'].append(LavenderTea())
-        self.__menuList['Tea'].append(MilkTea())
         self.__menuList['Tea'].append(RoyalMilkTea())
         self.__menuList['Tea'].append(MatchaMilkTea())
         self.__menuList['Tea'].append(PeppermintTea())
         self.__menuList['Tea'].append(RooibosTea())
+        self.__menuList['Dessert'].append(BelgianWaffle())
+        self.__menuList['Dessert'].append(FruitsWaffle())
+        self.__menuList['Dessert'].append(IceWaffle())
+        self.__menuList['Dessert'].append(NewYorkCheeseCake())
+        self.__menuList['Dessert'].append(RainbowCheeseCake())
+        self.__menuList['Dessert'].append(RedVelvetCheeseCake())
+        self.__menuList['Dessert'].append(TiramisuCake())
 
     def getMenulist(self) -> dict:
         return self.__menuList
 
-    def Print(self):
-        print("Kakao Cafe")
-        print("----------------------------------------")
+    def Print(self) -> None:
+        print("Wellcome to Kakao Cafe!!")
+        print(
+            "------------------------------------------------------------------------------------------------------------------------------------------------------------"
+        )
         for i in self.__menuList:
-            print("%-10s" % i, end="")
-        print()
-        print("----------------------------------------")
-        s = list()
-        for i in self.__menuList:
-            for j in self.__menuList[i]:
-                s[j] += "%-10s" % self.__menuList[i][j].getName()
-                s[j] += "%10s" % self.__menuList[i][j].getPrice()
+            print("|%-30s" % i, end="")
+        print(
+            "\n------------------------------------------------------------------------------------------------------------------------------------------------------------",
+            end="")
+        s = ["", "", "", "", "", "", "", "", "", ""]
+        cnt = 0
+        for i in self.__menuList.keys():
+            cnt = 0
+            for j in range(len(self.__menuList[i])):
+                cnt += 1
+
+                s[cnt] += "| %-23s" % (self.__menuList[i][j].getName())
+                s[cnt] += "%4s  " % (self.__menuList[i][j].getPrice())
+            for j in range(
+                    len(self.__menuList[i]) + 1,
+                    len(self.__menuList['Tea']) + 1):
+                s[j] += "|                              "
 
         for i in range(len(s)):
             print(s[i])
