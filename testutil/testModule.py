@@ -38,21 +38,8 @@ import io
 
 class TestModule(unittest.TestCase):
     def setUp(self):
-        self.menuList = MenuPrinter()
-        try:
-            self.impossible = CafeWorker()
-
-        except TypeError as TE:
-            self.impossible = TE.__str__()
-
-    def testCafeWorker_Instantiation(self):
-        self.assertEqual(
-            self.impossible,
-            "Can't instantiate abstract class CafeWorker with abstract methods Print"
-        )
-
-    def testMenuPrinter_GetMenuList(self):
-        a = {
+        # getter들의 assertEqual을 비교할 self.a를 dict 형태로 선언
+        self.a = {
             'Espresso': [
                 Espresso(),
                 Americano(),
@@ -90,24 +77,70 @@ class TestModule(unittest.TestCase):
                 TiramisuCake()
             ]
         }
-        self.assertEqual(len(self.menuList.getMenulist()), len(a))
+        self.menuList = MenuPrinter()  # getter 테스트하는 MenuPrinter() 객체 선언
+
+        try:
+            self.impossible = CafeWorker()  # 추상클래스 Cafeworker 예외처리
+
+        except TypeError as TE:
+            self.impossible = TE.__str__()
+
+    # cafeWorker.py의 객체가 생성되는지 테스트..
+    def testCafeWorker_Instantiation(self):
+        self.assertEqual(
+            self.impossible,
+            "Can't instantiate abstract class CafeWorker with abstract methods Print"
+        )
+
+    # menuPrinter.py에 있는 getMenuList method를 테스트..
+    def testMenuPrinter_GetMenuList(self):
+        self.assertEqual(len(self.menuList.getMenulist()), len(self.a))
         for i in self.menuList.getMenulist().keys():
             for j in range(len(self.menuList.getMenulist()[i])):
                 self.assertEqual(self.menuList.getMenulist()[i][j].getName(),
-                                 a[i][j].getName())
+                                 self.a[i][j].getName())
                 self.assertEqual(self.menuList.getMenulist()[i][j].getPrice(),
-                                 a[i][j].getPrice())
+                                 self.a[i][j].getPrice())
 
-    def testMenuPrinter_Print(self):
-        with patch('sys.stdout', new=io.StringIO()) as fakeOutput:
-            self.menuList.Print()
-        self.assertEqual(
-            fakeOutput.getvalue(),
-            "Wellcome to Kakao Cafe!!\n------------------------------------------------------------------------------------------------------------------------------------------------------------\n|Espresso                      |Ade                           |Smoothie                      |Tea                           |Dessert                       \n------------------------------------------------------------------------------------------------------------------------------------------------------------\n| Espresso               2500  | LemonAde               3500  | YogurtSmoothie         5000  | ChamomileTea           3500  | BelgianWaffle          5000  \n| Americano              3000  | OrangeAde              3500  | BerryBerrySmoothie     5000  | GreenTea               3000  | FruitsWaffle           6000  \n| Latte                  4000  | StrawberryAde          3500  | PineappleSmoothie      5000  | HibiscusTea            3000  | IceWaffle              6000  \n| GreenTeaLatte          4000  |                              |                              | IceTea                 3000  | NewYorkCheeseCake      5000  \n| VanillaLatte           4000  |                              |                              | LavenderTea            3500  | RainbowCheeseCake      5500  \n| CafeMocha              4000  |                              |                              | RoyalMilkTea           5000  | RedVelvetCheeseCake    6000  \n| Cappuccino             4500  |                              |                              | MatchaMilkTea          4500  | TiramisuCake           5500  \n| CaramelMacchiato       4000  |                              |                              | PeppermintTea          3500  |                              \n|                              |                              |                              | RooibosTea             4000  |                              \n"
-        )
+    # menuPrinter.py에 있는 getEspresso method를 테스트..
+    def testMenuPrinter_GetEspresso(self):
+        for i in range(len(self.a['Espresso'])):
+            self.assertEqual(self.a['Espresso'][i].getName(),
+                             self.menuList.getEspresso()[i].getName())
+            self.assertEqual(self.a['Espresso'][i].getPrice(),
+                             self.menuList.getEspresso()[i].getPrice())
 
-    def testDummy(self):
-        self.assertEqual(True, True)
+    # menuPrinter.py에 있는 getAde method를 테스트..
+    def testMenuPrinter_GetAde(self):
+        for i in range(len(self.a['Ade'])):
+            self.assertEqual(self.a['Ade'][i].getName(),
+                             self.menuList.getAde()[i].getName())
+            self.assertEqual(self.a['Ade'][i].getPrice(),
+                             self.menuList.getAde()[i].getPrice())
+
+    # menuPrinter.py에 있는 getSmoothie method를 테스트..
+    def testMenuPrinter_GetSmoothie(self):
+        for i in range(len(self.a['Smoothie'])):
+            self.assertEqual(self.a['Smoothie'][i].getName(),
+                             self.menuList.getSmoothie()[i].getName())
+            self.assertEqual(self.a['Smoothie'][i].getPrice(),
+                             self.menuList.getSmoothie()[i].getPrice())
+
+    # menuPrinter.py에 있는 geTeat method를 테스트..
+    def testMeunuPrinter_GetTea(self):
+        for i in range(len(self.a['Tea'])):
+            self.assertEqual(self.a['Tea'][i].getName(),
+                             self.menuList.getTea()[i].getName())
+            self.assertEqual(self.a['Tea'][i].getPrice(),
+                             self.menuList.getTea()[i].getPrice())
+
+    # menuPrinter.py에 있는 getDessert method를 테스트..
+    def testMenuPrinter_GetDessert(self):
+        for i in range(len(self.a['Dessert'])):
+            self.assertEqual(self.a['Dessert'][i].getName(),
+                             self.menuList.getDessert()[i].getName())
+            self.assertEqual(self.a['Dessert'][i].getPrice(),
+                             self.menuList.getDessert()[i].getPrice())
 
 
 if __name__ == '__main__':
