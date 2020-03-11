@@ -59,7 +59,6 @@ class TestDessert(unittest.TestCase):
         CompareStrawberry = self.fruitsWaffle.getStrawberry()
         CompareBlueberry = self.fruitsWaffle.getBlueberry()
 
-        #반복문으로 짧게 작성하기
         ComparePrice = self.fruitsWaffle.getPrice()
         self.fruitsWaffle.addWaffle(amount)
         self.assertEqual(self.fruitsWaffle.getnumWaffles(),

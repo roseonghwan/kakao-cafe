@@ -1,4 +1,3 @@
-from com.kakao.cafe.module.menuPrinter import MenuPrinter
 from com.kakao.cafe.menu.espresso.espresso import Espresso
 from com.kakao.cafe.menu.espresso.americano import Americano
 from com.kakao.cafe.menu.espresso.latte import Latte
@@ -31,14 +30,15 @@ from com.kakao.cafe.menu.dessert.rainbowCheeseCake import RainbowCheeseCake
 from com.kakao.cafe.menu.dessert.redVelvetCheeseCake import RedVelvetCheeseCake
 from com.kakao.cafe.menu.dessert.tiramisuCake import TiramisuCake
 from com.kakao.cafe.module.cafeWorker import CafeWorker
+from com.kakao.cafe.module.menuPrinter import MenuPrinter
+from com.kakao.cafe.module.orderTaker import OrderTaker
 import unittest
-from unittest.mock import patch
-import io
 
 
 class TestModule(unittest.TestCase):
     def setUp(self):
         self.menuList = MenuPrinter()
+        self.orderTaker = OrderTaker()
         try:
             self.impossible = CafeWorker()
 
@@ -51,63 +51,12 @@ class TestModule(unittest.TestCase):
             "Can't instantiate abstract class CafeWorker with abstract methods Print"
         )
 
-    def testMenuPrinter_GetMenuList(self):
-        a = {
-            'Espresso': [
-                Espresso(),
-                Americano(),
-                Latte(),
-                GreenTeaLatte(),
-                VanillaLatte(),
-                CafeMocha(),
-                Cappuccino(),
-                CaramelMacchiato()
-            ],
-            'Ade': [LemonAde(), OrangeAde(),
-                    StrawberryAde()],
-            'Smoothie':
-            [YogurtSmoothie(),
-             BerryBerrySmoothie(),
-             PineappleSmoothie()],
-            'Tea': [
-                ChamomileTea(),
-                GreenTea(),
-                HibiscusTea(),
-                IceTea(),
-                LavenderTea(),
-                RoyalMilkTea(),
-                MatchaMilkTea(),
-                PeppermintTea(),
-                RooibosTea()
-            ],
-            'Dessert': [
-                BelgianWaffle(),
-                FruitsWaffle(),
-                IceWaffle(),
-                NewYorkCheeseCake(),
-                RainbowCheeseCake(),
-                RedVelvetCheeseCake(),
-                TiramisuCake()
-            ]
-        }
-        self.assertEqual(len(self.menuList.getMenulist()), len(a))
-        for i in self.menuList.getMenulist().keys():
-            for j in range(len(self.menuList.getMenulist()[i])):
-                self.assertEqual(self.menuList.getMenulist()[i][j].getName(),
-                                 a[i][j].getName())
-                self.assertEqual(self.menuList.getMenulist()[i][j].getPrice(),
-                                 a[i][j].getPrice())
-
-    def testMenuPrinter_Print(self):
-        with patch('sys.stdout', new=io.StringIO()) as fakeOutput:
-            self.menuList.Print()
-        self.assertEqual(
-            fakeOutput.getvalue(),
-            "Wellcome to Kakao Cafe!!\n------------------------------------------------------------------------------------------------------------------------------------------------------------\n|Espresso                      |Ade                           |Smoothie                      |Tea                           |Dessert                       \n------------------------------------------------------------------------------------------------------------------------------------------------------------\n| Espresso               2500  | LemonAde               3500  | YogurtSmoothie         5000  | ChamomileTea           3500  | BelgianWaffle          5000  \n| Americano              3000  | OrangeAde              3500  | BerryBerrySmoothie     5000  | GreenTea               3000  | FruitsWaffle           6000  \n| Latte                  4000  | StrawberryAde          3500  | PineappleSmoothie      5000  | HibiscusTea            3000  | IceWaffle              6000  \n| GreenTeaLatte          4000  |                              |                              | IceTea                 3000  | NewYorkCheeseCake      5000  \n| VanillaLatte           4000  |                              |                              | LavenderTea            3500  | RainbowCheeseCake      5500  \n| CafeMocha              4000  |                              |                              | RoyalMilkTea           5000  | RedVelvetCheeseCake    6000  \n| Cappuccino             4500  |                              |                              | MatchaMilkTea          4500  | TiramisuCake           5500  \n| CaramelMacchiato       4000  |                              |                              | PeppermintTea          3500  |                              \n|                              |                              |                              | RooibosTea             4000  |                              \n"
-        )
-
-    def testDummy(self):
-        self.assertEqual(True, True)
+    def testOrderTaker_GetOrderMenu(self):
+        self.test = list()
+        self.test = ['Espresso', '2잔', 'addChocolatePowder']
+        self._order = self.orderTaker.getordertoCumstomer(
+            ['Espresso', '2잔', 'addChocolatePowder'])
+        self.assertEquals(self.test, self._order)
 
 
 if __name__ == '__main__':
