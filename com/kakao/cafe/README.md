@@ -807,12 +807,12 @@ def setIced(self) -> None:
 
 - 디저트를 녹일 수 있는 melt: 추상 메소드로 NotImplementedError를 발생시킨다.
 
-# 
+#
 
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 NewYorkCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 newYorkCheese의 값을 3으로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5000으로 초기화한다.
@@ -820,7 +820,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -833,12 +833,12 @@ def setIced(self) -> None:
 
 - melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
 
-# 
+#
 
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 TiramisuCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 chocolatePowder의 값을 각각 2와 1로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5500으로 초기화한다.
@@ -846,7 +846,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -868,7 +868,7 @@ def setIced(self) -> None:
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RedVelvetCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 redVelvetPowder의 값을 모두 2로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 6000으로 초기화한다.
@@ -876,7 +876,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -898,7 +898,7 @@ def setIced(self) -> None:
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RainbowCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone의 값을 2로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5500으로 초기화한다.
@@ -906,7 +906,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -938,7 +938,7 @@ def setIced(self) -> None:
 아래는 추상 클래스 Waffle을 상속받은 concrete 클래스 BelgianWaffle에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mapleSyrup의 값을 1로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5000으로 초기화한다.
@@ -946,7 +946,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isMelted: melted의 값을 반환한다.
@@ -970,7 +970,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 와플은 냉동 보관하므로 True를 반환한다.
@@ -1002,7 +1002,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 와플은 냉동 보관하므로 True를 반환한다.
@@ -1076,11 +1076,24 @@ class CafeWorker(metaclass=ABCMeta):
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderTaker에 대한 구현 명세이다.
 
-- 생성자: 
+- 생성자: private list형 멤버 변수 orderList를 선언한다.(OrderChecker에게 넘겨줄 최종리스트 / 예시 참고)
+- ex) 만약 손님이 에스프레소를 주문한다.
+  ['Espresso', 1 ,'addShot', 2.0 ,sizeUp','Grande']
+- private int형 멤버 변수 allPrice를 선언한다.
+  (총 가격을 PaymentManager에게 넘겨줄 변수)
 
-- Print: 주문 안내 메세지를 출력한다.
+- Print: 주문 안내 메세지를 출력하고 번호를 입력하도록 한다.
 
-- takeOrder: 
+- takeOrder
+
+1. 손님이 메뉴리스트에 있는 번호를 입력한 리스트를 받는다.
+2. 리스트를 그 길이만큼 반복하여 하나씩 추출하며 1~30
+   모든메뉴의 번호와 비교한다.
+3. 손님이 입력한 번호와 메뉴 번호가 같으면 orderList에 그 메뉴를 append 해주고, 메뉴의 추가옵션을 차례로 물어본다.
+
+- 3-1. 공통적으로 수량을 물어본다. 그 수량만큼 allPrice에 더해준다.
+
+4. 추가옵션의 메소드에서 추가를 할건지 말건지 물어보고 추가한다면 orderList에 추가옵션을 String형으로 append하고 얼마나 추가할지 물어보고 allPrice에 추가한 가격을 더해준다.
 
 #
 
@@ -1091,9 +1104,9 @@ class CafeWorker(metaclass=ABCMeta):
 - Print: 사용자가 주문한 목록을 출력한다.
 
 - checkOrder: 주문한 내역이 맞는지 확인하고 사용자 입력을 기다린다.
-  
+
   Y나 y, Yes나 yes, 혹은 빈 문자열이 입력되면 주문 내역이 올바른 것으로 간주하고 다음 단계로 넘어간다.
-  
+
   그 외의 경우엔 잘못된 주문이 입력된 것으로 간주하고 첫 결제 화면으로 돌아간다.
 
 #
@@ -1104,7 +1117,7 @@ class CafeWorker(metaclass=ABCMeta):
 
 - Print: 결제 가능한 수단들의 목록을 출력한다.
 
-- 
+-
 
 #
 

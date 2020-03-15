@@ -53,6 +53,6 @@ class TiramisuCake(Dessert, metaclass=ABCMeta):
         self._melted = True
         return self._melted
 
-    def addChocolatePowder(self, amount) -> None:
+    def addChocolatePowder(self, amount: int) -> None:
         self.setChocolatePowder(self.getChocolatePowder() + amount)
         return
