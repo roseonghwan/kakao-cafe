@@ -61,33 +61,33 @@ class OrderTaker(CafeWorker):
             number = menuList[Length]
             #에스프레소
             if number == 1:
-                addName(number)  #orderlist에 getName추가
+                addName(number - 1)  #orderlist에 getName추가
                 askAmount()  #수량 확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 #에스프레소는 차갑게 먹을 수 없으므로 askIced 메소드를 물어볼 필요 없음
             #아메리카노 - 에스프레스 상속
             elif number == 2:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 askIced()  #Iced확인
             #라떼 - 에스프레스 상속
             elif number == 3:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량 확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 askIced()  #Iced 확인
             #그린티라떼 - 라떼 상속
             elif number == 4:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량 확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 askIced()  #Iced 확인
@@ -95,178 +95,178 @@ class OrderTaker(CafeWorker):
                 askCondensedMilk()  #연유 추가 확인
             #바닐라라떼 - 라떼 상속
             elif number == 5:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 askIced()  # Iced 확인
                 askVanillaSyrup()  #바닐라 시업 추가 확인
             #카페모카 - 라떼 상속
             elif number == 6:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 askIced()  # Iced 확인
                 askCafeMocha()  #모카 추가 확인
             #카푸치노 - 라떼 상속
             elif number == 7:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 askIced()  # Iced 확인
                 askCinnamon()  #시나몬 추가 확인
             #카라멜마끼야또 - 라떼 상속
             elif number == 8:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askAddshot()  #샷 추가 확인
                 askSizeUp()  #사이즈업 확인
                 askIced()  # Iced 확인
                 askCaramelSyrup()  #카라멜시럽 추가 확인
             #레몬에이드
             elif number == 9:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 #askIced()  # 뜨겁게 못하시때문에 물어보지않는다.
                 askLemon()  # 레몬 추가 확인
             #오렌지에이드
             elif number == 10:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 #askIced()  # 뜨겁게 못하시때문에 물어보지않는다.
                 askOrange()  # 오렌지 추가 확인
             #딸기에이드
             elif number == 11:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 #askIced()  # 뜨겁게 못하시때문에 물어보지않는다.
                 askStrawberry()  # 딸기 추가 확인
             #요거트스무디
             elif number == 12:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askYogurt()  #요거트 추가 확인
             #블루베리스무디
             elif number == 13:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askBerry()  #블루베리 추가 확인
             #파인애플스무디
             elif number == 14:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askPineapple()  #파인애플 추가 확인
             #카모마일 차
             elif number == 15:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askChamomileTea()  #카모마일 추가 확인
             #그린티
             elif number == 16:
                 addName(number)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
                 askGreenTea()  #그린티추가 그린티 라떼도 있으므로 getPrice가 다를 시 분류해줘야함.
             #히비스커스 티
             elif number == 17:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askHibiscusTea()  #카모마일 추가 확인
             #아이스티
             elif number == 18:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askPeachPowder()  #복숭아 파우더 추가 확인
             #라벤더 티
             elif number == 19:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askLavenderTea()  #라벤더 추가 확인
             #로얄밀크 티
             elif number == 20:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askBlackTea()  #블랙티 추가 확인
                 askRoyalHoney()  #꿀 추가 확인
             #맛차 밀크 티
             elif number == 21:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askBlackTea()  #블랙티 추가 확인
                 askCondensedMilk()  #연유 추가 확인
             #페퍼민트 티
             elif number == 22:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askPeppermintTea()  #페퍼민트 티 추가 확인
             #루이보스 티
             elif number == 23:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askRooibosTea()  #루이보스 티 추가 확인
             #벨기안 와플
             elif number == 24:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askWaffle()  #와플 추가
             #과일 와플
             elif number == 25:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askWaffle()  #와플 추가
                 askFruitsMango()  #망고 추가 확인
                 askFruitsStrawberry()  #딸기 추가 확인
                 askFruitsBlueberry()  # 블루베리 추가 확인
             #아이스크림 와플
             elif number == 26:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askWaffle()  #와플 추가
                 askIceCream()  #아이스크림 추가
             #뉴욕치즈케이크~
             elif number == 27:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
             #무지개치즈케이크
             elif number == 28:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
             #레드벨벳치즈케이크
             elif number == 29:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askRedVelvetPowder()  #레드벨벳 파우더 추가 확인
             #티라미수 케이크
             elif number == 30:
-                addName(number)
+                addName(number - 1)
                 askAmount()  #수량확인
-                addallPrice(number)  # 총 가격을 구하기위해 수량을 넣어줌
+                addAllPrice(number - 1)  # 총 가격을 구하기위해 수량을 넣어줌
                 askChocolatePowder()  #초콜릿 파우더 확인
             else:
                 print(" E R R O R ")
@@ -277,20 +277,22 @@ class OrderTaker(CafeWorker):
     #그 전의 리스트 Length만큼 빼주는 것이다.
     #<완료>
     def addName(self, Menu: int) -> list:
-        if Menu <= 8:  # 1~8 에스프레스
-            self.__orderList.append(MenuPrinter.getEspresso()[Menu].getName())
-        elif Menu <= 11:
-            Menu -= 9  # 9~11 에이드
-            self.__orderList.append(MenuPrinter.getAde()[Menu].getName())
-        elif Menu <= 14:
-            Menu -= 12  # 12~14 스무디
-            self.__orderList.append(MenuPrinter.getSmoothie()[Menu].getName())
-        elif Menu <= 23:
-            Menu -= 15  # 15~ 23 티
-            self.__orderList.append(MenuPrinter.getTea()[Menu].getName())
+        if Menu <= 7:  # 1~8 에스프레스
+            self.__orderList.append(
+                MenuPrinter().getEspresso()[Menu].getName())
+        elif Menu <= 10:
+            Menu -= 8  # 9~11 에이드
+            self.__orderList.append(MenuPrinter().getAde()[Menu].getName())
+        elif Menu <= 13:
+            Menu -= 11  # 12~14 스무디
+            self.__orderList.append(
+                MenuPrinter().getSmoothie()[Menu].getName())
+        elif Menu <= 22:
+            Menu -= 14  # 15~ 23 티
+            self.__orderList.append(MenuPrinter().getTea()[Menu].getName())
         else:
-            Menu -= 24  # 24 ~ 30 디저트
-            self.__orderList.append(MenuPrinter.getDessert()[Menu].getName())
+            Menu -= 23  # 24 ~ 30 디저트
+            self.__orderList.append(MenuPrinter().getDessert()[Menu].getName())
         #return으로 self.__orderList를 해줌.
         return self.__orderList
 
@@ -306,37 +308,35 @@ class OrderTaker(CafeWorker):
             print("수량을 다시 입력해주세요 ")
         return self.__orderList
 
-    def addallPrice(self, price: int) -> list:
-        if price <= 8:  # 1~8 에스프레스
+    def addAllPrice(self, price: int) -> list:
+        if price <= 7:  # 1~8 에스프레스
             self.__allPrice = self.__allPrice + (
-                MenuPrinter.getEspresso()[price].getPrice() *
-                self.__orderList[len - 1])
-        elif price <= 11:
-            price -= 9  # 9~11 에이드
+                MenuPrinter().getEspresso()[price].getPrice() *
+                self.__orderList[1])
+        elif price <= 10:
+            price -= 8  # 9~11 에이드
             self.__allPrice = self.__allPrice + (
-                MenuPrinter.getAde()[price].getPrice() *
-                self.__orderList[len - 1])
-        elif price <= 14:
-            price -= 12  # 12~14 스무디
+                MenuPrinter().getAde()[price].getPrice() * self.__orderList[1])
+        elif price <= 13:
+            price -= 11  # 12~14 스무디
             self.__allPrice = self.__allPrice + (
-                MenuPrinter.getSmoothie()[price].getPrice() *
-                self.__orderList[len - 1])
-        elif price <= 23:
-            price -= 15  # 15~ 23 티
+                MenuPrinter().getSmoothie()[price].getPrice() *
+                self.__orderList[1])
+        elif price <= 22:
+            price -= 14  # 15~ 23 티
             self.__allPrice = self.__allPrice + (
-                MenuPrinter.getTea()[price].getPrice() *
-                self.__orderList[len - 1])
+                MenuPrinter().getTea()[price].getPrice() * self.__orderList[1])
         else:
-            price -= 24  #23 ~ 30 디저트
+            price -= 23  #24 ~ 30 디저트
             self.__allPrice = self.__allPrice + (
-                MenuPrinter.getDessert()[price].getPrice() *
-                self.__orderList[len - 1])
+                MenuPrinter().getDessert()[price].getPrice() *
+                self.__orderList[1])
         return self.__allPrice
 
     #------------------------------Add Options--------------------------
     #샷을 질문하는 메소드
     #<완료>
-    def askAddshot(self) -> float:
+    def askAddshot(self) -> list:
         try:
             print("삿을 추가하시거나 빼시겠습니까? 추가하거나 빼면 : True 기본 : False")
             self.askShot = input()
@@ -367,12 +367,13 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주시기 바랍니다")
         except Exception:
             print("다시 입력해주시기 바랍니다.")
+        return self.__orderList
 
     #hot or ice를 물어보는 메소드
-    def askIced(self) -> bool:
+    def askIced(self) -> list:
         try:
             print("ICE는 True HOT는 False로 입력해주십시오 ")
-            self.ice = input()
+            self.ice = bool(input())
             if self.ice == True:
                 self.__orderList.append('ICE')
             elif self.ice == False:
@@ -381,16 +382,17 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주십시오")
+        return self.__orderList
 
     #사이즈 추가 Espresson method
-    def askSizeUp(self) -> str:
+    def askSizeUp(self) -> list:
         try:
             print("사이즈를 추가하시겠습니까? 추가 : True 기본 : False")
             self.sizeup = input()
             if self.sizeup == True:
                 self.__orderList.append("sizeUp")
                 print("Grande : True , Venti : False")
-                self.Choose = int(input())
+                self.Choose = input()
                 if self.Choose == True:
                     self.__orderList.append('Grande')
                     self.__allPrice = self.__allPrice + 500
@@ -405,14 +407,15 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주십시오")
         except Exception:
             print("다시 입력해주십시오")
+        return self.__orderList
 
     #GreenTea add Option 16 GreenTea
     def askGreenTea(self):
         try:
             print("그린티를 추가하시겠습니까? 추가 : True 기본 : False")
-            self.addGreenTea = input()
+            self.addGreenTea = bool(input())
             if self.addGreenTea == True:
-                self.__orderList.append("addGreanTea")
+                self.__orderList.append('addGreenTea')
                 print("얼만큼 추가하시겠습니까? ")
                 self.addGreenTea = int(input())
                 self.__orderList.append(int(self.addGreenTea))
@@ -424,6 +427,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주십시오")
+        return self.__orderList
 
     #GreenTea condenseMilk Option
     def askCondensedMilk(self):
@@ -442,6 +446,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #VanillaLatte Option
     def askVanillaSyrup(self):
@@ -460,6 +465,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #CafeMocha 카페모카 추가 옵션
     def askCafeMocha(self):
@@ -478,6 +484,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #Cappuccino 카푸치노 추가 옵션
     def askCinnamon(self):
@@ -496,6 +503,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #CaramelMacchiato
     def askCaramelSyrup(self):
@@ -514,6 +522,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #LemonAde 레몬에이드 레몬추가 addOption
     def askLemon(self):
@@ -532,6 +541,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     def askOrange(self):
         try:
@@ -549,6 +559,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #StrawberryAde 딸기 추가
     def askStrawberry(self):
@@ -568,6 +579,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #YogurtSmoothie 요거트 추가
     def askYogurt(self):
@@ -586,6 +598,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #BerryBerrySmoothie 요거트 추가
     def askBerry(self):
@@ -604,6 +617,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #PineappleSmoothie 파인애플 추가
     def askPineapple(self):
@@ -623,6 +637,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #ChamomileTea 카모마일 차
     def askChamomileTea(self):
@@ -642,6 +657,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #HibiscusTea 히비스커스 티?
     def askHibiscusTea(self):
@@ -661,6 +677,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #Icetea 피치파우더
     def askPeachPowder(self):
@@ -680,6 +697,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #LavenderTea
     def askLavenderTea(self):
@@ -699,6 +717,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #RoyalMilkTea BlackTea
     def askBlackTea(self) -> float:
@@ -731,6 +750,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주시기 바랍니다")
         except Exception:
             print("다시 입력해주시기 바랍니다.")
+        return self.__orderList
 
     #royalMilkTea addRoyalHoney
     def askRoyalHoney(self):
@@ -750,6 +770,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #addMatcha matchaMilkTea
     def askMatcha(self):
@@ -768,6 +789,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #addPeppermintTea  peppermintTea
     def askPeppermintTea(self):
@@ -787,6 +809,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #addRooibosTea rooibosTea
     def askRooibosTea(self):
@@ -806,6 +829,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #def addWaffle beiganWaffle FruitsWaffle
     def askWaffle(self):
@@ -825,6 +849,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #def addFruitsMango
     def askFruitsMango(self):
@@ -844,6 +869,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #def addFruitsStrawberry
     def askFruitsStrawberry(self):
@@ -863,6 +889,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #def addFruitsBlueberry
     def askFruitsBlueberry(self):
@@ -882,6 +909,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #def addIceCream iceWaffle
     def askIceCream(self):
@@ -901,6 +929,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #def addRedVelvetPowder
     def askRedVelvetPowder(self):
@@ -920,6 +949,7 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
     #def addChocolatePowder
     def askChocolatePowder(self):
@@ -939,8 +969,9 @@ class OrderTaker(CafeWorker):
                 raise Exception("다시 입력해주세요")
         except Exception:
             print("다시 입력해주세요")
+        return self.__orderList
 
-    def allPrice(self, amount):  #paymentManager에게 줄 allPrice(총 가격) getter
+    def getAllPrice(self):  #paymentManager에게 줄 allPrice(총 가격) getter
         return self.__allPrice
 
     #최종적으로 넘겨줄 리스트 orderList에 의한 getter
