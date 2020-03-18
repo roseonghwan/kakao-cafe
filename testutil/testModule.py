@@ -67,10 +67,10 @@ class TestModule(unittest.TestCase):
 
     def testOrderAddAllPrice(self):
         self.allPriceList = [0]  #0-> Espresso
-        self.allPriceAnswer = 2500  #Espresso Price
+        self.allPriceAnswer = 5000  #Espresso Price
 
         self.orderTaker.getOrderList().append('Espresso')
-        self.orderTaker.getOrderList().append(1)
+        self.orderTaker.getOrderList().append(2)
         with patch('builtins.input', side_effect=self.allPriceList):
             ans = self.orderTaker.addAllPrice(0)
         print(self.orderTaker.getAllPrice())
