@@ -19,7 +19,6 @@ import time  #영수증 출력할 때 주문시간을 나오게 하기 위해서
 6-1 receiptPrinter는 영수증에서 날짜를 출력하기 때문에 주문하는 즉시 시간을 나타낼 수 있도록 한다.
 6-2 리스트에 넣어서 getter를 만들어준다.
 ** self.orderList 예제 : ['Espresso', '2', 'addShot', 2, 'newYorkCheeseCake']
-['Espresso', 2, 'ICE', 
 '''
 
 
@@ -27,7 +26,7 @@ class OrderTaker(CafeWorker):
     def __init__(self):
         self.__orderList = []  #멤버변수 orderList 최종적으로 넘겨줄 리스트
         self.__allPrice = int()  #총 가격을 더할 멤버 변수
-        self.addList = []
+        self.addList = [] #
 
     def Print(self) -> None:
         print("---------------주문 안내 메시지---------------")
@@ -39,6 +38,7 @@ class OrderTaker(CafeWorker):
         #손님이 주문한 번호와 같은지 판별헤서 같으면 메뉴에 관한 옵션을 출력함.
         for Length in range(len(menuList)):  #손님에게 주문받은 ordertoCustmore만큼 반복
             #손님이 주문한 번호를 간략하게 바꿔놓는다.
+            self.addList = [] # 돌아 왔을 때 다시 초기화
             number = menuList[Length]
             #에스프레소
             if number == 1:
