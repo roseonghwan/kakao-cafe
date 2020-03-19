@@ -26,7 +26,7 @@ class OrderTaker(CafeWorker):
     def __init__(self):
         self.__orderList = []  #멤버변수 orderList 최종적으로 넘겨줄 리스트
         self.__allPrice = int()  #총 가격을 더할 멤버 변수
-        self.addList = [] #
+        self.addList = []  #
 
     def Print(self) -> None:
         print("---------------주문 안내 메시지---------------")
@@ -38,7 +38,7 @@ class OrderTaker(CafeWorker):
         #손님이 주문한 번호와 같은지 판별헤서 같으면 메뉴에 관한 옵션을 출력함.
         for Length in range(len(menuList)):  #손님에게 주문받은 ordertoCustmore만큼 반복
             #손님이 주문한 번호를 간략하게 바꿔놓는다.
-            self.addList = [] # 돌아 왔을 때 다시 초기화
+            self.addList = []  # 돌아 왔을 때 다시 초기화
             number = menuList[Length]
             #에스프레소
             if number == 1:
@@ -690,7 +690,7 @@ class OrderTaker(CafeWorker):
     #HibiscusTea 히비스커스 티?
     def askHibiscusTea(self):
         try:
-            print("카모마일을 추가하시겠습니까? 추가 : True 기본 : False\n")
+            print("히비스커스을 추가하시겠습니까? 추가 : True 기본 : False\n")
             self.addHibiscusTea = input()
             if self.addHibiscusTea == True:
                 self.addList.append("addHibiscusTea")
@@ -1005,3 +1005,6 @@ class OrderTaker(CafeWorker):
     #최종적으로 넘겨줄 리스트 orderList에 의한 getter
     def getOrderList(self) -> list:
         return self.__orderList
+
+    def getAddlist(self) -> list:
+        return self.addList

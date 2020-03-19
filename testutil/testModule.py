@@ -69,8 +69,8 @@ class TestModule(unittest.TestCase):
         self.allPriceList = [0]  #0-> Espresso
         self.allPriceAnswer = 5000  #Espresso Price
 
-        self.orderTaker.getOrderList().append('Espresso')
-        self.orderTaker.getOrderList().append(2)
+        self.orderTaker.getAddlist().append('Espresso')
+        self.orderTaker.getAddlist().append(2)
         with patch('builtins.input', side_effect=self.allPriceList):
             ans = self.orderTaker.addAllPrice(0)
         print(self.orderTaker.getAllPrice())
@@ -82,6 +82,13 @@ class TestModule(unittest.TestCase):
         with patch('builtins.input', side_effect=self.addshotList):
             ans = self.orderTaker.askAddshot()
         self.assertEqual(ans, self.addshotAnswer)
+
+    def testOrderTaker_AskIceOrHot(self):
+        self.addIceOrHot = [True]
+        self.addIceOrHotAnswer = ['ICE']
+        with patch('builtins.input', side_effect=self.addIceOrHot):
+            ans = self.orderTaker.askIceOrHot()
+        self.assertEqual(ans, self.addIceOrHotAnswer)
 
     def testOrderTaker_askSizeUp(self):
         self.askSizeUpList = [True, False]
