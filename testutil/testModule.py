@@ -1,3 +1,7 @@
+from com.kakao.cafe.module.menuPrinter import MenuPrinter
+from com.kakao.cafe.module.orderTaker import OrderTaker
+from com.kakao.cafe.module.cafeWorker import CafeWorker
+from com.kakao.cafe.module.orderChecker import OrderChecker
 from com.kakao.cafe.menu.espresso.espresso import Espresso
 from com.kakao.cafe.menu.espresso.americano import Americano
 from com.kakao.cafe.menu.espresso.latte import Latte
@@ -29,34 +33,38 @@ from com.kakao.cafe.menu.dessert.newYorkCheeseCake import NewYorkCheeseCake
 from com.kakao.cafe.menu.dessert.rainbowCheeseCake import RainbowCheeseCake
 from com.kakao.cafe.menu.dessert.redVelvetCheeseCake import RedVelvetCheeseCake
 from com.kakao.cafe.menu.dessert.tiramisuCake import TiramisuCake
-from com.kakao.cafe.module.cafeWorker import CafeWorker
-from com.kakao.cafe.module.menuPrinter import MenuPrinter
-from com.kakao.cafe.module.orderTaker import OrderTaker
+
 import unittest
+from unittest.mock import patch
+
+import sys
+from io import StringIO
 
 
 class TestModule(unittest.TestCase):
     def setUp(self):
-        self.menuList = MenuPrinter()
+        self.testList = list()
+        self.menuPrinter = MenuPrinter()
         self.orderTaker = OrderTaker()
+        self.orderChecker = OrderChecker()
         try:
             self.impossible = CafeWorker()
 
         except TypeError as TE:
             self.impossible = TE.__str__()
 
-    def testCafeWorker_Instantiation(self):
-        self.assertEqual(
-            self.impossible,
-            "Can't instantiate abstract class CafeWorker with abstract methods Print"
-        )
+    def testOrderChecker_AskOrderList(self):
+        self.askOrderList = ['yes']
+        self.answeraskOrderList = True
+        with patch('builtins.input', side_effect=self.askOrderList):
+            ans = OrderChecker().askOrderList()
+        self.assertEqual(ans, self.answeraskOrderList)
 
-    def testOrderTaker_GetOrderMenu(self):
-        self.test = list()
-        self.test = ['Espresso', '2잔', 'addChocolatePowder']
-        self._order = self.orderTaker.getordertoCumstomer(
-            ['Espresso', '2잔', 'addChocolatePowder'])
-        self.assertEquals(self.test, self._order)
+        self.askOrderList = ['no']
+        self.answeraskOrderList = False
+        with patch('builtins.input', side_effect=self.askOrderList):
+            ans = OrderChecker().askOrderList()
+        self.assertEqual(ans, self.answeraskOrderList)
 
 
 if __name__ == '__main__':
