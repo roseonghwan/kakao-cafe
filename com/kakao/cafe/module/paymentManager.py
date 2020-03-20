@@ -16,7 +16,6 @@ class PaymentManager:
         select_example = {  #결제  보기
             1: "카드",
             2: "현금",
-            3: "기프티콘"
         }  # key가 번호이고 value가 결제수단인 딕셔너리
         try:
             print("\n1. 카드 \n2. 현금")  # 보기 출력
@@ -28,9 +27,6 @@ class PaymentManager:
                 return self.cardPay()
             elif self.getPaymentSystem() == "현금":  # 현금결제로 진행
                 return self.cashPay()
-            else:  # 기프티콘 결제로 진행
-                return self.gifticonPay()
-
         except ValueError:  # 입력한 수가 숫자가 아닌 경우
             print("보기를 보고 다시 입력하세요.")
         except KeyError:  # 입력한 숫자가 select_example의 key값들이 아닌 경우

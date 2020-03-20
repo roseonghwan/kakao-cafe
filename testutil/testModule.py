@@ -87,7 +87,7 @@ class TestModule(unittest.TestCase):
         self.assertEqual(self.paymentManager.getPaymentSystem(),
                          "현금")  # 현금으로 결제한게 맞는지 확인
         self.assertEqual(self.paymentManager.getChange(), current_cash -
-                         self.orderTaker.getAllPrice())  # 거스름돈이 맞는지 테스트
+                         self.paymentManager.getTotalPrice())  # 거스름돈이 맞는지 테스트
 
 
 if __name__ == '__main__':
