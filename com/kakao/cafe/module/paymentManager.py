@@ -36,8 +36,7 @@ class PaymentManager:
         select_example = {1: "예", 2: "아니요"}  # 포인트를 사용할지 여부
         if self.__cardBalance >= self.totalPrice:
             try:
-                select = int(input("포인트를 사용하시겠습니까?\t"))
-                print("\n1. 예\n2. 아니오")
+                select = int(input("포인트를 사용하시겠습니까?(1. 예 2. 아니오)\t"))
                 if select == 1:  # 포인트를 사용해 할인되어 결제하는 경우
                     self.totalPrice -= self.getPoint()
                     self.__cardBalance -= self.totalPrice
@@ -54,7 +53,6 @@ class PaymentManager:
                 print("보기를 보고 다시 입력하세요.")
         else:
             print("잔액이 부족합니다.")
-        return self.__point
 
     def cashPay(self):  # 현금결제
         if self.__cash >= self.totalPrice:

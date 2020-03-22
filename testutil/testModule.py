@@ -69,11 +69,11 @@ class TestModule(unittest.TestCase):
                          "카드")  # 카드로 결제한게 맞는지 확인
         self.assertEqual(self.paymentManager.getPoint(),
                          current_point + self.orderTaker.getAllPrice() *
-                         0.03)  # 포인트를 사용하지 않고!! 적립하여 포인트 테스트
+                         0.03)  # 포인트를 사용하지 않고!! 적립하여 포인트 테스트(2번 선택)
         self.assertEqual(self.paymentManager.getPoint(),
-                         0)  # 포인트를 사용하여!! 포인트가 0이 되는 것을 테스트
+                         0)  # 포인트를 사용하여!! 포인트가 0이 되는 것을 테스트(1번 선택)
         self.assertEqual(self.paymentManager.getTotalPrice(), current_price -
-                         current_point)  # 포인트를 사용하여!! 할인된 총 가격을 테스트
+                         current_point)  # 포인트를 사용하여!! 할인된 총 가격을 테스트(1번 선택)
 
     def testPaymentSystem_cashPay(self):  # 현금결제 테스트
         self.paymentManager.setCash(10000)
