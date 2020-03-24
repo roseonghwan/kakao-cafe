@@ -60,6 +60,8 @@ class ReceiptPrinter(CafeWorker):
                         print("%-25s%15s%16d" %
                               (self.name + "(" + self.hot_ice + ")", "|",
                                self.amount))
+                    else:
+                        print("%-25s%15s%16d" % (self.name, "|", self.amount))
                 except IndexError:
                     print("%-25s%15s%16d" % (self.name, "|", self.amount))
 
