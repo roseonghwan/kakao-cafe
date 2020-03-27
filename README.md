@@ -1,29 +1,29 @@
 # 카카오의 신입 개발자가 된 존나팸!
 
-# OT가 끝난 직후 한통의 [메일](https://github.com/joshua-dev/kakao-cafe/blob/master/com/kakao/cafe/README.md)을 받게 되는데...
+# OT가 끝난 직후 한통의 [**메일**](https://github.com/joshua-dev/kakao-cafe/blob/master/com/kakao/cafe/README.md)을 받게 되는데...
 
 ![Thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
 
-#
+<br>
 
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
-[![Slack](https://img.shields.io/badge/chat%20on-Slack-53185A)](https://jonnafamily.slack.com/)
-[![Notion](https://img.shields.io/badge/spec-Notion-35363A)](https://www.notion.so/jonnafamily/OOP-Practice-024aa342c3174aff9f35415f8a79b72d)
+[![Slack](https://img.shields.io/badge/chat%20on-Slack-4A154B)](https://jonnafamily.slack.com/)
+[![Notion](https://img.shields.io/badge/spec-Notion-000000)](https://www.notion.so/jonnafamily)
 
-#
+<br>
 
 ## :pushpin: Tips
 
 ### Python virtualenv, virtualenvwrapper 설치
 
-```bash
+```shell
 $ pip3 install --upgrade pip
 $ pip install virtualenv virtualenvwrapper
 ```
 
 ### 가상환경 생성
 
-```bash
+```shell
 $ virtualenv venv --python=python3
 ```
 
@@ -31,96 +31,98 @@ $ virtualenv venv --python=python3
 
 - #### 활성화
 
-  ```bash
+  ```shell
   $ source venv/bin/activate
   ```
 
 - #### 비활성화
-  ```bash
+  ```shell
   (venv) $ deactivate
   ```
 
----
+<br>
 
 ### 의존성 패키지 관리
 
 - #### 현재 설치된 패키지들을 저장
 
-  ```bash
+  ```shell
   (venv) $ pip freeze > requirements.txt
   ```
 
 - #### requirements.txt에 저장된 패키지 설치
 
-  ```bash
+  ```shell
   (venv) $ pip install -r requirements.txt
   ```
 
----
+<br>
 
 ### make를 이용한 구동 및 테스트 단순화
 
 - #### Python 구동
 
-  ```bash
+  ```shell
   (venv) $ make run
   ```
+<br>
 
 - #### Python 단위 테스트
 
   - 모든 테스트 실행
     
-    ```bash
+    ```shell
     (venv) $ make
     ```
-
-    ```bash
+    
+    ```shell
     (venv) $ make test
     ```
-
+    <br><br>
   - CafeMenu 테스트
 
-    ```bash
+    ```shell
     (venv) $ make test cafemenu
     ```
-
+    <br><br>
   - Espresso 및 하위 클래스 테스트
 
-    ```bash
+    ```shell
     (venv) $ make test espresso
     ```
-
+    <br><br>
   - Smoothie 및 하위 클래스 테스트
   
-    ```bash
+    ```shell
     (venv) $ make test smoothie
     ```
-
+    <br><br>
   - Tea 및 하위 클래스 테스트
 
-    ```bash
+    ```shell
     (venv) $ make test tea
     ```
-
+    <br><br>
   - Ade 및 하위 클래스 테스트
   
-    ```bash
+    ```shell
     (venv) $ make test ade
     ```
-
+    <br><br>
   - Dessert 및 하위 클래스 테스트
 
-    ```bash
+    ```shell
     (venv) $ make test dessert
     ```
-
+    <br><br>
   - Module 및 구현 클래스 테스트
 
-    ```bash
+    ```shell
     (venv) $ make test module
     ```
+  
+  <br>
 
-#
 
 ## :white_check_mark: TODO
 
@@ -128,7 +130,7 @@ $ virtualenv venv --python=python3
 
 - [x] 추상 클래스 CafeMenu 구현 및 테스트 코드 작성
 
-#
+<br>
 
 - [x] Espresso 클래스 구현 및 테스트 코드 작성
 - [x] Americano 클래스 구현 및 테스트 코드 작성
@@ -139,14 +141,14 @@ $ virtualenv venv --python=python3
 - [x] CafeMocha 클래스 구현 및 테스트 코드 작성
 - [x] GreenTeaLatte 클래스 구현 및 테스트 코드 작성
 
-#
+<br>
 
 - [x] 추상 클래스 Smoothie 구현 및 테스트 코드 작성
 - [x] BerryBerrySmoothie 클래스 구현 및 테스트 코드 작성
 - [x] PineappleSmoothie 클래스 구현 및 테스트 코드 작성
 - [x] YogurtSmoothie 클래스 구현 및 테스트 코드 작성
 
-#
+<br>
 
 - [x] 추상 클래스 Tea 구현 및 테스트 코드 작성
 - [x] IceTea 클래스 구현 및 테스트 코드 작성
@@ -160,14 +162,14 @@ $ virtualenv venv --python=python3
 - [x] RoyalMilkTea 클래스 구현 및 테스트 코드 작성
 - [x] MatchaMilkTea 클래스 구현 및 테스트 코드 작성
 
-#
+<br>
 
 - [x] 추상 클래스 Ade 구현 및 테스트 코드 작성
 - [x] StrawberryAde 클래스 구현 및 테스트 코드 작성
 - [x] LemonAde 클래스 구현 및 테스트 코드 작성
 - [x] OrangeAde 클래스 구현 및 테스트 코드 작성
 
-#
+<br>
 
 - [x] 추상 클래스 Dessert 구현 및 테스트 코드 작성
 - [x] NewYorkCheeseCake 클래스 구현 및 테스트 코드 작성
@@ -179,9 +181,11 @@ $ virtualenv venv --python=python3
 - [x] IceWaffle 클래스 구현 및 테스트 코드 작성
 - [x] FruitsWaffle 클래스 구현 및 테스트 코드 작성
 
-#
+<br>
 
 - [x] Branch 간 Merge 및 Comflict 해결
+
+<br>
 
 #### 결제 모듈 클래스
 
@@ -193,15 +197,13 @@ $ virtualenv venv --python=python3
 - [ ] ReceiptPrinter 클래스 구현 및 테스트 코드 작성
 - [ ] 메인 모듈 구현
 
+<br>
+
 #### 기타
 
 - [ ] 예외 처리
-- [ ] 테스트 코드 추상화
-- [ ] 디자인 패턴과 Code Refactoring
-  - Factory pattern
-  - Iterator pattern
-  - Composite pattern
-- [ ] 함수형 프로그래밍과 고계 함수
+
+<br>
 
 #### 추가 기능
 
@@ -211,7 +213,7 @@ $ virtualenv venv --python=python3
 - [ ] 시즌 한정 메뉴
 - [ ] 영업 시간
 
-#
+<br><br>
 
 ## :octocat: Git
 
@@ -224,6 +226,8 @@ $ git config --global core.precomposeunicode true
 $ git config --global core.quotepath false
 </pre>
 
+<br>
+
 #### Git 프로젝트 디렉토리 생성 및 원격 저장소 연결
 
 <pre>
@@ -234,11 +238,15 @@ $ git remote add origin <b><i>YOUR_GIT_REPOSITORY_ADDRESS</i></b>
 $ git pull origin master
 </pre>
 
+<br>
+
 #### Git branch 생성
 
 <pre>
 $ git branch <b><i>YOUR_BRANCH_NAME</i></b>
 </pre>
+
+<br>
 
 #### Git branch 변경
 
@@ -246,17 +254,23 @@ $ git branch <b><i>YOUR_BRANCH_NAME</i></b>
 $ git checkout <b><i>YOUR_BRANCH_NAME</i></b>
 </pre>
 
+<br>
+
 #### 현재 Git 레포지토리 상태 확인
 
-```bash
+```shell
 $ git fetch
 ```
 
+<br>
+
 #### 현재 Git 디렉토리 상태 확인
 
-```bash
+```shell
 $ git status
 ```
+
+<br>
 
 #### Git에 커밋하기
 
@@ -266,6 +280,6 @@ $ git commit -m <b><i>"COMMIT_MESSAGE"</i></b>
 $ git push origin <b><i>YOUR_BRANCH_NAME</i></b>
 </pre>
 
----
+<br><br>
 
-### [LICENSE](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
+## [LICENSE](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
