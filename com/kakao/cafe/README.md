@@ -807,12 +807,12 @@ def setIced(self) -> None:
 
 - 디저트를 녹일 수 있는 melt: 추상 메소드로 NotImplementedError를 발생시킨다.
 
-# 
+#
 
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 NewYorkCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 newYorkCheese의 값을 3으로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5000으로 초기화한다.
@@ -820,7 +820,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -833,12 +833,12 @@ def setIced(self) -> None:
 
 - melt: 케이크를 살짝 녹여 melted의 값을 True로 바꾼다.
 
-# 
+#
 
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 TiramisuCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 chocolatePowder의 값을 각각 2와 1로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5500으로 초기화한다.
@@ -846,7 +846,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -868,7 +868,7 @@ def setIced(self) -> None:
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RedVelvetCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 redVelvetPowder의 값을 모두 2로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 6000으로 초기화한다.
@@ -876,7 +876,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -898,7 +898,7 @@ def setIced(self) -> None:
 아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RainbowCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone의 값을 2로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5500으로 초기화한다.
@@ -906,7 +906,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 케이크는 냉동 보관하므로 True를 반환한다.
@@ -938,7 +938,7 @@ def setIced(self) -> None:
 아래는 추상 클래스 Waffle을 상속받은 concrete 클래스 BelgianWaffle에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mapleSyrup의 값을 1로 초기화한다.
-  
+
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
   멤버 변수 price의 값을 5000으로 초기화한다.
@@ -946,7 +946,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isMelted: melted의 값을 반환한다.
@@ -970,7 +970,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 와플은 냉동 보관하므로 True를 반환한다.
@@ -1002,7 +1002,7 @@ def setIced(self) -> None:
   멤버 변수 iced의 값을 True로 초기화한다.
 
 - name에 대한 getter와 setter
-  
+
 - price에 대한 getter와 setter
 
 - isIced: 와플은 냉동 보관하므로 True를 반환한다.
@@ -1076,11 +1076,133 @@ class CafeWorker(metaclass=ABCMeta):
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderTaker에 대한 구현 명세이다.
 
-- 생성자: 
+- 생성자: private list형 멤버 변수 orderList를 선언한다.(OrderChecker에게 넘겨줄 최종리스트 / 예시 참고)
+- ex) 만약 손님이 에스프레소를 주문한다.
+  ['Espresso', 1 ,'addShot', 2.0 ,sizeUp','Grande']
+- private int형 멤버 변수 allPrice를 선언한다.
+  (총 가격을 PaymentManager에게 넘겨줄 변수)
+- public list형 addList를 선언한다.
+  (만약 손님이 4개의 메뉴주문을 하면 메뉴 1개씩 차례대로 주문받고 최종리스트에 넣기위한 리스트)
+- 나중에 중첩되는 추가옵션을 가진 메뉴가 또 나올 수 있기때문에 메소드로 구현하여 반복하여 추가하지 않고 불러올 수 있게 했다.
 
-- Print: 주문 안내 메세지를 출력한다.
+- Print: 주문 안내 메세지를 출력하고 번호를 입력하도록 한다.
 
-- takeOrder: 
+- takeOrder 메소드에 대한 설명
+
+1. 손님이 메뉴리스트에 있는 번호를 입력한 리스트를 받는다.
+2. 리스트를 그 길이만큼 반복하여 하나씩 추출하며 1~30
+   모든메뉴의 번호와 비교한다.
+
+3. 손님이 입력한 번호와 메뉴 번호가 같으면 addList에 그 메뉴를 append 해주고, 메뉴의 추가옵션을 차례로 물어본다.
+
+4. 공통적으로 수량을 물어본다. 그 수량만큼 allPrice에 더해준다. 수량만큼 추가옵션을 반복하여 수량에 맞고 추가옵션을 들어오도록 한다.
+
+5. 추가옵션의 메소드에서 추가를 할건지 말건지 물어보고 추가한다면 addList에 추가옵션 name을 String형으로 append하고 얼마나 수량은 int형으로 append 추가한다. 그리고 allPrice에 (추가한 수량 X 추가 가격)을 더해준다.
+
+6. 한 메뉴의 공통적인 addName, askMount, askIceOrHot, addAllPrice 메소드 + 추가 옵션 메소드를 실행하여 append된 addList를 최종적인 리스트 orderList에 넣어준다.
+   그리고 나서 다시 처음으로 돌아가 addList와 allPrice를 초기화해준다.(다음 메뉴를 새로 추가하기 위해서)
+
+- 추가옵션 메소드
+
+1. addName()
+   손님이 주문한 번호를 가져와 -1 빼준다. 그 이유는 손님이 주문한 번호는 1부터 시작하고 리스트의 시작은 0부터 시작하기 때문이다. 그 수에 대한 MenuPrinter().getMenu()에 모아둔 리스트의 getName()을 addList에 넣어준다.
+
+2. askAmount()
+   손님에게 얼마만큼의 수량을 주문할지 물어보고 addList에 추가해준다.
+
+3. askIceOrHot() , confirmIce(), confirmHot()
+   아메리카노와 히비스커스 티 같은 커피와 티 종류에는 ICE와 HOT을 둘다 제조할 수 있기때문에 askIceOrHot()을 만들었고 addIce(), addHot()은 고정적으로 존재하는 메뉴에 의해 만들었다.
+
+4. askAddshot()
+   에스프레소 등과 같은 샷에 대해 추가하거나 뺄 수 있는 메뉴들을 위해 구현한 메소드. 처음에는 샷추가하거나 빼거나, 기본을 물어보고 샷추가나 뺀다고 하면 다시 샷추가, 샷빼기를 물어본다. 샷은 실수로 이어져있기 때문에 구분하기 위해 실수로 input한다.
+
+5. askSizeUp()
+   커피나 티, 스무디 같은 메뉴들을 위한 사이즈 업 메소드이다. 사이즈 업 메뉴에는 Grande, Venti 두종류로 나누어 손님에게 물어본다.
+
+6. askGreenTea()
+   그린티 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+7. askCondensedMilk()
+   연유 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+8. askVanillaSyrup()
+   바닐라시럽 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+9. askCafeMocha()
+   카페모카 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+10. askCaramelSyrup()
+    카라멜 시럽 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+11. askLemon()
+    레몬 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+12. askOrange()
+    오렌지 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+13. askStrawberry()
+    딸기 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+14. askYogurt()
+    요거트 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+15. askBerry()
+    베리 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+16. askPineapple()
+    파인애플 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+17. askChamomileTea()
+    카모마일 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+18. askHibiscusTea()
+    히비스커스 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+19. askPeachPowder()
+    복숭아 파우더 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+20. askLavenderTea()
+    라벤더 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+21. askBlackTea()
+    블랙티 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+22. askRoyalHoney()
+    로얄꿀 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+23. askMatcha()
+    맛차 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+24. askPeppermintTea()
+    페퍼민트 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+25. askRooibosTea()
+    루이보스 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+26. askWaffle()
+    와플 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+27. askFruitsMango()
+    망고 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+28. askFruitsStrawberry()
+    딸기 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+29. askFruitsBlueberry()
+    블루베리 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+30. askIceCream()
+    아이스크림 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+31. askRedVelvetPowder()
+    레드벨벳 파우더 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+32. askChocolatePowder()
+    초콜릿 파우더 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
+
+- getAllPrice 메소드 총 가격을 paymentManager에게 넘겨주기 위해서 생성
+- getOrderList 최종적으로 넘겨줄 리스트
+- getAddlist OrderList에 append해주기 위한 리스트
 
 #
 
@@ -1091,9 +1213,9 @@ class CafeWorker(metaclass=ABCMeta):
 - Print: 사용자가 주문한 목록을 출력한다.
 
 - checkOrder: 주문한 내역이 맞는지 확인하고 사용자 입력을 기다린다.
-  
+
   Y나 y, Yes나 yes, 혹은 빈 문자열이 입력되면 주문 내역이 올바른 것으로 간주하고 다음 단계로 넘어간다.
-  
+
   그 외의 경우엔 잘못된 주문이 입력된 것으로 간주하고 첫 결제 화면으로 돌아간다.
 
 #
@@ -1104,7 +1226,7 @@ class CafeWorker(metaclass=ABCMeta):
 
 - Print: 결제 가능한 수단들의 목록을 출력한다.
 
-- 
+-
 
 #
 
