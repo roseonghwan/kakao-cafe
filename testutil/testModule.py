@@ -1,4 +1,6 @@
 from com.kakao.cafe.module.menuPrinter import MenuPrinter
+from com.kakao.cafe.module.orderTaker import OrderTaker
+from com.kakao.cafe.module.cafeWorker import CafeWorker
 from com.kakao.cafe.menu.espresso.espresso import Espresso
 from com.kakao.cafe.menu.espresso.americano import Americano
 from com.kakao.cafe.menu.espresso.latte import Latte
@@ -30,117 +32,266 @@ from com.kakao.cafe.menu.dessert.newYorkCheeseCake import NewYorkCheeseCake
 from com.kakao.cafe.menu.dessert.rainbowCheeseCake import RainbowCheeseCake
 from com.kakao.cafe.menu.dessert.redVelvetCheeseCake import RedVelvetCheeseCake
 from com.kakao.cafe.menu.dessert.tiramisuCake import TiramisuCake
-from com.kakao.cafe.module.cafeWorker import CafeWorker
+
 import unittest
 from unittest.mock import patch
-import io
+
+import sys
+from io import StringIO
 
 
 class TestModule(unittest.TestCase):
     def setUp(self):
-        # getter들의 assertEqual을 비교할 self.a를 dict 형태로 선언
-        self.a = {
-            'Espresso': [
-                Espresso(),
-                Americano(),
-                Latte(),
-                GreenTeaLatte(),
-                VanillaLatte(),
-                CafeMocha(),
-                Cappuccino(),
-                CaramelMacchiato()
-            ],
-            'Ade': [LemonAde(), OrangeAde(),
-                    StrawberryAde()],
-            'Smoothie':
-            [YogurtSmoothie(),
-             BerryBerrySmoothie(),
-             PineappleSmoothie()],
-            'Tea': [
-                ChamomileTea(),
-                GreenTea(),
-                HibiscusTea(),
-                IceTea(),
-                LavenderTea(),
-                RoyalMilkTea(),
-                MatchaMilkTea(),
-                PeppermintTea(),
-                RooibosTea()
-            ],
-            'Dessert': [
-                BelgianWaffle(),
-                FruitsWaffle(),
-                IceWaffle(),
-                NewYorkCheeseCake(),
-                RainbowCheeseCake(),
-                RedVelvetCheeseCake(),
-                TiramisuCake()
-            ]
-        }
-        self.menuList = MenuPrinter()  # getter 테스트하는 MenuPrinter() 객체 선언
-
+        self.testList = list()
+        self.menuPrinter = MenuPrinter()
+        self.orderTaker = OrderTaker()
         try:
-            self.impossible = CafeWorker()  # 추상클래스 Cafeworker 예외처리
+            self.impossible = CafeWorker()
 
         except TypeError as TE:
             self.impossible = TE.__str__()
 
-    # cafeWorker.py의 객체가 생성되는지 테스트..
-    def testCafeWorker_Instantiation(self):
-        self.assertEqual(
-            self.impossible,
-            "Can't instantiate abstract class CafeWorker with abstract methods Print"
-        )
+    def testOrderTaker_AddName(self):
+        self.nameList = [0]
+        self.nameAnswer = ['Espresso']
+        with patch('builtins.input', side_effect=self.nameList):
+            ans = self.orderTaker.addName(0)
+        self.assertEqual(ans, self.nameAnswer)
 
-    # menuPrinter.py에 있는 getMenuList method를 테스트..
-    def testMenuPrinter_GetMenuList(self):
-        self.assertEqual(len(self.menuList.getMenulist()), len(self.a))
-        for i in self.menuList.getMenulist().keys():
-            for j in range(len(self.menuList.getMenulist()[i])):
-                self.assertEqual(self.menuList.getMenulist()[i][j].getName(),
-                                 self.a[i][j].getName())
-                self.assertEqual(self.menuList.getMenulist()[i][j].getPrice(),
-                                 self.a[i][j].getPrice())
+    def testOrderTaker_AskAmount(self):
+        self.amountList = [4]
+        self.amountAnswer = [4]
+        with patch('builtins.input', side_effect=self.amountList):
+            ans = self.orderTaker.askAmount()
+        self.assertEqual(ans, self.amountAnswer)
 
-    # menuPrinter.py에 있는 getEspresso method를 테스트..
-    def testMenuPrinter_GetEspresso(self):
-        for i in range(len(self.a['Espresso'])):
-            self.assertEqual(self.a['Espresso'][i].getName(),
-                             self.menuList.getEspresso()[i].getName())
-            self.assertEqual(self.a['Espresso'][i].getPrice(),
-                             self.menuList.getEspresso()[i].getPrice())
+    def testOrderAddAllPrice(self):
+        self.allPriceList = [0]  #0-> Espresso
+        self.allPriceAnswer = 5000  #Espresso Price
 
-    # menuPrinter.py에 있는 getAde method를 테스트..
-    def testMenuPrinter_GetAde(self):
-        for i in range(len(self.a['Ade'])):
-            self.assertEqual(self.a['Ade'][i].getName(),
-                             self.menuList.getAde()[i].getName())
-            self.assertEqual(self.a['Ade'][i].getPrice(),
-                             self.menuList.getAde()[i].getPrice())
+        self.orderTaker.getAddlist().append('Espresso')
+        self.orderTaker.getAddlist().append(2)
+        with patch('builtins.input', side_effect=self.allPriceList):
+            ans = self.orderTaker.addAllPrice(0)
+        print(self.orderTaker.getAllPrice())
+        self.assertEqual(ans, self.allPriceAnswer)
 
-    # menuPrinter.py에 있는 getSmoothie method를 테스트..
-    def testMenuPrinter_GetSmoothie(self):
-        for i in range(len(self.a['Smoothie'])):
-            self.assertEqual(self.a['Smoothie'][i].getName(),
-                             self.menuList.getSmoothie()[i].getName())
-            self.assertEqual(self.a['Smoothie'][i].getPrice(),
-                             self.menuList.getSmoothie()[i].getPrice())
+    def testOrderTaker_AskAddShot(self):
+        self.addshotList = [True, True, '2']
+        self.addshotAnswer = ['addShot', 2.0]
+        with patch('builtins.input', side_effect=self.addshotList):
+            ans = self.orderTaker.askAddshot()
+        self.assertEqual(ans, self.addshotAnswer)
 
-    # menuPrinter.py에 있는 geTeat method를 테스트..
-    def testMeunuPrinter_GetTea(self):
-        for i in range(len(self.a['Tea'])):
-            self.assertEqual(self.a['Tea'][i].getName(),
-                             self.menuList.getTea()[i].getName())
-            self.assertEqual(self.a['Tea'][i].getPrice(),
-                             self.menuList.getTea()[i].getPrice())
+    def testOrderTaker_AskIceOrHot(self):
+        self.addIceOrHot = [True]
+        self.addIceOrHotAnswer = ['ICE']
+        with patch('builtins.input', side_effect=self.addIceOrHot):
+            ans = self.orderTaker.askIceOrHot()
+        self.assertEqual(ans, self.addIceOrHotAnswer)
 
-    # menuPrinter.py에 있는 getDessert method를 테스트..
-    def testMenuPrinter_GetDessert(self):
-        for i in range(len(self.a['Dessert'])):
-            self.assertEqual(self.a['Dessert'][i].getName(),
-                             self.menuList.getDessert()[i].getName())
-            self.assertEqual(self.a['Dessert'][i].getPrice(),
-                             self.menuList.getDessert()[i].getPrice())
+    def testOrderTaker_askSizeUp(self):
+        self.askSizeUpList = [True, False]
+        self.askSizeUpAnswer = ['sizeUp', 'Venti']
+        with patch('builtins.input', side_effect=self.askSizeUpList):
+            ans = self.orderTaker.askSizeUp()
+        self.assertEqual(ans, self.askSizeUpAnswer)
+
+    def testOrderTaker_askGreenTea(self):
+        self.askGreenTeaList = [True, '2']
+        self.askGreenTeaAnswer = ['addGreenTea', 2]
+        with patch('builtins.input', side_effect=self.askGreenTeaList):
+            ans = self.orderTaker.askGreenTea()
+        self.assertEqual(ans, self.askGreenTeaAnswer)
+
+    def testOrderTaker_askCondensedMilk(self):
+        self.askCondensedMilkList = [True, '2']
+        self.askCondensedMilkAnswer = ['addCondensedMilk', 2]
+        with patch('builtins.input', side_effect=self.askCondensedMilkList):
+            ans = self.orderTaker.askCondensedMilk()
+        self.assertEqual(ans, self.askCondensedMilkAnswer)
+
+    def testOrderTaker_askVanillaSyrup(self):
+        self.askVanillaSyrupList = [True, '2']
+        self.askVanillaSyrupAnswer = ['addVanillaSyrup', 2]
+        with patch('builtins.input', side_effect=self.askVanillaSyrupList):
+            ans = self.orderTaker.askVanillaSyrup()
+        self.assertEqual(ans, self.askVanillaSyrupAnswer)
+
+    def testOrderTaker_askCafeMocha(self):
+        self.askCafeMochaList = [True, '2']
+        self.askCafeMochaAnswer = ['addCafeMocha', 2]
+        with patch('builtins.input', side_effect=self.askCafeMochaList):
+            ans = self.orderTaker.askCafeMocha()
+        self.assertEqual(ans, self.askCafeMochaAnswer)
+
+    def testOrderTaker_askCinnamon(self):
+        self.askCinnamonList = [True, '2']
+        self.askCinnamonAnswer = ['addCinnamon', 2]
+        with patch('builtins.input', side_effect=self.askCinnamonList):
+            ans = self.orderTaker.askCinnamon()
+        self.assertEqual(ans, self.askCinnamonAnswer)
+
+    def testOrderTaker_askCaramelSyrup(self):
+        self.askCaramelSyrupList = [True, '2']
+        self.askCaramelSyrupAnswer = ['addCaramelSyrup', 2]
+        with patch('builtins.input', side_effect=self.askCaramelSyrupList):
+            ans = self.orderTaker.askCaramelSyrup()
+        self.assertEqual(ans, self.askCaramelSyrupAnswer)
+
+    def testOrderTaker_askLemon(self):
+        self.askLemonList = [True, '2']
+        self.askLemonAnswer = ['addLemon', 2]
+        with patch('builtins.input', side_effect=self.askLemonList):
+            ans = self.orderTaker.askLemon()
+        self.assertEqual(ans, self.askLemonAnswer)
+
+    def testOrderTaker_askOrange(self):
+        self.askOrangeList = [True, '2']
+        self.askOrangeAnswer = ['addOrange', 2]
+        with patch('builtins.input', side_effect=self.askOrangeList):
+            ans = self.orderTaker.askOrange()
+        self.assertEqual(ans, self.askOrangeAnswer)
+
+    def testOrderTaker_askStrawberry(self):
+        self.askStrawberryList = [True, '2']
+        self.askStrawberryAnswer = ['addStrawberry', 2]
+        with patch('builtins.input', side_effect=self.askStrawberryList):
+            ans = self.orderTaker.askStrawberry()
+        self.assertEqual(ans, self.askStrawberryAnswer)
+
+    def testOrderTaker_askYogurt(self):
+        self.askYogurtList = [True, '2']
+        self.askYogurtAnswer = ['addYogurt', 2]
+        with patch('builtins.input', side_effect=self.askYogurtList):
+            ans = self.orderTaker.askYogurt()
+        self.assertEqual(ans, self.askYogurtAnswer)
+
+    def testOrderTaker_askPineapple(self):
+        self.askPineappleList = [True, '2']
+        self.askPineappleAnswer = ['addPineapple', 2]
+        with patch('builtins.input', side_effect=self.askPineappleList):
+            ans = self.orderTaker.askPineapple()
+        self.assertEqual(ans, self.askPineappleAnswer)
+
+    def testOrderTaker_askChamomileTea(self):
+        self.askChamomileTeaList = [True, '2']
+        self.askChamomileTeaAnswer = ['addChamomileTea', 2]
+        with patch('builtins.input', side_effect=self.askChamomileTeaList):
+            ans = self.orderTaker.askChamomileTea()
+        self.assertEqual(ans, self.askChamomileTeaAnswer)
+
+    def testOrderTaker_askHibiscusTea(self):
+        self.askHibiscusTeaList = [True, '2']
+        self.askHibiscusTeaAnswer = ['addHibiscusTea', 2]
+        with patch('builtins.input', side_effect=self.askHibiscusTeaList):
+            ans = self.orderTaker.askHibiscusTea()
+        self.assertEqual(ans, self.askHibiscusTeaAnswer)
+
+    def testOrderTaker_askPeachPowder(self):
+        self.askPeachPowderList = [True, '2']
+        self.askPeachPowderAnswer = ['addPeachPowder', 2]
+        with patch('builtins.input', side_effect=self.askPeachPowderList):
+            ans = self.orderTaker.askPeachPowder()
+        self.assertEqual(ans, self.askPeachPowderAnswer)
+
+    def testOrderTaker_askLavenderTea(self):
+        self.askLavenderTeaList = [True, '2']
+        self.askLavenderTeaAnswer = ['addLavenderTea', 2]
+        with patch('builtins.input', side_effect=self.askLavenderTeaList):
+            ans = self.orderTaker.askLavenderTea()
+        self.assertEqual(ans, self.askLavenderTeaAnswer)
+
+    def testOrderTaker_askBlackTea(self):
+        self.askBlackTeaList = [True, True, '2']
+        self.askBlackTeaAnswer = ['addBlackTea', 2]
+        with patch('builtins.input', side_effect=self.askBlackTeaList):
+            ans = self.orderTaker.askBlackTea()
+        self.assertEqual(ans, self.askBlackTeaAnswer)
+
+    def testOrderTaker_askRoyalHoney(self):
+        self.askRoyalHoneyList = [True, '2']
+        self.askRoyalHoneyAnswer = ['addRoyalHoney', 2]
+        with patch('builtins.input', side_effect=self.askRoyalHoneyList):
+            ans = self.orderTaker.askRoyalHoney()
+        self.assertEqual(ans, self.askRoyalHoneyAnswer)
+
+    def testOrderTaker_askMatcha(self):
+        self.askMatchaList = [True, '2']
+        self.askMatchaAnswer = ['addMatcha', 2]
+        with patch('builtins.input', side_effect=self.askMatchaList):
+            ans = self.orderTaker.askMatcha()
+        self.assertEqual(ans, self.askMatchaAnswer)
+
+    def testOrderTaker_askMatcha(self):
+        self.askMatchaList = [True, '2']
+        self.askMatchaAnswer = ['addMatcha', 2]
+        with patch('builtins.input', side_effect=self.askMatchaList):
+            ans = self.orderTaker.askMatcha()
+        self.assertEqual(ans, self.askMatchaAnswer)
+
+    def testOrderTaker_askPeppermintTea(self):
+        self.askPeppermintTeaList = [True, '2']
+        self.askPeppermintTeaAnswer = ['addPeppermintTea', 2]
+        with patch('builtins.input', side_effect=self.askPeppermintTeaList):
+            ans = self.orderTaker.askPeppermintTea()
+        self.assertEqual(ans, self.askPeppermintTeaAnswer)
+
+    def testOrderTaker_askRooibosTea(self):
+        self.askRooibosTeaList = [True, '2']
+        self.askRooibosTeaAnswer = ['addRooibosTea', 2]
+        with patch('builtins.input', side_effect=self.askRooibosTeaList):
+            ans = self.orderTaker.askRooibosTea()
+        self.assertEqual(ans, self.askRooibosTeaAnswer)
+
+    def testOrderTaker_askWaffle(self):
+        self.askWaffleList = [True, '2']
+        self.askWaffleAnswer = ['addWaffle', 2]
+        with patch('builtins.input', side_effect=self.askWaffleList):
+            ans = self.orderTaker.askWaffle()
+        self.assertEqual(ans, self.askWaffleAnswer)
+
+    def testOrderTaker_askFruitsMango(self):
+        self.askFruitsMangoList = [True, '2']
+        self.askFruitsMangoAnswer = ['addFruitsMango', 2]
+        with patch('builtins.input', side_effect=self.askFruitsMangoList):
+            ans = self.orderTaker.askFruitsMango()
+        self.assertEqual(ans, self.askFruitsMangoAnswer)
+
+    def testOrderTaker_askFruitsStrawberry(self):
+        self.askFruitsStrawberryList = [True, '2']
+        self.askFruitsStrawberryAnswer = ['addFruitsStrawberry', 2]
+        with patch('builtins.input', side_effect=self.askFruitsStrawberryList):
+            ans = self.orderTaker.askFruitsStrawberry()
+        self.assertEqual(ans, self.askFruitsStrawberryAnswer)
+
+    def testOrderTaker_askFruitsBlueberry(self):
+        self.askFruitsBlueberryList = [True, '2']
+        self.askFruitsBlueberryAnswer = ['addFruitsBlueberry', 2]
+        with patch('builtins.input', side_effect=self.askFruitsBlueberryList):
+            ans = self.orderTaker.askFruitsBlueberry()
+        self.assertEqual(ans, self.askFruitsBlueberryAnswer)
+
+    def testOrderTaker_askIceCream(self):
+        self.askIceCreamList = [True, '2']
+        self.askIceCreamAnswer = ['addIceCream', 2]
+        with patch('builtins.input', side_effect=self.askIceCreamList):
+            ans = self.orderTaker.askIceCream()
+        self.assertEqual(ans, self.askIceCreamAnswer)
+
+    def testOrderTaker_askRedVelvetPowder(self):
+        self.askRedVelvetPowderList = [True, '2']
+        self.askRedVelvetPowderAnswer = ['addRedVelvetPowder', 2]
+        with patch('builtins.input', side_effect=self.askRedVelvetPowderList):
+            ans = self.orderTaker.askRedVelvetPowder()
+        self.assertEqual(ans, self.askRedVelvetPowderAnswer)
+
+    def testOrderTaker_askChocolatePowder(self):
+        self.askChocolatePowderList = [True, '2']
+        self.askChocolatePowderAnswer = ['addChocolatePowder', 2]
+        with patch('builtins.input', side_effect=self.askChocolatePowderList):
+            ans = self.orderTaker.askChocolatePowder()
+        self.assertEqual(ans, self.askChocolatePowderAnswer)
 
 
 if __name__ == '__main__':
