@@ -1,5 +1,5 @@
 PYTHON = python3
-SOURCE = com/kakao/cafe/cafe.py
+SOURCE = cafe.py
 TEST_MODULE = unittest
 RM = rm -rf
 ALL = testutil/*.py

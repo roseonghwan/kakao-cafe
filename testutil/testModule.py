@@ -17,11 +17,9 @@ from com.kakao.cafe.menu.ade.lemonAde import LemonAde
 from com.kakao.cafe.menu.ade.orangeAde import OrangeAde
 from com.kakao.cafe.menu.ade.strawberryAde import StrawberryAde
 
-
 from com.kakao.cafe.menu.smoothie.yogurtSmoothie import YogurtSmoothie
 from com.kakao.cafe.menu.smoothie.berryBerrySmoothie import BerryBerrySmoothie
 from com.kakao.cafe.menu.smoothie.pineappleSmoothie import PineappleSmoothie
-
 
 from com.kakao.cafe.menu.tea.chamomileTea import ChamomileTea
 from com.kakao.cafe.menu.tea.greenTea import GreenTea
@@ -62,7 +60,6 @@ class TestModule(unittest.TestCase):
         except TypeError as TE:
             self.impossible = TE.__str__()
 
-
     def testCardPay(self):  # 카드결제 테스트
         self.paymentManager.setCardBalance(10000)  # 초기 카드잔액 설정
         self.paymentManager.setPoint(100)  # 초기 포인트 설정
@@ -98,7 +95,6 @@ class TestModule(unittest.TestCase):
                          "현금")  # 현금으로 결제한게 맞는지 확인
         self.assertEqual(self.paymentManager.getChange(), current_cash -
                          self.paymentManager.getTotalPrice())  # 거스름돈이 맞는지 테스트
-
 
 
 if __name__ == '__main__':

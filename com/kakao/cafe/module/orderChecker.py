@@ -14,7 +14,8 @@ import itertools
 class OrderChecker(CafeWorker):
     def __init__(self):
         self.menulist = list()
-        self.orderlist = OrderTaker().getOrderList()
+        orderTaker = OrderTaker()
+        self.orderlist = orderTaker.getOrderList()
         # menulist와 orderlist의 주문 내역을 비교하기 위해 menulist와 orderlist를 정의해줌
         self.orderlist = list(itertools.chain(*self.orderlist))
         # orderlist에 들어온 여러 중의 리스트들을 하나의 리스트로 만들어 줌
