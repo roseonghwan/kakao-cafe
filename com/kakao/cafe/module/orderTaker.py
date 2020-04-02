@@ -4,6 +4,7 @@ from __future__ import print_function, absolute_import
 from com.kakao.cafe.module.menuPrinter import MenuPrinter  #MenuPrinter에 있는 menuList를 가져오기 위해서
 from com.kakao.cafe.module.cafeWorker import CafeWorker
 import time  #영수증 출력할 때 주문시간을 나오게 하기 위해서 5번
+import itertools
 '''
 0. 중요한건 메인모듈에서 인스턴스화해서 내게 넣어주기 때문에
    내가 모든걸 import하거나 인스턴스화를 할 필요가 없다. <완료>
@@ -24,9 +25,11 @@ import time  #영수증 출력할 때 주문시간을 나오게 하기 위해서
 
 class OrderTaker(CafeWorker):
     def __init__(self):
-        self.__orderList = []  #멤버변수 orderList 최종적으로 넘겨줄 리스트
+        self.orderlist = []  #멤버변수 orderList 최종적으로 넘겨줄 리스트
         self.__allPrice = int()  #총 가격을 더할 멤버 변수
         self.addList = []  #
+        self.menulist = list()
+        self.results = list()
 
     def Print(self) -> None:
         print("---------------주문 안내 메시지---------------")
@@ -294,8 +297,8 @@ class OrderTaker(CafeWorker):
                     self.askChocolatePowder()  #초콜릿 파우더 확인
             else:
                 print(" E R R O R ")
-            self.__orderList.append(self.addList)
-        return self.__orderList
+            self.orderlist.append(self.addList)
+        return self.orderlist
 
     #orderList에 메뉴를 추가하는 매소드
     #Menu는 MenuPrinter에 있는 객체들을 나누기 위해서 사용함. 손님에게 받은 수
@@ -371,14 +374,14 @@ class OrderTaker(CafeWorker):
                     self.addList.append('addShot')
                     print("샷 추가를 얼마나 하시겠습니까? ")
                     self.addShot = int(input())
-                    self.addList.append(float(self.addShot))
+                    self.addList.append(int(self.addShot))
                     self.__allPrice = self.__allPrice + (int(
                         self.addShot * 500))
                 elif self.Shot == 'False':
                     self.addList.append('subShot')
                     print("샷을 얼마나 빼시겠습니까? ")
                     self.subShot = int(input())
-                    self.addList.append(float(self.subShot))
+                    self.addList.append(int(self.subShot))
                     self.__allPrice = self.__allPrice - (int(
                         self.subShot * 500))
                 else:
@@ -749,7 +752,7 @@ class OrderTaker(CafeWorker):
         return self.addList
 
     #RoyalMilkTea BlackTea
-    def askBlackTea(self) -> float:
+    def askBlackTea(self) -> int:
         try:
             print("블랙티를 추가하시거나 빼시겠습니까? 추가하거나 빼면 : 'True' 기본 : 'False'")
             self.BlackTea = str(input())
@@ -761,14 +764,14 @@ class OrderTaker(CafeWorker):
                     self.addList.append('addBlackTea')
                     print("블랙티 추가를 얼마나 하시겠습니까? ")
                     self.addBlackTea = int(input())
-                    self.addList.append(float(self.addBlackTea))
+                    self.addList.append(int(self.addBlackTea))
                     self.__allPrice = self.__allPrice + (
                         int(self.addBlackTea) * 500)
                 elif (self.BlackTea == 'False'):
                     self.addList.append('subBlackTea')
                     print("블랙티을 얼마나 빼시겠습니까? ")
                     self.subBlackTea = int(input())
-                    self.addList.append(float(self.subBlackTea))
+                    self.addList.append(int(self.subBlackTea))
                     self.__allPrice = self.__allPrice - int(self.subBlackTea)
                 else:
                     raise Exception
@@ -1005,7 +1008,115 @@ class OrderTaker(CafeWorker):
 
     #최종적으로 넘겨줄 리스트 orderList에 의한 getter
     def getOrderList(self) -> list:
-        return self.__orderList
+        return self.orderlist
 
     def getAddlist(self) -> list:
         return self.addList
+
+    def addIngredient(self) -> list:
+        # 각각의 메뉴에 추가될 재료들을 results 리스트에 추가해줌
+        for i in range(len(self.orderlist)):
+            if 'addShot' in self.orderlist[i]:
+                self.results.append('샷 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addLemon' in self.orderlist[i]:
+                self.results.append('레몬 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addStrawberry' in self.orderlist[i]:
+                self.results.append('딸기 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addOrange' in self.orderlist[i]:
+                self.results.append('오렌지 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addGreenTea' in self.orderlist[i]:
+                self.results.append('그린티 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addCondensedMilk' in self.orderlist[i]:
+                self.results.append('연유 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addVanillaSyrup' in self.orderlist[i]:
+                self.results.append('바닐라 시럽 ' + self.orderlist[i + 1] +
+                                    '개 추가 ')
+            elif 'addCafeMocha' in self.orderlist[i]:
+                self.results.append('모카 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addCinnamon' in self.orderlist[i]:
+                self.results.append('시나몬 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addCaramelSyrup' in self.orderlist[i]:
+                self.results.append('카라멜 시럽 ' + self.orderlist[i + 1] +
+                                    '개 추가 ')
+            elif 'addYogurt' in self.orderlist[i]:
+                self.results.append('요거트 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addBerry' in self.orderlist[i]:
+                self.results.append('베리 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addPineapple' in self.orderlist[i]:
+                self.results.append('파인애플 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addChamomileTea' in self.orderlist[i]:
+                self.results.append('카모마일 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addHibiscusTea' in self.orderlist[i]:
+                self.results.append('히비스커스 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addPeachPowder' in self.orderlist[i]:
+                self.results.append('복숭아 파우더 ' + self.orderlist[i + 1] +
+                                    '개 추가 ')
+            elif 'addLavenderTea' in self.orderlist[i]:
+                self.results.append('라벤더 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addBlackTea' in self.orderlist[i]:
+                self.results.append('블랙티 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addRoyalHoney' in self.orderlist[i]:
+                self.results.append('꿀 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addMatcha' in self.orderlist[i]:
+                self.results.append('말차 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addPeppermintTea' in self.orderlist[i]:
+                self.results.append('페퍼민트 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addRooibosTea' in self.orderlist[i]:
+                self.results.append('루이보스 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addWaffle' in self.orderlist[i]:
+                self.results.append('와플 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addFruitsMango' in self.orderlist[i]:
+                self.results.append('망고 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addFruitsStrawberry' in self.orderlist[i]:
+                self.results.append('딸기 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addFruitsBlueberry' in self.orderlist[i]:
+                self.results.append('블루베리 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addIceCream' in self.orderlist[i]:
+                self.results.append('아이스크림 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'addRedVelvetPowder' in self.orderlist[i]:
+                self.results.append('레드벨벳 파우더 ' + self.orderlist[i + 1] +
+                                    '개 추가 ')
+            elif 'addChocolatePowder' in self.orderlist[i]:
+                self.results.append('초콜릿 파우더 ' + self.orderlist[i + 1] +
+                                    '개 추가 ')
+
+    def Character(self):
+        for j in range(len(self.orderlist)):
+            try:
+                if self.orderlist[j] in self.menulist:
+                    if self.orderlist[j + 2] == 'ICE':
+                        self.results.append('ICE ' + self.orderlist[j] + ' ' +
+                                            self.orderlist[j + 1] + '개')
+                    elif self.orderlist[j + 2] == 'HOT':
+                        self.results.append('HOT ' + self.orderlist[j] + ' ' +
+                                            self.orderlist[j + 1] + '개')
+                    else:
+                        self.results.append(self.orderlist[j] + ' ' +
+                                            self.orderlist[j + 1] + '개')
+            except IndexError:
+                self.results.append(self.orderlist[j] + ' ' +
+                                    self.orderlist[j + 1] + '개')
+            # 좋은 방법은 아닌 것 같지만 ice, hot이 정의된 메뉴일 경우에는
+            # 메뉴 앞에 ice, hot을 붙여 줌
+
+            if 'size' in self.orderlist[j]:
+                self.results.append(self.orderlist[j + 1])
+            # size를 append 해줌.
+
+    def LoadName(self):
+        self.orderlist = list(itertools.chain(*self.orderlist))
+        self.orderlist = list(map(str, self.orderlist))
+        for k in range(len(MenuPrinter().getMenu())):
+            self.menulist.append(MenuPrinter().getMenu()[k].getName())
+        # 메뉴 각각의 이름들을 menulist에 append 해줌
+
+    def Print2(self):
+        self.LoadName()
+        self.Character()
+        self.addIngredient()
+        print('\n\n\n주문하신 메뉴가 맞는지 확인해 주십시오.')
+        for l in range(len(self.results)):
+            print('-' * 30)
+            print(self.results[l])
+        print('-' * 30)
+        # 추가된 메뉴들을 최종적으로 출력해 줌
