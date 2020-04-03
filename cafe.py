@@ -26,7 +26,7 @@ def main():
         if orderChecker.askOrderList() == True:
             paymentManager.setCardBalance(10000)
             paymentManager.setCash(10000)
-            paymentManager.selectPaymentWay()
+            paymentManager.selectPaymentWay(orderTaker.getAllPrice())
 
             receiptPrinter.Print(orderTaker.getOrderList(),
                                  orderTaker.getAllPrice(),
@@ -34,7 +34,6 @@ def main():
                                  paymentManager.getCash())
             break
 
-            
         else:
             continue
 

@@ -2,11 +2,11 @@
 
 # OT가 끝난 직후 한통의 [**메일**](https://github.com/joshua-dev/kakao-cafe/blob/master/com/kakao/cafe/README.md)을 받게 되는데...
 
-![Thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
+<img alt="thumbnail" src="https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642">
 
 <br>
 
-[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
 [![Slack](https://img.shields.io/badge/chat%20on-Slack-4A154B)](https://jonnafamily.slack.com/)
 [![Notion](https://img.shields.io/badge/spec-Notion-000000)](https://www.notion.so/jonnafamily)
 
@@ -202,16 +202,6 @@ $ virtualenv venv --python=python3
 #### 기타
 
 - [x] 예외 처리
-
-<br>
-
-#### 추가 기능
-
-- [ ] 결제 정보 저장
-- [ ] 매출 통계
-- [ ] GUI
-- [ ] 시즌 한정 메뉴
-- [ ] 영업 시간
 
 <br><br>
 

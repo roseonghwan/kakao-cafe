@@ -370,7 +370,7 @@ class OrderTaker(CafeWorker):
                 #샷을 추가하거나 빼면 어떻게 할지 물어본다.
                 if self.askShot == 'True':
                     print("샷 추가 : 'True' 샷 빼기 : 'False'")
-                    while (True):
+                    while True:
                         self.Shot = str(input())
                         if self.Shot == 'True':  #샷 추가
                             self.addList.append('addShot')
@@ -392,11 +392,12 @@ class OrderTaker(CafeWorker):
                             raise Exception("True 또는 False로 입력해주시기 바랍니다.")
                             continue
                 #샷을 기본으로 하면 pass한다.
-                elif self.askShot == False:
+                elif self.askShot == 'False':
                     pass
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
+                    continue
             except Exception:
                 print("올바르게 입력하세요")
                 continue
@@ -421,7 +422,6 @@ class OrderTaker(CafeWorker):
                 print("올바르게 입력하세요")
                 continue
             return self.addList
-
 
     def confirmIce(self) -> None:
         self.addList.append('ICE')
