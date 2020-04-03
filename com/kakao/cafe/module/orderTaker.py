@@ -422,6 +422,7 @@ class OrderTaker(CafeWorker):
                 continue
             return self.addList
 
+
     def confirmIce(self) -> None:
         self.addList.append('ICE')
 
