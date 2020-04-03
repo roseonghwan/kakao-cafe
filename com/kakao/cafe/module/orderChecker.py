@@ -38,4 +38,4 @@ class OrderChecker(CafeWorker):
                 print('올바르게 입력하세요.')
 
     def Print(self):
-        print('-' * 30)
+        print("-" * 30)
