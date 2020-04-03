@@ -536,7 +536,7 @@ class OrderTaker(CafeWorker):
     def askCafeMocha(self):
         while True:
             try:
-                print("모카 추가하시겠습니까? 추가 : T 기본 : F")
+                print("모카 추가하시겠습니까? 추가 : 'T' 기본 : 'F'")
                 self.addMocha = str(input().lower())
                 if self.addMocha == 't':
                     self.addList.append('addCafeMocha')
