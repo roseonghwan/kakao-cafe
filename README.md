@@ -2,11 +2,11 @@
 
 # OT가 끝난 직후 한통의 [**메일**](https://github.com/joshua-dev/kakao-cafe/blob/master/com/kakao/cafe/README.md)을 받게 되는데...
 
-![Thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)
+[![thumbnail](https://t1.daumcdn.net/tvpot/thumb/v0431dmoadPdi6PH44oFHci/thumb.png?time=1490071671642)](https://joshua-dev.github.io/kakao-cafe/)
 
 <br>
 
-[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-green)](https://github.com/joshua-dev/kakao-cafe/blob/master/LICENSE)
 [![Slack](https://img.shields.io/badge/chat%20on-Slack-4A154B)](https://jonnafamily.slack.com/)
 [![Notion](https://img.shields.io/badge/spec-Notion-000000)](https://www.notion.so/jonnafamily)
 
@@ -60,10 +60,10 @@ $ virtualenv venv --python=python3
 
 ### make를 이용한 구동 및 테스트 단순화
 
-- #### Python 구동
+- #### Main module 구동
 
   ```shell
-  (venv) $ make run
+  (venv) $ make
   ```
 <br>
 
@@ -72,53 +72,49 @@ $ virtualenv venv --python=python3
   - 모든 테스트 실행
     
     ```shell
-    (venv) $ make
-    ```
-    
-    ```shell
     (venv) $ make test
     ```
     <br><br>
   - CafeMenu 테스트
 
     ```shell
-    (venv) $ make test cafemenu
+    (venv) $ make cafemenu
     ```
     <br><br>
   - Espresso 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test espresso
+    (venv) $ make espresso
     ```
     <br><br>
   - Smoothie 및 하위 클래스 테스트
   
     ```shell
-    (venv) $ make test smoothie
+    (venv) $ make smoothie
     ```
     <br><br>
   - Tea 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test tea
+    (venv) $ make tea
     ```
     <br><br>
   - Ade 및 하위 클래스 테스트
   
     ```shell
-    (venv) $ make test ade
+    (venv) $ make ade
     ```
     <br><br>
   - Dessert 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test dessert
+    (venv) $ make dessert
     ```
     <br><br>
   - Module 및 구현 클래스 테스트
 
     ```shell
-    (venv) $ make test module
+    (venv) $ make module
     ```
   
   <br>
@@ -189,29 +185,19 @@ $ virtualenv venv --python=python3
 
 #### 결제 모듈 클래스
 
-- [ ] 인터페이스 CafeWorker 구현 및 테스트 코드작성
-- [ ] MenuPrinter 클래스 구현 및 테스트 코드 작성
-- [ ] OrderTaker 클래스 구현 및 테스트 코드 작성
-- [ ] OrderChecker 클래스 구현 및 테스트 코드 작성
-- [ ] PaymentManager 클래스 구현 및 테스트 코드 작성
-- [ ] ReceiptPrinter 클래스 구현 및 테스트 코드 작성
-- [ ] 메인 모듈 구현
+- [x] 인터페이스 CafeWorker 구현 및 테스트 코드작성
+- [x] MenuPrinter 클래스 구현 및 테스트 코드 작성
+- [x] OrderTaker 클래스 구현 및 테스트 코드 작성
+- [x] OrderChecker 클래스 구현 및 테스트 코드 작성
+- [x] PaymentManager 클래스 구현 및 테스트 코드 작성
+- [x] ReceiptPrinter 클래스 구현 및 테스트 코드 작성
+- [x] 메인 모듈 구현
 
 <br>
 
 #### 기타
 
-- [ ] 예외 처리
-
-<br>
-
-#### 추가 기능
-
-- [ ] 결제 정보 저장
-- [ ] 매출 통계
-- [ ] GUI
-- [ ] 시즌 한정 메뉴
-- [ ] 영업 시간
+- [x] 예외 처리
 
 <br><br>
 
