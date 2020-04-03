@@ -189,19 +189,19 @@ $ virtualenv venv --python=python3
 
 #### 결제 모듈 클래스
 
-- [ ] 인터페이스 CafeWorker 구현 및 테스트 코드작성
-- [ ] MenuPrinter 클래스 구현 및 테스트 코드 작성
-- [ ] OrderTaker 클래스 구현 및 테스트 코드 작성
-- [ ] OrderChecker 클래스 구현 및 테스트 코드 작성
-- [ ] PaymentManager 클래스 구현 및 테스트 코드 작성
-- [ ] ReceiptPrinter 클래스 구현 및 테스트 코드 작성
-- [ ] 메인 모듈 구현
+- [x] 인터페이스 CafeWorker 구현 및 테스트 코드작성
+- [x] MenuPrinter 클래스 구현 및 테스트 코드 작성
+- [x] OrderTaker 클래스 구현 및 테스트 코드 작성
+- [x] OrderChecker 클래스 구현 및 테스트 코드 작성
+- [x] PaymentManager 클래스 구현 및 테스트 코드 작성
+- [x] ReceiptPrinter 클래스 구현 및 테스트 코드 작성
+- [x] 메인 모듈 구현
 
 <br>
 
 #### 기타
 
-- [ ] 예외 처리
+- [x] 예외 처리
 
 <br>
 

@@ -99,7 +99,7 @@ class MenuPrinter(CafeWorker):
 
     # cafeMenu에 포함된 객체들을 list 형태로 가져오는 method
     def getMenu(self) -> list:
-        return self.getEspresso + self.getAde() + self.getSmoothie(
+        return self.getEspresso() + self.getAde() + self.getSmoothie(
         ) + self.getTea() + self.getDessert()
 
     # CafeMenu를 Print하는 method 132 ~ 136번째 줄 참고!
@@ -122,6 +122,7 @@ class MenuPrinter(CafeWorker):
                     self.__menuList[i][j].getName())  # s 배열에 cafeMenu들의 이름을 저장
                 s[cnt] += "%4s " % (self.__menuList[i][j].getPrice()
                                     )  # s 배열에 cafeMenu들의 가격을 저장
+                num += 1
             for j in range(
                     len(self.__menuList[i]) + 1,
                     len(self.__menuList['Tea']) + 1):  # s 배열에 빈칸 만들기

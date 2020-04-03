@@ -9,16 +9,13 @@ from datetime import datetime
 class ReceiptPrinter(CafeWorker):
     def __init__(self):
 
-        self.receiptList = OrderTaker.getOrderList  # OrderTaker에 있는 orderlist를 가져옴
+        # OrderTaker에 있는 orderlist를 가져옴
         self.namelist = list()  # 메뉴이름 가져오는 리스트 생성
-        self.allprice = OrderTaker.getAllPrice()  # 총 금액을 allprice에 저장
-        self.givenmoney = PaymentManager.getCash  # 받은 돈을 givenmoney에 저장
-        self.paymentway = PaymentManager.getPaymentSystem  # 결제수단을 paymentway에 저장
-        self.changemoney = PaymentManager.getChange  # 거스름돈 변수 생성
 
-    def Print(self) -> None:
+    def Print(self, receiptList, allprice, paymentway, givenmoney) -> None:
 
         # 기본 틀
+        print("\n")
         print("-" * 71)
         print(" " * 28 + "[  영수증  ]")
         print("-" * 71)
@@ -45,41 +42,41 @@ class ReceiptPrinter(CafeWorker):
             self.namelist.append(MenuPrinter().getMenu()[k].getName())
 
         for i in range(
-                len(self.receiptList)
+                len(receiptList)
         ):  # r eceiptList 예시 : ['Espresso', '2', "ICE","addShot", 2, 'newYorkCheeseCake']
-            if self.receiptList[
+            if receiptList[
                     i] in self.namelist:  # 주문 메뉴 이름의 메뉴명, 수량과 핫/아이스 상태를 출력함
-                self.name = self.receiptList[i]
-                self.amount = self.receiptList[i + 1]
+                self.name = receiptList[i]
+                self.amount = receiptList[i + 1]
                 try:
 
-                    if (self.receiptList[i + 2] == "ICE"
-                            or self.receiptList[i + 2] == "HOT"
+                    if (receiptList[i + 2] == "ICE"
+                            or receiptList[i + 2] == "HOT"
                         ):  # 디저트는 "HOT","ICE"가 아니므로 제품명만 출력 구분
-                        self.hot_ice = self.receiptList[i + 2]
-                        print("%-25s%15s%16d" %
+                        self.hot_ice = receiptList[i + 2]
+                        print("%-25s%15s%16s" %
                               (self.name + "(" + self.hot_ice + ")", "|",
                                self.amount))
                     else:
-                        print("%-25s%15s%16d" % (self.name, "|", self.amount))
+                        print("%-25s%15s%16s" % (self.name, "|", self.amount))
                 except IndexError:
-                    print("%-25s%15s%16d" % (self.name, "|", self.amount))
+                    print("%-25s%15s%16s" % (self.name, "|", self.amount))
 
         print("-" * 71)
 
         print("-" * 71)
 
-        print("%-60s" % ("[결제수단] : " + self.paymentway))
-        if self.paymentway == "카드":
-            print("%-63s" % ("[받은  돈] : " + str(self.allprice) + "원"))
-            print("%-63s" % ("[거스름돈] : " + str(self.allprice) + "원"))
-        elif self.paymentway == "현금":
-            print("%-63s" % ("[받은  돈] : " + str(self.givenmoney) + "원"))
-            print("%-63s" % ("[거스름돈] : " + str(self.changemoney) + "원"))
+        print("%-60s" % ("[결제수단] : " + paymentway))
+        if paymentway == "카드":
+            print("%-63s" % ("[받은  돈] : " + str(allprice) + "원"))
+            print("%-63s" % ("[거스름돈] : " + str(allprice) + "원"))
+        elif paymentway == "현금":
+            print("%-63s" % ("[받은  돈] : " + str(givenmoney) + "원"))
+            print("%-63s" % ("[거스름돈] : " + str(givenmoney - allprice) + "원"))
 
         print("-" * 71)
 
-        print("%60s" % ("총 가격 : " + str(self.allprice) + "원"))
+        print("%60s" % ("총 가격 : " + str(allprice) + "원"))
 
 
 """ 출력 예시 ///

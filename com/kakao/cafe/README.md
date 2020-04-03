@@ -1232,9 +1232,9 @@ class CafeWorker(metaclass=ABCMeta):
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 ReceiptPrinter에 대한 구현 명세이다.
 
-- 생성자:
+- 생성자: 
 
-- Print:
+- Print: 주문한 상품의 이름, 수량 등을 영수증에 출력하고 결제수단과 받은 금액, 거스름 돈, 총 금액을 출력한다.
 
 - printReceipt: 영수증을 출력한다.
 
