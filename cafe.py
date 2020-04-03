@@ -13,6 +13,7 @@ def main():
     orderChecker = OrderChecker()
     paymentManager = PaymentManager()
     receiptPrinter = ReceiptPrinter()
+
     while True:
         menuPrinter.Print()
         orderTaker.Print()
@@ -21,7 +22,6 @@ def main():
         menuList = list(map(int, menuList))
         orderTaker.takeOrder(menuList)
         orderTaker.Print2()
-        print(orderTaker.getOrderList())
 
         if orderChecker.askOrderList() == True:
             paymentManager.setCardBalance(10000)
@@ -33,10 +33,10 @@ def main():
                                  paymentManager.getPaymentSystem(),
                                  paymentManager.getCash())
             break
+            
         else:
             continue
 
-    print("결제")
 
 
 if __name__ == '__main__':
