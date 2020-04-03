@@ -12,6 +12,24 @@
 
 <br>
 
+## Result
+
+<img width="857" alt="kakao_cafe_start" src="https://user-images.githubusercontent.com/29545214/78376232-fd514880-7608-11ea-8e9a-10d6a28d489e.png">
+
+<img width="857" alt="kakao_cafe_order" src="https://user-images.githubusercontent.com/29545214/78376289-0fcb8200-7609-11ea-8a8f-cd28fd1565bf.png">
+
+<img width="857" alt="kakao_cafe_end" src="https://user-images.githubusercontent.com/29545214/78376330-1f4acb00-7609-11ea-9f07-264e5e47879f.png">
+
+<br><br>
+
+## Run
+
+```shell
+$ make
+```
+
+<br><br>
+
 ## :pushpin: Tips
 
 ### Python virtualenv, virtualenvwrapper 설치
@@ -59,13 +77,6 @@ $ virtualenv venv --python=python3
 <br>
 
 ### make를 이용한 구동 및 테스트 단순화
-
-- #### Main module 구동
-
-  ```shell
-  (venv) $ make
-  ```
-<br>
 
 - #### Python 단위 테스트
 

@@ -15,7 +15,7 @@ class OrderChecker(CafeWorker):
         self.__userinput = ''
         # 출력할 최종 리스트를 정의해 줌
 
-    def askOrderList(self) -> str:
+    def askOrderList(self) -> bool:
         # 사용자 입력을 받아서 yes면 True를 return, no면 False를 return해서
         # 메인 모듈에서 paymentManager로 넘어갈 지, orderTaker로 돌아갈 지 판단하게 함
         while (True):

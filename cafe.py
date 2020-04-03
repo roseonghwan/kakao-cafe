@@ -50,7 +50,7 @@ def main():
         orderTaker.takeOrder(menuList)
         orderTaker.Print2()
 
-        if orderChecker.askOrderList() == 'True':
+        if orderChecker.askOrderList():
             paymentManager.setCardBalance(10000)
             paymentManager.setCash(10000)
             paymentManager.selectPaymentWay(orderTaker.getAllPrice())
