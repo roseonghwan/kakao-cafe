@@ -60,10 +60,10 @@ $ virtualenv venv --python=python3
 
 ### make를 이용한 구동 및 테스트 단순화
 
-- #### Python 구동
+- #### Main module 구동
 
   ```shell
-  (venv) $ make run
+  (venv) $ make
   ```
 <br>
 
@@ -72,53 +72,49 @@ $ virtualenv venv --python=python3
   - 모든 테스트 실행
     
     ```shell
-    (venv) $ make
-    ```
-    
-    ```shell
     (venv) $ make test
     ```
     <br><br>
   - CafeMenu 테스트
 
     ```shell
-    (venv) $ make test cafemenu
+    (venv) $ make cafemenu
     ```
     <br><br>
   - Espresso 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test espresso
+    (venv) $ make espresso
     ```
     <br><br>
   - Smoothie 및 하위 클래스 테스트
   
     ```shell
-    (venv) $ make test smoothie
+    (venv) $ make smoothie
     ```
     <br><br>
   - Tea 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test tea
+    (venv) $ make tea
     ```
     <br><br>
   - Ade 및 하위 클래스 테스트
   
     ```shell
-    (venv) $ make test ade
+    (venv) $ make ade
     ```
     <br><br>
   - Dessert 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test dessert
+    (venv) $ make dessert
     ```
     <br><br>
   - Module 및 구현 클래스 테스트
 
     ```shell
-    (venv) $ make test module
+    (venv) $ make module
     ```
   
   <br>

@@ -363,13 +363,13 @@ class OrderTaker(CafeWorker):
     #샷을 질문하는 메소드
     #<완료>
     def askAddshot(self) -> list:
-        while (True):
+        while True:
             try:
-                print("삿을 추가하시거나 빼시겠습니까? 추가하거나 빼면 : True 기본 : 'False'")
+                print("삿을 추가하시거나 빼시겠습니까? 추가하거나 빼면 : True 기본 : False")
                 self.askShot = str(input())
                 #샷을 추가하거나 빼면 어떻게 할지 물어본다.
                 if self.askShot == 'True':
-                    print("샷 추가 : 'True' 샷 빼기 : 'False'")
+                    print("샷 추가 : True 샷 빼기 : False")
                     while True:
                         self.Shot = str(input())
                         if self.Shot == 'True':  #샷 추가
@@ -464,7 +464,7 @@ class OrderTaker(CafeWorker):
     def askGreenTea(self):
         while (True):
             try:
-                print("그린티를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
+                print("그린티를 추가하시겠습니까? 추가 : True 기본 : False")
                 self.addGreenTea = str(input())
                 if self.addGreenTea == 'True':
                     self.addList.append('addGreenTea')
@@ -489,7 +489,7 @@ class OrderTaker(CafeWorker):
     def askCondensedMilk(self):
         while (True):
             try:
-                print("연유 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
+                print("연유 추가하시겠습니까? 추가 : True 기본 : False")
                 self.addMilk = str(input())
                 if self.addMilk == 'True':
                     self.addList.append("addCondensedMilk")
@@ -513,7 +513,7 @@ class OrderTaker(CafeWorker):
     def askVanillaSyrup(self):
         while (True):
             try:
-                print("바닐라 시럽 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
+                print("바닐라 시럽 추가하시겠습니까? 추가 : True 기본 : False")
                 self.addSyrup = str(input())
                 if self.addSyrup == 'True':
                     self.addList.append('addVanillaSyrup')
@@ -538,7 +538,7 @@ class OrderTaker(CafeWorker):
     def askCafeMocha(self):
         while (True):
             try:
-                print("모카 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
+                print("모카 추가하시겠습니까? 추가 : True 기본 : False")
                 self.addMocha = str(input())
                 if self.addMocha == 'True':
                     self.addList.append('addCafeMocha')
@@ -563,7 +563,7 @@ class OrderTaker(CafeWorker):
     def askCinnamon(self):
         while (True):
             try:
-                print("시나몬 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("시나몬 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addCinnamon = str(input())
                 if self.addCinnamon == 'True':
                     self.addList.append('addCinnamon')
@@ -587,7 +587,7 @@ class OrderTaker(CafeWorker):
     def askCaramelSyrup(self):
         while (True):
             try:
-                print("카라멜 시럽 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("카라멜 시럽 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addSyrup = str(input())
                 if self.addSyrup == 'True':
                     self.addList.append('addCaramelSyrup')
@@ -612,7 +612,7 @@ class OrderTaker(CafeWorker):
     def askLemon(self):
         while (True):
             try:
-                print("레몬 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("레몬 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addLemon = str(input())
                 if self.addLemon == 'True':
                     self.addList.append('addLemon')
@@ -636,7 +636,7 @@ class OrderTaker(CafeWorker):
     def askOrange(self):
         while (True):
             try:
-                print("오렌지 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("오렌지 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addOrange = str(input())
                 if self.addOrange == 'True':
                     self.addList.append('addOrange')
@@ -661,7 +661,7 @@ class OrderTaker(CafeWorker):
     def askStrawberry(self):
         while (True):
             try:
-                print("딸기 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("딸기 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addStrawberry = str(input())
                 if self.addStrawberry == 'True':
                     self.addList.append('addStrawberry')
@@ -686,7 +686,7 @@ class OrderTaker(CafeWorker):
     def askYogurt(self):
         while (True):
             try:
-                print("요거트 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("요거트 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addYogurt = str(input())
                 if self.addYogurt == 'True':
                     self.addList.append('addYogurt')
@@ -711,7 +711,7 @@ class OrderTaker(CafeWorker):
     def askBerry(self):
         while (True):
             try:
-                print("베리 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("베리 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addBerry = str(input())
                 if self.addBerry == 'True':
                     self.addList.append('addBerry')
@@ -736,7 +736,7 @@ class OrderTaker(CafeWorker):
     def askPineapple(self):
         while (True):
             try:
-                print("파인애플 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("파인애플 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addPineapple = str(input())
                 if self.addPineapple == 'True':
                     self.addList.append("addPineapple")
@@ -761,7 +761,7 @@ class OrderTaker(CafeWorker):
     def askChamomileTea(self):
         while (True):
             try:
-                print("카모마일을 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("카모마일을 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addChamomileTea = str(input())
                 if self.addChamomileTea == 'True':
                     self.addList.append("addChamomileTea")
@@ -786,7 +786,7 @@ class OrderTaker(CafeWorker):
     def askHibiscusTea(self):
         while (True):
             try:
-                print("히비스커스을 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("히비스커스을 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addHibiscusTea = str(input())
                 if self.addHibiscusTea == 'True':
                     self.addList.append("addHibiscusTea")
@@ -811,7 +811,7 @@ class OrderTaker(CafeWorker):
     def askPeachPowder(self):
         while (True):
             try:
-                print("복숭아 파우더를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("복숭아 파우더를 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addPeachPowder = str(input())
                 if self.addPeachPowder == 'True':
                     self.addList.append("addPeachPowder")
@@ -836,7 +836,7 @@ class OrderTaker(CafeWorker):
     def askLavenderTea(self):
         while (True):
             try:
-                print("라벤더를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("라벤더를 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addLavenderTea = str(input())
                 if self.addLavenderTea == 'True':
                     self.addList.append("addLavenderTea")
@@ -901,7 +901,7 @@ class OrderTaker(CafeWorker):
     def askRoyalHoney(self):
         while (True):
             try:
-                print("꿀을 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("꿀을 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addRoyalHoney = str(input())
                 if self.addRoyalHoney == 'True':
                     self.addList.append("addRoyalHoney")
@@ -926,7 +926,7 @@ class OrderTaker(CafeWorker):
     def askMatcha(self):
         while (True):
             try:
-                print("말차를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("말차를 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addMatcha = str(input())
                 if self.addMatcha == 'True':
                     self.addList.append("addMatcha")
@@ -951,7 +951,7 @@ class OrderTaker(CafeWorker):
     def askPeppermintTea(self):
         while (True):
             try:
-                print("페퍼민트를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("페퍼민트를 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addPeppermintTea = str(input())
                 if self.addPeppermintTea == 'True':
                     self.addList.append("addPeppermintTea")
@@ -976,7 +976,7 @@ class OrderTaker(CafeWorker):
     def askRooibosTea(self):
         while (True):
             try:
-                print("루이보스를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
+                print("루이보스를 추가하시겠습니까? 추가 : True 기본 : False\n")
                 self.addRooibosTea = str(input())
                 if self.addRooibosTea == 'True':
                     self.addList.append("addRooibosTea")

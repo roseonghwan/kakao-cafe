@@ -1,8 +1,10 @@
-#-*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
+
 from com.kakao.cafe.module.cafeWorker import CafeWorker
 from com.kakao.cafe.module.orderTaker import OrderTaker
 from com.kakao.cafe.module.menuPrinter import MenuPrinter
 from com.kakao.cafe.module.paymentManager import PaymentManager
+
 from datetime import datetime
 
 
@@ -79,8 +81,8 @@ class ReceiptPrinter(CafeWorker):
         print("%60s" % ("총 가격 : " + str(allprice) + "원"))
 
 
-""" 출력 예시 ///
-
+'''
+Output:
 -----------------------------------------------------------------------
                             [  영수증  ]
 -----------------------------------------------------------------------
@@ -101,4 +103,4 @@ Espresso(ICE)                          |               2
 -----------------------------------------------------------------------
                                                총 가격 : 10000원
 
-"""
+'''

@@ -1,14 +1,15 @@
-# _*_ encoding: utf-8 _*_
+# -*- coding: utf-8 -*-
+#
+# orderChecker.py
+#
+# 1. orderlist를 ordertaker로부터 받아온다.
+# 2. 받아온 orderlist를 출력한다.
+# 3. 사용자 입력을 받는다
+
 from com.kakao.cafe.module.orderTaker import OrderTaker
 from com.kakao.cafe.module.cafeWorker import CafeWorker
 from com.kakao.cafe.module.menuPrinter import MenuPrinter
 import itertools
-'''
-1. orderlist를 ordertaker로부터 받아온다.
-2. 받아온 orderlist를 출력한다.
-3. 사용자 입력을 받는다
-
-'''
 
 
 class OrderChecker(CafeWorker):
@@ -34,7 +35,7 @@ class OrderChecker(CafeWorker):
                     break
                     # orderTaker로 돌아가야 함.
                 else:
-                    raise Exception("Error")
+                    raise Exception('Error')
             except Exception:
                 print('올바르게 입력하세요.')
 

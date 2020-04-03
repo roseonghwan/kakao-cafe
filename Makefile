@@ -5,8 +5,7 @@ RM = rm -rf
 ALL = testutil/*.py
 CACHE = __pycache__/
 
-all:
-	$(PYTHON) -m $(TEST_MODULE) $(ALL)
+all:	run
 	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
 	$(RM) com/kakao/$(CACHE)
@@ -17,7 +16,7 @@ all:
 	$(RM) com/kakao/cafe/menu/tea/$(CACHE)
 	$(RM) com/kakao/cafe/menu/ade/$(CACHE)
 	$(RM) com/kakao/cafe/menu/dessert/$(CACHE)
-	$(RM) com/kakao/cafe/menu/module/$(CACHE)
+	$(RM) com/kakao/cafe/module/$(CACHE)
 
 run:
 	@echo "$$RYAN_ASCII"
@@ -35,9 +34,9 @@ test:
 	$(RM) com/kakao/cafe/menu/tea/$(CACHE)
 	$(RM) com/kakao/cafe/menu/ade/$(CACHE)
 	$(RM) com/kakao/cafe/menu/dessert/$(CACHE)
-	$(RM) com/kakao/cafe/menu/module/$(CACHE)
+	$(RM) com/kakao/cafe/module/$(CACHE)
 	
-test cafemenu:
+cafemenu:
 	$(PYTHON) -m $(TEST_MODULE) testutil/testCafeMenu.py
 	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
@@ -45,7 +44,7 @@ test cafemenu:
 	$(RM) com/kakao/cafe/$(CACHE)
 	$(RM) com/kakao/cafe/menu/$(CACHE)
 
-test espresso:
+espresso:
 	$(PYTHON) -m $(TEST_MODULE) testutil/testEspresso.py
 	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
@@ -54,7 +53,7 @@ test espresso:
 	$(RM) com/kakao/cafe/menu/$(CACHE)
 	$(RM) com/kakao/cafe/menu/espresso/$(CACHE)
 
-test smoothie:
+smoothie:
 	$(PYTHON) -m $(TEST_MODULE) testutil/testSmoothie.py
 	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
@@ -63,16 +62,16 @@ test smoothie:
 	$(RM) com/kakao/cafe/menu/$(CACHE)
 	$(RM) com/kakao/cafe/menu/smoothie/$(CACHE)
 
-test tea:
+tea:
 	$(PYTHON) -m $(TEST_MODULE) testutil/testTea.py
-	(RM) testutil/$(CACHE)
+	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
 	$(RM) com/kakao/$(CACHE)
 	$(RM) com/kakao/cafe/$(CACHE)
 	$(RM) com/kakao/cafe/menu/$(CACHE)
 	$(RM) com/kakao/cafe/menu/tea/$(CACHE)
 
-test ade:
+ade:
 	$(PYTHON) -m $(TEST_MODULE) testutil/testAde.py
 	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
@@ -81,7 +80,7 @@ test ade:
 	$(RM) com/kakao/cafe/menu/$(CACHE)
 	$(RM) com/kakao/cafe/menu/ade/$(CACHE)
 
-test dessert:
+dessert:
 	$(PYTHON) -m $(TEST_MODULE) testutil/testDessert.py
 	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
@@ -90,7 +89,7 @@ test dessert:
 	$(RM) com/kakao/cafe/menu/$(CACHE)
 	$(RM) com/kakao/cafe/menu/dessert/$(CACHE)
 
-test module:
+module:
 	$(PYTHON) -m $(TEST_MODULE) testutil/testModule.py
 	$(RM) testutil/$(CACHE)
 	$(RM) com/$(CACHE)
@@ -99,17 +98,17 @@ test module:
 	$(RM) com/kakao/cafe/module/$(CACHE)
 
 clean:
-	$(RM) testutil/$(CACHE)
-	$(RM) com/$(CACHE)
-	$(RM) com/kakao/$(CACHE)
-	$(RM) com/kakao/cafe/$(CACHE)
-	$(RM) com/kakao/cafe/menu/$(CACHE)
-	$(RM) com/kakao/cafe/menu/espresso/$(CACHE)
-	$(RM) com/kakao/cafe/menu/smoothie/$(CACHE)
-	$(RM) com/kakao/cafe/menu/tea/$(CACHE)
-	$(RM) com/kakao/cafe/menu/ade/$(CACHE)
-	$(RM) com/kakao/cafe/menu/dessert/$(CACHE)
-	$(RM) com/kakao/cafe/menu/module/$(CACHE)
+	@$(RM) testutil/$(CACHE)
+	@$(RM) com/$(CACHE)
+	@$(RM) com/kakao/$(CACHE)
+	@$(RM) com/kakao/cafe/$(CACHE)
+	@$(RM) com/kakao/cafe/menu/$(CACHE)
+	@$(RM) com/kakao/cafe/menu/espresso/$(CACHE)
+	@$(RM) com/kakao/cafe/menu/smoothie/$(CACHE)
+	@$(RM) com/kakao/cafe/menu/tea/$(CACHE)
+	@$(RM) com/kakao/cafe/menu/ade/$(CACHE)
+	@$(RM) com/kakao/cafe/menu/dessert/$(CACHE)
+	@$(RM) com/kakao/cafe/module/$(CACHE)
 
 ascii:
 	@echo "$$RYAN_ASCII"
