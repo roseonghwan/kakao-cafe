@@ -6,6 +6,7 @@ from com.kakao.cafe.menu.espresso.cappuccino import Cappuccino
 from com.kakao.cafe.menu.espresso.latte import Latte
 from com.kakao.cafe.menu.espresso.vanillaLatte import VanillaLatte
 from com.kakao.cafe.menu.espresso.greenTeaLatte import GreenTeaLatte
+
 from random import randint, uniform
 
 import unittest
@@ -108,5 +109,5 @@ class TestEspresso(unittest.TestCase):
                          pastGreenTea + amount)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -12,6 +12,24 @@
 
 <br>
 
+## Result
+
+<img width="857" alt="kakao_cafe_start" src="https://user-images.githubusercontent.com/29545214/78376232-fd514880-7608-11ea-8e9a-10d6a28d489e.png">
+
+<img width="857" alt="kakao_cafe_order" src="https://user-images.githubusercontent.com/29545214/78376289-0fcb8200-7609-11ea-8a8f-cd28fd1565bf.png">
+
+<img width="857" alt="kakao_cafe_end" src="https://user-images.githubusercontent.com/29545214/78376330-1f4acb00-7609-11ea-9f07-264e5e47879f.png">
+
+<br><br>
+
+## Run
+
+```shell
+$ make
+```
+
+<br><br>
+
 ## :pushpin: Tips
 
 ### Python virtualenv, virtualenvwrapper 설치
@@ -60,20 +78,9 @@ $ virtualenv venv --python=python3
 
 ### make를 이용한 구동 및 테스트 단순화
 
-- #### Python 구동
-
-  ```shell
-  (venv) $ make run
-  ```
-<br>
-
 - #### Python 단위 테스트
 
   - 모든 테스트 실행
-    
-    ```shell
-    (venv) $ make
-    ```
     
     ```shell
     (venv) $ make test
@@ -82,43 +89,43 @@ $ virtualenv venv --python=python3
   - CafeMenu 테스트
 
     ```shell
-    (venv) $ make test cafemenu
+    (venv) $ make cafemenu
     ```
     <br><br>
   - Espresso 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test espresso
+    (venv) $ make espresso
     ```
     <br><br>
   - Smoothie 및 하위 클래스 테스트
   
     ```shell
-    (venv) $ make test smoothie
+    (venv) $ make smoothie
     ```
     <br><br>
   - Tea 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test tea
+    (venv) $ make tea
     ```
     <br><br>
   - Ade 및 하위 클래스 테스트
   
     ```shell
-    (venv) $ make test ade
+    (venv) $ make ade
     ```
     <br><br>
   - Dessert 및 하위 클래스 테스트
 
     ```shell
-    (venv) $ make test dessert
+    (venv) $ make dessert
     ```
     <br><br>
   - Module 및 구현 클래스 테스트
 
     ```shell
-    (venv) $ make test module
+    (venv) $ make module
     ```
   
   <br>

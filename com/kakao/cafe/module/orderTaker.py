@@ -1,26 +1,29 @@
-# 주문 안내 메세지 출력 및 주문받음
-#-*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
+
 from __future__ import print_function, absolute_import
+
 from com.kakao.cafe.module.menuPrinter import MenuPrinter  #MenuPrinter에 있는 menuList를 가져오기 위해서
 from com.kakao.cafe.module.cafeWorker import CafeWorker
+
 import time  #영수증 출력할 때 주문시간을 나오게 하기 위해서 5번
 import itertools
-'''
-0. 중요한건 메인모듈에서 인스턴스화해서 내게 넣어주기 때문에
-   내가 모든걸 import하거나 인스턴스화를 할 필요가 없다. <완료>
-1. 손님에게 메뉴리스트에 있는 숫자만을 입력해달라고 한다.(숫자를 입력하고 에러가 나면 다시 주문해달라고 함) <완료>
-2. MenuPrinter에서 받은 리스트와 손님에게 받은 숫자를 비교한다. <완료>
-3. 비교한게 같으면 그 메뉴에 대한 수량을 묻고 추가 옵션에 대해서 나온다.(동시에 시간(선입선출하기 위해서)과 총 가격을 출력하기 위해서 Price까지 받는다.)
-3-1. 공통적으로 되는 추가옵션들을 메소드로 만들어 좀 더 간편하게 한다. <완료>
-3-2  추가옵션에 관해서도 물어볼 때 해당되는 정답이 안나오면 다시 주문할 수 있도록 한다. <완료>
-4. 손님이 선택한 항목을 OrderList에 차례대로 입력해준다. <완료>
-4-1 orderList에 추가옵션을 더해준다. <완료>
-5. 4번 항목인 paymentManager에게 allPrice(총가격)을 주기 위해서 함수를 제공한다. <완료>
-6. getOrderList는 5번 receiptPrinter에게 줄 품목, 수량을 주기위함, 함수를 편히 제공하기 위해 선언한다. <완료>
-6-1 receiptPrinter는 영수증에서 날짜를 출력하기 때문에 주문하는 즉시 시간을 나타낼 수 있도록 한다.
-6-2 리스트에 넣어서 getter를 만들어준다.
-** self.orderList 예제 : ['Espresso', '2', 'addShot', 2, 'newYorkCheeseCake']
-'''
+
+# 주문 안내 메세지 출력 및 주문받음
+#
+# 0. 중요한건 메인모듈에서 인스턴스화해서 내게 넣어주기 때문에
+#    내가 모든걸 import하거나 인스턴스화를 할 필요가 없다. <완료>
+# 1. 손님에게 메뉴리스트에 있는 숫자만을 입력해달라고 한다.(숫자를 입력하고 에러가 나면 다시 주문해달라고 함) <완료>
+# 2. MenuPrinter에서 받은 리스트와 손님에게 받은 숫자를 비교한다. <완료>
+# 3. 비교한게 같으면 그 메뉴에 대한 수량을 묻고 추가 옵션에 대해서 나온다.(동시에 시간(선입선출하기 위해서)과 총 가격을 출력하기 위해서 Price까지 받는다.)
+# 3-1. 공통적으로 되는 추가옵션들을 메소드로 만들어 좀 더 간편하게 한다. <완료>
+# 3-2  추가옵션에 관해서도 물어볼 때 해당되는 정답이 안나오면 다시 주문할 수 있도록 한다. <완료>
+# 4. 손님이 선택한 항목을 OrderList에 차례대로 입력해준다. <완료>
+# 4-1 orderList에 추가옵션을 더해준다. <완료>
+# 5. 4번 항목인 paymentManager에게 allPrice(총가격)을 주기 위해서 함수를 제공한다. <완료>
+# 6. getOrderList는 5번 receiptPrinter에게 줄 품목, 수량을 주기위함, 함수를 편히 제공하기 위해 선언한다. <완료>
+# 6-1 receiptPrinter는 영수증에서 날짜를 출력하기 때문에 주문하는 즉시 시간을 나타낼 수 있도록 한다.
+# 6-2 리스트에 넣어서 getter를 만들어준다.
+# ** self.orderList 예제 : ['Espresso', '2', 'addShot', 2, 'newYorkCheeseCake']
 
 
 class OrderTaker(CafeWorker):
@@ -32,8 +35,8 @@ class OrderTaker(CafeWorker):
         self.results = list()
 
     def Print(self) -> None:
-        print("---------------주문 안내 메시지---------------")
-        print("---메뉴 리스트에 나와있는 숫자를 입력해주세요---")
+        print("--------------- 주문 안내 메세지 ---------------")
+        print("------ 메뉴 리스트에 나와있는 숫자를 입력해주세요------")
 
     def takeOrder(self, menuList) -> list:  #손님에게 주문을 받는 함수 takeOrder
         #메뉴리스트에 있는 숫자까지 입력해야되는 걸 구분해야됨.
@@ -327,13 +330,16 @@ class OrderTaker(CafeWorker):
     #손님에게 묻는 수량이 int(정수형이 아니면) 에러나게 해야함.
     #<완료>
     def askAmount(self) -> list:
-        try:
-            print("수량을 입력해주세요 : ")
-            amount = int(input())
-            self.addList.append(amount)  #리스트에 수량을 추가함. 메뉴 다음에 있으면 편함.
-        except Exception:
-            print("수량을 다시 입력해주세요 ")
-        return self.addList
+        while True:
+            try:
+                print("수량을 입력해주세요: ")
+                amount = int(input())
+                self.addList.append(amount)  #리스트에 수량을 추가함. 메뉴 다음에 있으면 편함.
+                break
+            except Exception:
+                print("수량을 다시 입력해주세요")
+                continue
+            return self.addList
 
     def addAllPrice(self, price: int) -> list:
         if price <= 7:  # 1~8 에스프레스
@@ -363,41 +369,39 @@ class OrderTaker(CafeWorker):
     #샷을 질문하는 메소드
     #<완료>
     def askAddshot(self) -> list:
-        while (True):
+        while True:
             try:
-                print("삿을 추가하시거나 빼시겠습니까? 추가하거나 빼면 : True 기본 : 'False'")
-                self.askShot = str(input())
+                print("삿을 추가하시거나 빼시겠습니까?\n추가하거나 빼려면: T 기본: F")
+                self.askShot = str(input().lower())
                 #샷을 추가하거나 빼면 어떻게 할지 물어본다.
-                if self.askShot == 'True':
-                    print("샷 추가 : 'True' 샷 빼기 : 'False'")
+                if self.askShot == 't':
+                    print("샷 추가: T 샷 빼기: F")
                     while True:
-                        self.Shot = str(input())
-                        if self.Shot == 'True':  #샷 추가
+                        self.Shot = str(input().lower())
+                        if self.Shot == 't':  #샷 추가
                             self.addList.append('addShot')
-                            print("샷 추가를 얼마나 하시겠습니까? ")
+                            print("샷을 얼마나 추가하시겠습니까?")
                             self.addShot = int(input())
                             self.addList.append(int(self.addShot))
                             self.__allPrice = self.__allPrice + (int(
                                 self.addShot * 500))
                             break
-                        elif self.Shot == 'False':
+                        elif self.Shot == 'f':
                             self.addList.append('subShot')
-                            print("샷을 얼마나 빼시겠습니까? ")
+                            print("샷을 얼마나 빼시겠습니까?")
                             self.subShot = int(input())
                             self.addList.append(int(self.subShot))
                             self.__allPrice = self.__allPrice - (int(
                                 self.subShot * 500))
                             break
                         else:
-                            raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                            raise Exception("올바르게 입력하세요")
                             continue
                 #샷을 기본으로 하면 pass한다.
-                elif self.askShot == 'False':
-                    pass
+                elif self.askShot == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
-                    continue
             except Exception:
                 print("올바르게 입력하세요")
                 continue
@@ -405,18 +409,18 @@ class OrderTaker(CafeWorker):
 
     #hot or ice를 물어보는 메소드
     def askIceOrHot(self) -> list:
-        while (True):
+        while True:
             try:
-                print("ICE는 True HOT는 False로 입력해주십시오 ")
-                self.ice = str(input())
-                if self.ice == 'True':
+                print("ICE는 T HOT는 F로 입력해주십시오")
+                self.ice = str(input().lower())
+                if self.ice == 't':
                     self.addList.append('ICE')
                     break
-                elif self.ice == 'False':
+                elif self.ice == 'f':
                     self.addList.append('HOT')
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("올바르게 입력하세요")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -431,30 +435,29 @@ class OrderTaker(CafeWorker):
 
     #사이즈 추가 Espresson method
     def askSizeUp(self) -> list:
-        while (True):
+        while True:
             try:
-                print("사이즈를 추가하시겠습니까? 추가 : True 기본 : False")
-                self.sizeup = str(input())
-                if self.sizeup == 'True':
+                print("사이즈를 추가하시겠습니까?\n추가: T 기본: F")
+                self.sizeup = str(input().lower())
+                if self.sizeup == 't':
                     self.addList.append("sizeUp")
-                    print("Grande : 'True' , Venti : False")
-                    self.Choose = str(input())
-                    if self.Choose == 'True':
+                    print("Grande: T , Venti: F")
+                    self.Choose = str(input().lower())
+                    if self.Choose == 't':
                         self.addList.append('Grande')
                         self.__allPrice = self.__allPrice + 500
                         break
-                    elif self.Choose == 'False':
+                    elif self.Choose == 'f':
                         self.addList.append('Venti')
                         self.__allPrice = self.__allPrice + 500
                         break
                     else:
-                        raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                        raise Exception("올바르게 입력하세요")
                         continue
-                elif self.sizeup == 'False':
-                    pass
+                elif self.sizeup == 'f':
                     break
                 else:
-                    raise Exception("다시 입력해주십시오")
+                    raise Exception("올바르게 입력하세요")
             except Exception:
                 print("올바르게 입력하세요")
                 continue
@@ -462,23 +465,22 @@ class OrderTaker(CafeWorker):
 
     #GreenTea add Option 16 GreenTea
     def askGreenTea(self):
-        while (True):
+        while True:
             try:
-                print("그린티를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
-                self.addGreenTea = str(input())
-                if self.addGreenTea == 'True':
+                print("그린티 추가: T 기본: F")
+                self.addGreenTea = str(input().lower())
+                if self.addGreenTea == 't':
                     self.addList.append('addGreenTea')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addGreenTea = int(input())
                     self.addList.append(int(self.addGreenTea))
                     self.__allPrice = self.__allPrice + int(
                         self.addGreenTea) * 300
                     break
-                elif self.addGreenTea == 'False':
-                    pass
+                elif self.addGreenTea == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("올바르게 입력하세요")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -487,22 +489,22 @@ class OrderTaker(CafeWorker):
 
     #GreenTea condenseMilk Option
     def askCondensedMilk(self):
-        while (True):
+        while True:
             try:
-                print("연유 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
-                self.addMilk = str(input())
-                if self.addMilk == 'True':
+                print("연유를 추가하시겠습니까?\n추가 :T 기본 :F")
+                self.addMilk = str(input().lower())
+                if self.addMilk == 't':
                     self.addList.append("addCondensedMilk")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addMilk = int(input())
                     self.addList.append(int(self.addMilk))
                     self.__allPrice = self.__allPrice + (int(self.addMilk) *
                                                          300)
                     break
-                elif self.addMilk == 'False':
-                    pass
+                elif self.addMilk == 'f':
+                    break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("올바르게 입력하세요")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -511,23 +513,22 @@ class OrderTaker(CafeWorker):
 
     #VanillaLatte Option
     def askVanillaSyrup(self):
-        while (True):
+        while True:
             try:
-                print("바닐라 시럽 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
-                self.addSyrup = str(input())
-                if self.addSyrup == 'True':
+                print("바닐라 시럽을 추가하시겠습니까?\n추가: T 기본: F")
+                self.addSyrup = str(input().lower())
+                if self.addSyrup == 't':
                     self.addList.append('addVanillaSyrup')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addSyrup = int(input())
                     self.addList.append(int(self.addSyrup))
                     self.__allPrice = self.__allPrice + (int(self.addSyrup) *
                                                          200)
                     break
-                elif self.addSyrup == 'False':
-                    pass
+                elif self.addSyrup == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("올바르게 입력하세요")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -536,23 +537,22 @@ class OrderTaker(CafeWorker):
 
     #CafeMocha 카페모카 추가 옵션
     def askCafeMocha(self):
-        while (True):
+        while True:
             try:
-                print("모카 추가하시겠습니까? 추가 : 'True' 기본 : 'False'")
-                self.addMocha = str(input())
-                if self.addMocha == 'True':
+                print("모카를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addMocha = str(input().lower())
+                if self.addMocha == 't':
                     self.addList.append('addCafeMocha')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addMocha = int(input())
                     self.addList.append(int(self.addMocha))
                     self.__allPrice = self.__allPrice + (int(self.addMocha) *
                                                          300)
                     break
-                elif self.addMocha == 'False':
-                    pass
+                elif self.addMocha == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -561,22 +561,21 @@ class OrderTaker(CafeWorker):
 
     #Cappuccino 카푸치노 추가 옵션
     def askCinnamon(self):
-        while (True):
+        while True:
             try:
-                print("시나몬 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addCinnamon = str(input())
-                if self.addCinnamon == 'True':
+                print("시나몬을 추가하시겠습니까?\n추가: T 기본: F")
+                self.addCinnamon = str(input().lower())
+                if self.addCinnamon == 't':
                     self.addList.append('addCinnamon')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addCinnamon = int(input())
                     self.addList.append(int(self.addCinnamon))
                     self.__allPrice = self.__allPrice + self.addCinnamon  #약간 이상한느낌이 들음....  + amount?
                     break
-                elif self.addCinnamon == 'False':
-                    pass
+                elif self.addCinnamon == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -585,23 +584,22 @@ class OrderTaker(CafeWorker):
 
     #CaramelMacchiato
     def askCaramelSyrup(self):
-        while (True):
+        while True:
             try:
-                print("카라멜 시럽 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addSyrup = str(input())
-                if self.addSyrup == 'True':
+                print("카라멜 시럽 추가하시겠습니까?\n추가: T 기본: F")
+                self.addSyrup = str(input().lower())
+                if self.addSyrup == 't':
                     self.addList.append('addCaramelSyrup')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addSyrup = int(input())
                     self.addList.append(int(self.addSyrup))
                     self.__allPrice = self.__allPrice + (int(self.addSyrup) *
                                                          200)
                     break
-                elif self.addSyrup == 'False':
-                    pass
+                elif self.addSyrup == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -610,23 +608,22 @@ class OrderTaker(CafeWorker):
 
     #LemonAde 레몬에이드 레몬추가 addOption
     def askLemon(self):
-        while (True):
+        while True:
             try:
-                print("레몬 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addLemon = str(input())
-                if self.addLemon == 'True':
+                print("레몬을 추가하시겠습니까?\n추가: T 기본: F\n")
+                self.addLemon = str(input().lower())
+                if self.addLemon == 't':
                     self.addList.append('addLemon')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addLemon = int(input())
                     self.addList.append(int(self.addLemon))
                     self.__allPrice = self.__allPrice + (int(self.addLemon) *
                                                          500)
                     break
-                elif self.addLemon == 'False':
-                    pass
+                elif self.addLemon == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -634,23 +631,22 @@ class OrderTaker(CafeWorker):
             return self.addList
 
     def askOrange(self):
-        while (True):
+        while True:
             try:
-                print("오렌지 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addOrange = str(input())
-                if self.addOrange == 'True':
+                print("오렌지를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addOrange = str(input().lower())
+                if self.addOrange == 't':
                     self.addList.append('addOrange')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addOrange = int(input())
                     self.addList.append(int(self.addOrange))
                     self.__allPrice = self.__allPrice + (int(self.addOrange) *
                                                          500)
                     break
-                elif self.addOrange == 'False':
-                    pass
+                elif self.addOrange == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -659,23 +655,22 @@ class OrderTaker(CafeWorker):
 
     #StrawberryAde 딸기 추가
     def askStrawberry(self):
-        while (True):
+        while True:
             try:
-                print("딸기 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addStrawberry = str(input())
-                if self.addStrawberry == 'True':
+                print("딸기를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addStrawberry = str(input().lower())
+                if self.addStrawberry == 't':
                     self.addList.append('addStrawberry')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addStrawberry = int(input())
                     self.addList.append(int(self.addStrawberry))
                     self.__allPrice = self.__allPrice + (
                         int(self.addStrawberry) * 500)
                     break
-                elif self.addStrawberry == 'False':
-                    pass
+                elif self.addStrawberry == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -684,23 +679,22 @@ class OrderTaker(CafeWorker):
 
     #YogurtSmoothie 요거트 추가
     def askYogurt(self):
-        while (True):
+        while True:
             try:
-                print("요거트 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addYogurt = str(input())
-                if self.addYogurt == 'True':
+                print("요거트를 추가하시겠습니까?\n추가: T 기본 : F")
+                self.addYogurt = str(input().lower())
+                if self.addYogurt == 't':
                     self.addList.append('addYogurt')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addYogurt = int(input())
                     self.addList.append(int(self.addYogurt))
                     self.__allPrice = self.__allPrice + (int(self.addYogurt) *
                                                          500)
                     break
-                elif self.addYogurt == 'False':
-                    pass
+                elif self.addYogurt == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -709,23 +703,22 @@ class OrderTaker(CafeWorker):
 
     #BerryBerrySmoothie 요거트 추가
     def askBerry(self):
-        while (True):
+        while True:
             try:
-                print("베리 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addBerry = str(input())
-                if self.addBerry == 'True':
+                print("베리를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addBerry = str(input().lower())
+                if self.addBerry == 't':
                     self.addList.append('addBerry')
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addBerry = int(input())
                     self.addList.append(int(self.addBerry))
                     self.__allPrice = self.__allPrice + (int(self.addBerry) *
                                                          500)
                     break
-                elif self.addBerry == 'False':
-                    pass
+                elif self.addBerry == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -734,23 +727,22 @@ class OrderTaker(CafeWorker):
 
     #PineappleSmoothie 파인애플 추가
     def askPineapple(self):
-        while (True):
+        while True:
             try:
-                print("파인애플 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addPineapple = str(input())
-                if self.addPineapple == 'True':
+                print("파인애플을 추가하시겠습니까?\n추가 : T 기본 : F")
+                self.addPineapple = str(input().lower())
+                if self.addPineapple == 't':
                     self.addList.append("addPineapple")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addPineapple = int(input())
                     self.addList.append(int(self.addPineapple))
                     self.__allPrice = self.__allPrice + (
                         int(self.addPineapple) * 500)
                     break
-                elif self.addPineapple == 'False':
-                    pass
+                elif self.addPineapple == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -759,23 +751,22 @@ class OrderTaker(CafeWorker):
 
     #ChamomileTea 카모마일 차
     def askChamomileTea(self):
-        while (True):
+        while True:
             try:
-                print("카모마일을 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addChamomileTea = str(input())
-                if self.addChamomileTea == 'True':
+                print("카모마일을 추가하시겠습니까?\n추가 : T 기본 : F")
+                self.addChamomileTea = str(input().lower())
+                if self.addChamomileTea == 't':
                     self.addList.append("addChamomileTea")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addChamomileTea = int(input())
                     self.addList.append(int(self.addChamomileTea))
                     self.__allPrice = self.__allPrice + (
                         int(self.addChamomileTea) * 500)
                     break
-                elif self.addChamomileTea == 'False':
-                    pass
+                elif self.addChamomileTea == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -784,23 +775,22 @@ class OrderTaker(CafeWorker):
 
     #HibiscusTea 히비스커스 티?
     def askHibiscusTea(self):
-        while (True):
+        while True:
             try:
-                print("히비스커스을 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addHibiscusTea = str(input())
-                if self.addHibiscusTea == 'True':
+                print("히비스커스를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addHibiscusTea = str(input().lower())
+                if self.addHibiscusTea == 't':
                     self.addList.append("addHibiscusTea")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addHibiscusTea = int(input())
                     self.addList.append(int(self.addHibiscusTea))
                     self.__allPrice = self.__allPrice + (
                         int(self.addHibiscusTea) * 500)
                     break
-                elif self.addHibiscusTea == 'False':
-                    pass
+                elif self.addHibiscusTea == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -809,23 +799,22 @@ class OrderTaker(CafeWorker):
 
     #Icetea 피치파우더
     def askPeachPowder(self):
-        while (True):
+        while True:
             try:
-                print("복숭아 파우더를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addPeachPowder = str(input())
-                if self.addPeachPowder == 'True':
+                print("복숭아 파우더를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addPeachPowder = str(input().lower())
+                if self.addPeachPowder == 't':
                     self.addList.append("addPeachPowder")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addPeachPowder = int(input())
                     self.addList.append(int(self.addPeachPowder))
                     self.__allPrice = self.__allPrice + (
                         int(self.addPeachPowder) * 400)
                     break
-                elif (self.addPeachPowder == 'False'):
-                    pass
+                elif (self.addPeachPowder == 'f'):
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -834,23 +823,22 @@ class OrderTaker(CafeWorker):
 
     #LavenderTea
     def askLavenderTea(self):
-        while (True):
+        while True:
             try:
-                print("라벤더를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addLavenderTea = str(input())
-                if self.addLavenderTea == 'True':
+                print("라벤더를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addLavenderTea = str(input().lower())
+                if self.addLavenderTea == 't':
                     self.addList.append("addLavenderTea")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addLavenderTea = int(input())
                     self.addList.append(int(self.addLavenderTea))
                     self.__allPrice = self.__allPrice + (
                         int(self.addLavenderTea) * 500)
                     break
-                elif (self.addLavenderTea == 'False'):
-                    pass
+                elif (self.addLavenderTea == 'f'):
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                     continue
             except Exception:
                 print("올바르게 입력하세요")
@@ -859,15 +847,15 @@ class OrderTaker(CafeWorker):
 
     #RoyalMilkTea BlackTea
     def askBlackTea(self) -> int:
-        while (True):
+        while True:
             try:
-                print("블랙티를 추가하시거나 빼시겠습니까? 추가하거나 빼면 : 'True' 기본 : 'False'")
-                self.BlackTea = str(input())
+                print("블랙티를 추가하시거나 빼시겠습니까?\n추가하거나 빼려면: T 기본: F")
+                self.BlackTea = str(input().lower())
                 #블랙티을 추가하거나 빼면 어떻게 할지 물어본다.
-                if self.BlackTea == 'True':
-                    print("블랙티 추가 : 'True' 블랙티 빼기 : 'False'")
-                    self.BlackTea = str(input())
-                    if (self.BlackTea == 'True'):  #블랙티 추가
+                if self.BlackTea == 't':
+                    print("블랙티 추가: T\n블랙티 빼기: F")
+                    self.BlackTea = str(input().lower())
+                    if (self.BlackTea == 't'):  #블랙티 추가
                         self.addList.append('addBlackTea')
                         print("블랙티 추가를 얼마나 하시겠습니까? ")
                         self.addBlackTea = int(input())
@@ -875,23 +863,22 @@ class OrderTaker(CafeWorker):
                         self.__allPrice = self.__allPrice + (
                             int(self.addBlackTea) * 500)
                         break
-                    elif (self.BlackTea == 'False'):
+                    elif (self.BlackTea == 'f'):
                         self.addList.append('subBlackTea')
-                        print("블랙티을 얼마나 빼시겠습니까? ")
+                        print("블랙티를 얼마나 빼시겠습니까?")
                         self.subBlackTea = int(input())
                         self.addList.append(int(self.subBlackTea))
                         self.__allPrice = self.__allPrice - int(
                             self.subBlackTea)
                         break
                     else:
-                        raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                        raise Exception("T 또는 F로 입력해주시기 바랍니다.")
                         continue
                 #블랙티을 기본으로 하면 pass한다.
-                elif self.askBlackTea == 'False':
-                    pass
+                elif self.askBlackTea == 'f':
                     break
                 else:
-                    raise Exception("True 또는 False로 입력해주시기 바랍니다.")
+                    raise Exception("T 또는 F로 입력해주시기 바랍니다.")
             except Exception:
                 print("올바르게 입력하세요")
                 continue
@@ -899,20 +886,19 @@ class OrderTaker(CafeWorker):
 
     #royalMilkTea addRoyalHoney
     def askRoyalHoney(self):
-        while (True):
+        while True:
             try:
-                print("꿀을 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addRoyalHoney = str(input())
-                if self.addRoyalHoney == 'True':
+                print("꿀을 추가하시겠습니까?\n추가: T 기본: F")
+                self.addRoyalHoney = str(input().lower())
+                if self.addRoyalHoney == 't':
                     self.addList.append("addRoyalHoney")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addRoyalHoney = int(input())
                     self.addList.append(int(self.addRoyalHoney))
                     self.__allPrice = self.__allPrice + (
                         int(self.addRoyalHoney) * 1000)
                     break
-                elif self.addRoyalHoney == 'False':
-                    pass
+                elif self.addRoyalHoney == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -924,20 +910,19 @@ class OrderTaker(CafeWorker):
 
     #addMatcha matchaMilkTea
     def askMatcha(self):
-        while (True):
+        while True:
             try:
-                print("말차를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addMatcha = str(input())
-                if self.addMatcha == 'True':
+                print("말차를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addMatcha = str(input().lower())
+                if self.addMatcha == 't':
                     self.addList.append("addMatcha")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addMatcha = int(input())
                     self.addList.append(int(self.addMatcha))
                     self.__allPrice = self.__allPrice + (int(self.addMatcha) *
                                                          400)
                     break
-                elif self.addMatcha == 'False':
-                    pass
+                elif self.addMatcha == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -949,20 +934,19 @@ class OrderTaker(CafeWorker):
 
     #addPeppermintTea  peppermintTea
     def askPeppermintTea(self):
-        while (True):
+        while True:
             try:
-                print("페퍼민트를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addPeppermintTea = str(input())
-                if self.addPeppermintTea == 'True':
+                print("페퍼민트를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addPeppermintTea = str(input().lower())
+                if self.addPeppermintTea == 't':
                     self.addList.append("addPeppermintTea")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addPeppermintTea = int(input())
                     self.addList.append(int(self.addPeppermintTea))
                     self.__allPrice = self.__allPrice + (
                         int(self.addPeppermintTea) * 500)
                     break
-                elif self.addPeppermintTea == 'False':
-                    pass
+                elif self.addPeppermintTea == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -974,20 +958,19 @@ class OrderTaker(CafeWorker):
 
     #addRooibosTea rooibosTea
     def askRooibosTea(self):
-        while (True):
+        while True:
             try:
-                print("루이보스를 추가하시겠습니까? 추가 : 'True' 기본 : 'False'\n")
-                self.addRooibosTea = str(input())
-                if self.addRooibosTea == 'True':
+                print("루이보스를 추가하시겠습니까?\n추가: T 기본: F")
+                self.addRooibosTea = str(input().lower())
+                if self.addRooibosTea == 't':
                     self.addList.append("addRooibosTea")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addRooibosTea = int(input())
                     self.addList.append(int(self.addRooibosTea))
                     self.__allPrice = self.__allPrice + (
                         int(self.addRooibosTea) * 700)
                     break
-                elif self.addRooibosTea == 'False':
-                    pass
+                elif self.addRooibosTea == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -999,20 +982,19 @@ class OrderTaker(CafeWorker):
 
     #def addWaffle beiganWaffle FruitsWaffle
     def askWaffle(self):
-        while (True):
+        while True:
             try:
-                print("와플을 추가하시겠습니까? 추가 : 'True' 거부 : 'False'\n")
-                self.addWaffle = str(input())
-                if self.addWaffle == 'True':
+                print("와플을 추가하시겠습니까?\n추가: T 거부: F")
+                self.addWaffle = str(input().lower())
+                if self.addWaffle == 't':
                     self.addList.append("addWaffle")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addWaffle = int(input())
                     self.addList.append(int(self.addWaffle))
                     self.__allPrice = self.__allPrice + (int(self.addWaffle) *
                                                          1000)
                     break
-                elif self.addWaffle == 'False':
-                    pass
+                elif self.addWaffle == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -1024,20 +1006,19 @@ class OrderTaker(CafeWorker):
 
     #def addFruitsMango
     def askFruitsMango(self):
-        while (True):
+        while True:
             try:
-                print("망고를 추가하시겠습니까? 추가 : 'True' 거부 : 'False'\n")
-                self.addFruitsMango = str(input())
-                if self.addFruitsMango == 'True':
+                print("망고를 추가하시겠습니까?\n추가: T 거부: F")
+                self.addFruitsMango = str(input().lower())
+                if self.addFruitsMango == 't':
                     self.addList.append("addFruitsMango")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addFruitsMango = int(input())
                     self.addList.append(int(self.addFruitsMango))
                     self.__allPrice = self.__allPrice + (
                         int(self.addFruitsMango) * 1000)
                     break
-                elif self.addFruitsMango == 'False':
-                    pass
+                elif self.addFruitsMango == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -1049,20 +1030,19 @@ class OrderTaker(CafeWorker):
 
     #def addFruitsStrawberry
     def askFruitsStrawberry(self):
-        while (True):
+        while True:
             try:
-                print("딸기를 추가하시겠습니까? 추가 : 'True' 거부 : 'False'\n")
-                self.addFruitsStrawberry = str(input())
-                if self.addFruitsStrawberry == 'True':
+                print("딸기를 추가하시겠습니까?\n추가: T 거부: F")
+                self.addFruitsStrawberry = str(input().lower())
+                if self.addFruitsStrawberry == 't':
                     self.addList.append("addFruitsStrawberry")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addFruitsStrawberry = int(input())
                     self.addList.append(int(self.addFruitsStrawberry))
                     self.__allPrice = self.__allPrice + (
                         int(self.addFruitsStrawberry) * 1000)
                     break
-                elif self.addFruitsStrawberry == 'False':
-                    pass
+                elif self.addFruitsStrawberry == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -1074,20 +1054,19 @@ class OrderTaker(CafeWorker):
 
     #def addFruitsBlueberry
     def askFruitsBlueberry(self):
-        while (True):
+        while True:
             try:
-                print("블루베리를 추가하시겠습니까? 추가 : 'True' 거부 : 'False'\n")
-                self.addFruitsBlueberry = str(input())
-                if self.addFruitsBlueberry == 'True':
+                print("블루베리를 추가하시겠습니까?\n추가: T 거부: F")
+                self.addFruitsBlueberry = str(input().lower())
+                if self.addFruitsBlueberry == 't':
                     self.addList.append("addFruitsBlueberry")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addFruitsBlueberry = int(input())
                     self.addList.append(int(self.addFruitsBlueberry))
                     self.__allPrice = self.__allPrice + (
                         int(self.addFruitsBlueberry) * 1000)
                     break
-                elif self.addFruitsBlueberry == 'False':
-                    pass
+                elif self.addFruitsBlueberry == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -1099,20 +1078,19 @@ class OrderTaker(CafeWorker):
 
     #def addIceCream iceWaffle
     def askIceCream(self):
-        while (True):
+        while True:
             try:
-                print("아이스크림을 추가하시겠습니까? 추가 : 'True' 거부 : 'False'\n")
-                self.addIceCream = str(input())
-                if self.addIceCream == 'True':
+                print("아이스크림을 추가하시겠습니까?\n추가: T 거부: F")
+                self.addIceCream = str(input().lower())
+                if self.addIceCream == 't':
                     self.addList.append("addIceCream")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addIceCream = int(input())
                     self.addList.append(int(self.addIceCream))
                     self.__allPrice = self.__allPrice + (
                         int(self.addIceCream) * 500)
                     break
-                elif self.addIceCream == 'False':
-                    pass
+                elif self.addIceCream == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -1124,20 +1102,19 @@ class OrderTaker(CafeWorker):
 
     #def addRedVelvetPowder
     def askRedVelvetPowder(self):
-        while (True):
+        while True:
             try:
-                print("레드벨벳 파우더를 추가하시겠습니까? 추가 : 'True' 거부 : 'False'\n")
-                self.addRedVelvetPowder = str(input())
-                if self.addRedVelvetPowder == 'True':
+                print("레드벨벳 파우더를 추가하시겠습니까?\n추가: T 거부: F")
+                self.addRedVelvetPowder = str(input().lower())
+                if self.addRedVelvetPowder == 't':
                     self.addList.append("addRedVelvetPowder")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addRedVelvetPowder = int(input())
                     self.addList.append(int(self.addRedVelvetPowder))
                     self.__allPrice = self.__allPrice + (
                         int(self.addRedVelvetPowder) * 500)
                     break
-                elif self.addRedVelvetPowder == 'False':
-                    pass
+                elif self.addRedVelvetPowder == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -1149,20 +1126,19 @@ class OrderTaker(CafeWorker):
 
     #def addChocolatePowder
     def askChocolatePowder(self):
-        while (True):
+        while True:
             try:
-                print("초콜릿 파우더를 추가하시겠습니까? 추가 : 'True' 거부 : 'False'\n")
-                self.addChocolatePowder = str(input())
-                if self.addChocolatePowder == 'True':
+                print("초콜릿 파우더를 추가하시겠습니까?\n추가: T 거부: F")
+                self.addChocolatePowder = str(input().lower())
+                if self.addChocolatePowder == 't':
                     self.addList.append("addChocolatePowder")
-                    print("얼만큼 추가하시겠습니까? ")
+                    print("얼만큼 추가하시겠습니까?")
                     self.addChocolatePowder = input()
                     self.addList.append(int(self.addChocolatePowder))
                     self.__allPrice = self.__allPrice + int(
                         self.addChocolatePowder)
                     break
-                elif self.addChocolatePowder == 'False':
-                    pass
+                elif self.addChocolatePowder == 'f':
                     break
                 else:
                     raise Exception("올바르게 입력하세요")
@@ -1179,7 +1155,7 @@ class OrderTaker(CafeWorker):
     def getOrderList(self) -> list:
         return self.orderlist
 
-    def getAddList(self) -> list:
+    def getAddlist(self) -> list:
         return self.addList
 
     def addIngredient(self) -> list:
@@ -1187,8 +1163,6 @@ class OrderTaker(CafeWorker):
         for i in range(len(self.orderlist)):
             if 'addShot' in self.orderlist[i]:
                 self.results.append('샷 ' + self.orderlist[i + 1] + '개 추가 ')
-            elif 'subShot' in self.orderlist[i]:
-                self.results.append('샷 ' + self.orderlist[i + 1] + '개 빼기 ')
             elif 'addLemon' in self.orderlist[i]:
                 self.results.append('레몬 ' + self.orderlist[i + 1] + '개 추가 ')
             elif 'addStrawberry' in self.orderlist[i]:

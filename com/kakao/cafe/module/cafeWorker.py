@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+#
+# cafeWorker.py
+#
+# Defines Kakao cafe's worker interface.
+
 from abc import ABCMeta, abstractmethod
 
 
