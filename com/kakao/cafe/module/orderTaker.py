@@ -833,7 +833,6 @@ class OrderTaker(CafeWorker):
                         int(self.addLavenderTea) * 500)
                     break
                 elif (self.addLavenderTea == 'f'):
-                    pass
                     break
                 else:
                     raise Exception("True 또는 False로 입력해주시기 바랍니다.")
