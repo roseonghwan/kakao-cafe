@@ -13,15 +13,7 @@ import itertools
 
 class OrderChecker(CafeWorker):
     def __init__(self):
-        self.menulist = list()
-        # orderTaker = OrderTaker()
-        # self.orderlist = orderTaker.getOrderList()
-        # menulist와 orderlist의 주문 내역을 비교하기 위해 menulist와 orderlist를 정의해줌
-        # self.orderlist = list(itertools.chain(*self.orderlist))
-        # orderlist에 들어온 여러 중의 리스트들을 하나의 리스트로 만들어 줌
-        # self.orderlist = list(map(str, self.orderlist))
-        # orderlist의 data들을 모두 str 형으로 바꿔 줌
-        self.results = list()
+        self.__userinput = ''
         # 출력할 최종 리스트를 정의해 줌
 
     def askOrderList(self) -> str:
@@ -47,4 +39,4 @@ class OrderChecker(CafeWorker):
                 print('올바르게 입력하세요.')
 
     def Print(self):
-        pass
+        print('-' * 30)

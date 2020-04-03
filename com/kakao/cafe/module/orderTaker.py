@@ -1186,6 +1186,8 @@ class OrderTaker(CafeWorker):
         for i in range(len(self.orderlist)):
             if 'addShot' in self.orderlist[i]:
                 self.results.append('샷 ' + self.orderlist[i + 1] + '개 추가 ')
+            elif 'subShot' in self.orderlist[i]:
+                self.results.append('샷 ' + self.orderlist[i + 1] + '개 빼기 ')
             elif 'addLemon' in self.orderlist[i]:
                 self.results.append('레몬 ' + self.orderlist[i + 1] + '개 추가 ')
             elif 'addStrawberry' in self.orderlist[i]:

@@ -207,7 +207,7 @@ def setIced(self) -> None:
 
 아래는 추상 클래스 CafeMenu를 구현하는 concrete 클래스인 Espresso에 대한 구현 명세이다.
 
-- 생성자: 부모 클래스의 생성자를 호출하며 private float형 멤버 변수 shot, private string형 멤버 변수 size의 값을 각각 1.0과 'Tall'로 초기화한다.
+- 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 shot, private string형 멤버 변수 size의 값을 각각 1.0과 'Tall'로 초기화한다.
 
   멤버 변수 name의 값을 클래스 이름과 동일하게 초기화한다.
 
@@ -1077,30 +1077,34 @@ class CafeWorker(metaclass=ABCMeta):
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderTaker에 대한 구현 명세이다.
 
 - 생성자: private list형 멤버 변수 orderList를 선언한다.(OrderChecker에게 넘겨줄 최종리스트 / 예시 참고)
+
 - ex) 만약 손님이 에스프레소를 주문한다.
   ['Espresso', 1 ,'addShot', 2.0 ,sizeUp','Grande']
+  
 - private int형 멤버 변수 allPrice를 선언한다.
   (총 가격을 PaymentManager에게 넘겨줄 변수)
+  
 - public list형 addList를 선언한다.
   (만약 손님이 4개의 메뉴주문을 하면 메뉴 1개씩 차례대로 주문받고 최종리스트에 넣기위한 리스트)
+  
 - 나중에 중첩되는 추가옵션을 가진 메뉴가 또 나올 수 있기때문에 메소드로 구현하여 반복하여 추가하지 않고 불러올 수 있게 했다.
 
 - Print: 주문 안내 메세지를 출력하고 번호를 입력하도록 한다.
+
+------
+
 
 - takeOrder 메소드에 대한 설명
 
 1. 손님이 메뉴리스트에 있는 번호를 입력한 리스트를 받는다.
 2. 리스트를 그 길이만큼 반복하여 하나씩 추출하며 1~30
    모든메뉴의 번호와 비교한다.
-
 3. 손님이 입력한 번호와 메뉴 번호가 같으면 addList에 그 메뉴를 append 해주고, 메뉴의 추가옵션을 차례로 물어본다.
-
 4. 공통적으로 수량을 물어본다. 그 수량만큼 allPrice에 더해준다. 수량만큼 추가옵션을 반복하여 수량에 맞고 추가옵션을 들어오도록 한다.
-
 5. 추가옵션의 메소드에서 추가를 할건지 말건지 물어보고 추가한다면 addList에 추가옵션 name을 String형으로 append하고 얼마나 수량은 int형으로 append 추가한다. 그리고 allPrice에 (추가한 수량 X 추가 가격)을 더해준다.
-
 6. 한 메뉴의 공통적인 addName, askMount, askIceOrHot, addAllPrice 메소드 + 추가 옵션 메소드를 실행하여 append된 addList를 최종적인 리스트 orderList에 넣어준다.
    그리고 나서 다시 처음으로 돌아가 addList와 allPrice를 초기화해준다.(다음 메뉴를 새로 추가하기 위해서)
+7. orderList에 담긴 메뉴들을 사용자에게 직관적으로 출력해준다.
 
 - 추가옵션 메소드
 
@@ -1200,23 +1204,40 @@ class CafeWorker(metaclass=ABCMeta):
 32. askChocolatePowder()
     초콜릿 파우더 추가옵션, 손님에게 추가, 기본을 물어보고 추가한다면 얼만큼 추가 할 지 물어본다. 그리고 그 수량만큼 addList에 추가해주고 수량 X 추가 가격을 allPrice에 넣어준다.
 
-- getAllPrice 메소드 총 가격을 paymentManager에게 넘겨주기 위해서 생성
-- getOrderList 최종적으로 넘겨줄 리스트
-- getAddlist OrderList에 append해주기 위한 리스트
+33. addIngredient()
 
-#
+    사용자가 주문한 메뉴의 추가 옵션들을 직관적으로 result에 추가해준다.
+
+34. Character()
+
+    사용자가 주문한 메뉴의 특징인 ICE, HOT 과 메뉴의 개수를 result에 추가해준다.
+
+35. LoadName()
+
+    사용자가 주문한 메뉴가 주문 가능한 메뉴인지 판별하기 위해서 Menu의 이름들을 불러온다.
+
+36. Print2()
+
+    사용자의 총 주문 내역을 보기 좋게 출력해 준다.
+
+- getAllPrice 메소드: 총 가격을 paymentManager에게 넘겨주기 위해서 생성
+- getOrderList: 최종적으로 넘겨줄 리스트
+- getAddlist: OrderList에 append해주기 위한 리스트
+
+------
+
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderChecker에 대한 구현 명세이다.
 
-- 생성자:
+- 생성자: private str형 멤버 변수 userinput 의 값을 type default value로 초기화한다.
 
-- Print: 사용자가 주문한 목록을 출력한다.
+- Print: 사용자가 입력하기 편하도록 선을 그어 입력할 자리를 만들어준다.
 
-- checkOrder: 주문한 내역이 맞는지 확인하고 사용자 입력을 기다린다.
+- askOrderList: 주문한 내역이 맞는지 확인하고 사용자 입력을 기다린다.
 
-  Y나 y, Yes나 yes, 혹은 빈 문자열이 입력되면 주문 내역이 올바른 것으로 간주하고 다음 단계로 넘어간다.
+  Y나 y, Yes나 yes가 입력되면 주문 내역이 올바른 것으로 간주하고 다음 단계로 넘어간다.
 
-  그 외의 경우엔 잘못된 주문이 입력된 것으로 간주하고 첫 결제 화면으로 돌아간다.
+  N이나 n, No나 n이 입력되면 잘못된 주문이 입력된 것으로 간주하고 첫 결제 화면으로 돌아간다.
 
 #
 
