@@ -1066,9 +1066,23 @@ class CafeWorker(metaclass=ABCMeta):
 
 #
 
-아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 MenuPrinter에 대한 구현 명세이다.
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 <b>MenuPrinter</b>에 대한 구현 명세이다.
 
-- 생성자: private data structure 멤버 변수 cafeMenu에 카카오 카페의 모든 메뉴 정보를 **가장 적합한 자료구조**에 담아 초기화한다.
+- 생성자: private data structure 멤버 변수 menuList에 카카오 카페의 모든 메뉴 정보를 딕셔너리에 담아 초기화한다.
+
+- getMenuList: self.__menuList를 dict 형태로 가져오는 method
+
+- getMenu: cafeMenu에 포함된 객체들을 list 형태로 가져오는 method
+
+- getEspresoo: Espresso 객체들을 list 형태로 가져오는 method 
+
+- getAde: Ade 객체들을 list 형태로 가져오는 method
+
+- getSmoothie: Smoothie 객체들을 list 형태로 가져오는 method
+
+- getTea: Tea 객체들을 list 형태로 가져오는 method
+
+- getDessert: Dessert 객체들을 list 형태로 가져오는 method
 
 - Print: 멤버 변수 cafeMenu에 담긴 값들을 읽고 메뉴들을 종류 별로 나누어 이름과 가격을 출력한다.
 
@@ -1241,13 +1255,20 @@ class CafeWorker(metaclass=ABCMeta):
 
 #
 
-아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 PaymentManager에 대한 구현 명세이다.
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 <b>PaymentManager</b>에 대한 구현 명세이다.
 
-- 생성자:
+- private String형 paymentSystem, private int형 cardBalance, private int형 cash, private int형 change, private int형 point를 type default로 초기화한다.
+- cardBalance에 대한 setter
+- cash에 대한 getter, setter
+- change에 대한 getter, setter
+- point에 대한 setter, getter
+- selectPayment 메소드: 결제수단을 선택하는 
+- cardPay 메소드: selectPayment에서 결제수단을 카드로 선택한 경우의 
+- cashPay 메소드: selectPayment에서 결제수단을 현금으로 선택한 경우의 
 
 - Print: 결제 가능한 수단들의 목록을 출력한다.
 
--
+
 
 #
 
