@@ -12,7 +12,7 @@
 
 현재 개발 책임팀에서 최종 설계를 디자인 중이며, 신입 개발팀은 아래의 API 명세에 따라 코드를 구현해주시면 됩니다.
 
----
+#
 
 ## 카카오 카페 결제 모듈 구현 명세
 
@@ -38,7 +38,7 @@
 
 ### :heavy_exclamation_mark:(주의) 표준 개발 환경은 다음과 같다.
 
-OS: Ubuntu 18.04 LTS
+OS: Ubuntu 18.04
 
 Runtime: Python>=3.6.9
 
@@ -54,19 +54,23 @@ Test Library: unittest
 
 ### 카페 메뉴 구현 명세
 
-#
+<br />
 
 아래는 카페 메뉴에 대한 구현 명세이다.
 
 카카오 카페의 메뉴는 에스프레소 메뉴, 스무디, 차, 에이드의 4가지로 나뉘며 이들은 모두 최상위 메뉴 클래스 CafeMenu를 상속한다.
 
+<br />
+
 최종 디렉토리 구조는 다음과 같다.
 
-```bash
+```shell
 kakao-cafe
 ├── LICENSE
 ├── Makefile
 ├── README.md
+├── _config.yml
+├── cafe.py
 ├── com
 │   ├── __init__.py
 │   └── kakao
@@ -74,7 +78,7 @@ kakao-cafe
 │       └── cafe
 │           ├── README.md
 │           ├── __init__.py
-│           ├── cafe.py
+│           ├── cafeMenu.py
 │           ├── menu
 │           │   ├── __init__.py
 │           │   ├── ade
@@ -85,7 +89,6 @@ kakao-cafe
 │           │   │   └── strawberryAde.py
 │           │   ├── cafeMenu.py
 │           │   ├── dessert
-│           │   │   ├── __init__.py
 │           │   │   ├── belgianWaffle.py
 │           │   │   ├── dessert.py
 │           │   │   ├── fruitsWaffle.py
@@ -134,15 +137,18 @@ kakao-cafe
 │               └── receiptPrinter.py
 ├── requirements.txt
 ├── testutil
-│   ├── testAde.py
-│   ├── testCafeMenu.py
-│   ├── testDessert.py
-│   ├── testEspresso.py
-│   ├── testModule.py
-│   ├── testSmoothie.py
-│   └── testTea.py
+│   ├── testAde.py
+│   ├── testCafeMenu.py
+│   ├── testDessert.py
+│   ├── testEspresso.py
+│   ├── testModule.py
+│   ├── testSmoothie.py
+│   └── testTea.py
+│
 └── venv
 ```
+
+<br />
 
 메뉴의 종류가 많으므로 각 모듈마다 단위 테스트 코드가 작성된 테스트 파일을 추가하고  
 **반드시 단위 테스트가 통과된 것을 확인한 후에 다음 모듈을 구현할 것을 권장한다.**
@@ -159,49 +165,53 @@ kakao-cafe
 
   함수 원형은 다음과 같다.
 
-```python
-from abc import ABCMeta, abstractmethod
+  ```python
+  from abc import ABCMeta, abstractmethod
 
 
-class CafeMenu(metaclass=ABCMeta):
+  class CafeMenu(metaclass=ABCMeta):
 
-  # ...
+    # ...
 
-  @abstractmethod
-  def getName(self) -> str:
-    raise NotImplementedError('Method getName not implemented')
+    @abstractmethod
+    def getName(self) -> str:
+      raise NotImplementedError('Method getName not implemented')
 
-  @abstractmethod
-  def setName(self, name: str) -> None:
-    raise NotImplementedError('Method setName not implemented)
-```
+    @abstractmethod
+    def setName(self, name: str) -> None:
+      raise NotImplementedError('Method setName not implemented)
+  ```
+
+<br />
 
 - price에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
 
   함수 원형은 다음과 같다.
 
-```python
-@abstractmethod
-def getPrice(self) -> int:
-  raise NotImplementedError('Method getPrice not implemented')
+  ```python
+  @abstractmethod
+  def getPrice(self) -> int:
+    raise NotImplementedError('Method getPrice not implemented')
 
-@abstractmethod
-def setPrice(self, price: int) -> None:
-  raise NotImplementedError('Method setPrice not implemented')
-```
+  @abstractmethod
+  def setPrice(self, price: int) -> None:
+    raise NotImplementedError('Method setPrice not implemented')
+  ```
+
+<br />
 
 - iced에 대한 getter와 setter: 추상 메소드로 NotImplementedError를 발생시킨다.
   함수 원형은 다음과 같다.
 
-```python
-@abstractmethod
-def isIced(self) -> bool:
-  raise NotImplementedError('Method isIced not implemented')
+  ```python
+  @abstractmethod
+  def isIced(self) -> bool:
+    raise NotImplementedError('Method isIced not implemented')
 
-@abstractmethod
-def setIced(self) -> None:
-  raise NotImplementedError('Method setIced not implemented')
-```
+  @abstractmethod
+  def setIced(self) -> None:
+    raise NotImplementedError('Method setIced not implemented')
+  ```
 
 #
 
@@ -809,7 +819,7 @@ def setIced(self) -> None:
 
 #
 
-아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 NewYorkCheeseCake에 대한 구현 명세이다.
+아래는 추상 클래스 Dessert를 상속받은 concrete 클래스 NewYorkCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 newYorkCheese의 값을 3으로 초기화한다.
 
@@ -835,7 +845,7 @@ def setIced(self) -> None:
 
 #
 
-아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 TiramisuCake에 대한 구현 명세이다.
+아래는 추상 클래스 Dessert를 상속받은 concrete 클래스 TiramisuCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 chocolatePowder의 값을 각각 2와 1로 초기화한다.
 
@@ -865,7 +875,7 @@ def setIced(self) -> None:
 
 #
 
-아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RedVelvetCheeseCake에 대한 구현 명세이다.
+아래는 추상 클래스 Dessert를 상속받은 concrete 클래스 RedVelvetCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone와 private int형 멤버 변수 redVelvetPowder의 값을 모두 2로 초기화한다.
 
@@ -895,7 +905,7 @@ def setIced(self) -> None:
 
 #
 
-아래는 추살 클래스 Dessert를 상속받은 concrete 클래스 RainbowCheeseCake에 대한 구현 명세이다.
+아래는 추상 클래스 Dessert를 상속받은 concrete 클래스 RainbowCheeseCake에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 mascapone의 값을 2로 초기화한다.
 
@@ -921,7 +931,7 @@ def setIced(self) -> None:
 
 #
 
-아래는 추살 클래스 Dessert를 상속받은 추상 클래스 Waffle에 대한 구현 명세이다.
+아래는 추상 클래스 Dessert를 상속받은 추상 클래스 Waffle에 대한 구현 명세이다.
 
 - 생성자: 부모 클래스의 생성자를 호출하며 private int형 멤버 변수 numWaffles의 값을 2로 초기화한다.
 
@@ -1029,7 +1039,7 @@ def setIced(self) -> None:
 
 ### 결제 모듈 구현 명세
 
-#
+<br />
 
 아래는 결제 시 필요한 기능(클래스)들의 목록이다.  
 이들은 모두 '카페에서 어떤 일을 한다'는 공통점이 있으므로 공통 부분을 추상화할 수 있다.  
@@ -1051,22 +1061,22 @@ def setIced(self) -> None:
 
   이는 추상 메소드로 NotImplementedError를 발생시킨다. 함수 원형은 다음과 같다.
 
-```python
-from abc import ABCMeta, abstractmethod
+  ```python
+  from abc import ABCMeta, abstractmethod
 
 
-class CafeWorker(metaclass=ABCMeta):
+  class CafeWorker(metaclass=ABCMeta):
 
-# ...
+  # ...
 
-  @abstractmethod
-  def Print(self) -> None:
-    raise NotImplementedError('Method Print not implemented')
-```
+    @abstractmethod
+    def Print(self) -> None:
+      raise NotImplementedError('Method Print not implemented')
+  ```
 
 #
 
-아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 <b>MenuPrinter</b>에 대한 구현 명세이다.
+아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 MenuPrinter에 대한 구현 명세이다.
 
 - 생성자: private data structure 멤버 변수 menuList에 카카오 카페의 모든 메뉴 정보를 딕셔너리에 담아 초기화한다.
 
@@ -1105,8 +1115,7 @@ class CafeWorker(metaclass=ABCMeta):
 
 - Print: 주문 안내 메세지를 출력하고 번호를 입력하도록 한다.
 
-------
-
+#
 
 - takeOrder 메소드에 대한 설명
 
@@ -1238,8 +1247,7 @@ class CafeWorker(metaclass=ABCMeta):
 - getOrderList: 최종적으로 넘겨줄 리스트
 - getAddlist: OrderList에 append해주기 위한 리스트
 
-------
-
+#
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 OrderChecker에 대한 구현 명세이다.
 
@@ -1268,13 +1276,9 @@ class CafeWorker(metaclass=ABCMeta):
 
 - Print: 결제 가능한 수단들의 목록을 출력한다.
 
-
-
 #
 
 아래는 인터페이스 CafeWorker를 구현하는 concrete 클래스 ReceiptPrinter에 대한 구현 명세이다.
-
-- 생성자: 
 
 - Print: 주문한 상품의 이름, 수량 등을 영수증에 출력하고 결제수단과 받은 금액, 거스름 돈, 총 금액을 출력한다.
 
@@ -1294,11 +1298,11 @@ main은 CafeWorker를 구현하는 5가지 concrete 클래스들의 객체를 �
 
 감사합니다.
 
-#
+<br />
 
 귀염둥이 라이언 드림
 
-#
+<br />
 
 Ryan
 
